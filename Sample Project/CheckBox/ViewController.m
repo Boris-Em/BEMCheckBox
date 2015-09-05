@@ -21,11 +21,15 @@
     
     BEMCheckBox *checkBox1 = [[BEMCheckBox alloc] initWithFrame:CGRectMake(100, 100, 40, 40)];
     checkBox1.onCheckColor = [UIColor whiteColor];
+    checkBox1.boxType = BEMBoxTypeSquare;
     checkBox1.onAnimationType = BEMAnimationTypeFill;
     checkBox1.offAnimationType = BEMAnimationTypeFill;
     [self.view addSubview:checkBox1];
     
     BEMCheckBox *checkBox2 = [[BEMCheckBox alloc] initWithFrame:CGRectMake(100, 200, 40, 40)];
+    checkBox2.onAnimationType = BEMAnimationTypeStroke;
+    checkBox2.offAnimationType = BEMAnimationTypeStroke;
+    checkBox2.boxType = BEMBoxTypeSquare;
     [self.view addSubview:checkBox2];
     
     BEMCheckBox *checkBox3 = [[BEMCheckBox alloc] initWithFrame:CGRectMake(100, 300, 40, 40)];
