@@ -92,8 +92,6 @@
         if (self.on) {
             [self drawOnBox];
             [self drawCheckMark];
-        } else {
-            [self hideOnCheckBox];
         }
     }
 }
@@ -131,10 +129,6 @@
         self.onBoxLayer.fillColor = [UIColor clearColor].CGColor;
         self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
     }
-}
-
-/// Hides the box and check mark
-- (void)hideOnCheckBox {
 }
 
 - (void)drawCheckMark {
@@ -184,11 +178,10 @@
     CABasicAnimation *animation;
     NSString *keyPath;
     
-    animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-
+    animation = [CABasicAnimation animation];
     animation.fromValue = [NSNumber numberWithFloat:0.0f];
     animation.toValue = [NSNumber numberWithFloat:1.0f];
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
     switch (self.onAnimationType) {
         case BEMAnimationTypeStroke: {
             keyPath = @"strokeEnd";
@@ -196,9 +189,7 @@
             break;
             
         case BEMAnimationTypeFill: {
-            NSLog(@"Animate Fill");
             keyPath = @"transform";
-            
             animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0)];
             animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)];
         }
@@ -210,7 +201,9 @@
             break;
     }
     
-    animation.duration = 0.15;
+    animation.keyPath = keyPath;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.duration = self.animationDuration;
 
     [self.onBoxLayer addAnimation:animation forKey:keyPath];
     [self.checkMarkLayer addAnimation:animation forKey:keyPath];
@@ -243,6 +236,7 @@
     animation.toValue = [NSNumber numberWithFloat:0.0];
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     [self.onBoxLayer addAnimation:animation forKey:keyPath];
     [self.checkMarkLayer addAnimation:animation forKey:keyPath];
