@@ -166,6 +166,12 @@
     [checkMarkPath addLineToPoint: CGPointMake(self.frame.size.height/2.0618, self.frame.size.height/1.57894)];
     [checkMarkPath addLineToPoint: CGPointMake(self.frame.size.height/1.3953, self.frame.size.height/2.7272)];
     
+    if (self.boxType == BEMBoxTypeSquare) {
+        // If we use a square box, the check mark should be a little bit bigger
+        [checkMarkPath applyTransform:CGAffineTransformMakeScale(1.5, 1.5)];
+        [checkMarkPath applyTransform:CGAffineTransformMakeTranslation(-self.bounds.size.height/4, -self.bounds.size.height/4)];
+    }
+    
     return checkMarkPath;
 }
 
