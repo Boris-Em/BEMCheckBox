@@ -36,6 +36,13 @@
     checkBox3.onAnimationType = BEMAnimationTypeFade;
     checkBox3.offAnimationType = BEMAnimationTypeStroke;
     [self.view addSubview:checkBox3];
+    
+    BEMCheckBox *checkBox4 = [[BEMCheckBox alloc] initWithFrame:CGRectMake(100, 400, 40, 40)];
+    checkBox4.onCheckColor = [UIColor whiteColor];
+    checkBox4.boxType = BEMBoxTypeCircle;
+    checkBox4.onAnimationType = BEMAnimationTypeFill;
+    checkBox4.offAnimationType = BEMAnimationTypeFill;
+    [self.view addSubview:checkBox4];
 }
 
 - (void)didReceiveMemoryWarning {
