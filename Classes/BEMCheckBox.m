@@ -149,7 +149,7 @@
     UIBezierPath* path;
     switch (self.boxType) {
         case BEMBoxTypeSquare:
-            path = [UIBezierPath bezierPathWithRect:self.bounds];
+            path = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:3.0];
             break;
             
         default:
