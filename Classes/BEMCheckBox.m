@@ -281,13 +281,7 @@
     [keyTimes addObject:@0.0];
     
     for (NSUInteger i = 1; i <= bounces; i++) {
-        CGFloat scale;
-        if (reverse) {
-            scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
-        } else {
-            scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
-        }
-                
+        CGFloat scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
         CGFloat time = i * 1.0/(bounces + 1);
         
         [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(scale, scale, scale)]];
