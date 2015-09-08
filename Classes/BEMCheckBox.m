@@ -187,6 +187,7 @@
             CABasicAnimation *animation = [self strokeAnimationReverse:NO];
             
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
+            [self.onBoxLayer addAnimation:[self opacityAnimationReverse:NO] forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
             return;
@@ -221,6 +222,7 @@
             CABasicAnimation *animation = [self strokeAnimationReverse:YES];
             
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
+            [self.onBoxLayer addAnimation:[self opacityAnimationReverse:YES] forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
             return;
