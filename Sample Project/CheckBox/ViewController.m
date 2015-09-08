@@ -21,6 +21,7 @@
     
     BEMCheckBox *checkBox1 = [[BEMCheckBox alloc] initWithFrame:CGRectMake(100, 100, 40, 40)];
     checkBox1.onCheckColor = [UIColor whiteColor];
+    checkBox1.onFillColor = checkBox1.onTintColor;
     checkBox1.boxType = BEMBoxTypeSquare;
     checkBox1.onAnimationType = BEMAnimationTypeFill;
     checkBox1.offAnimationType = BEMAnimationTypeFill;
@@ -34,7 +35,8 @@
     
     BEMCheckBox *checkBox3 = [[BEMCheckBox alloc] initWithFrame:CGRectMake(100, 300, 40, 40)];
     checkBox3.onAnimationType = BEMAnimationTypeFade;
-    checkBox3.offAnimationType = BEMAnimationTypeStroke;
+    checkBox3.onCheckColor = [UIColor greenColor];
+    checkBox3.offAnimationType = BEMAnimationTypeFill;
     [self.view addSubview:checkBox3];
     
     BEMCheckBox *checkBox4 = [[BEMCheckBox alloc] initWithFrame:CGRectMake(100, 400, 40, 40)];
@@ -42,6 +44,8 @@
     checkBox4.boxType = BEMBoxTypeCircle;
     checkBox4.onAnimationType = BEMAnimationTypeFill;
     checkBox4.offAnimationType = BEMAnimationTypeFill;
+    checkBox4.onCheckColor = [UIColor greenColor];
+    checkBox4.onFillColor = checkBox1.onTintColor;
     [self.view addSubview:checkBox4];
 }
 
