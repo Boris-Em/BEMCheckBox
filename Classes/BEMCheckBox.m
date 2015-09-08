@@ -287,9 +287,7 @@
         } else {
             scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
         }
-        
-        NSLog(@"%f", scale);
-        
+                
         CGFloat time = i * 1.0/(bounces + 1);
         
         [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(scale, scale, scale)]];
