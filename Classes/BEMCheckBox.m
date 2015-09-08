@@ -40,31 +40,32 @@
 }
 
 - (void)commonInit {
+    // Default values
     _on = NO;
     _hideBox = NO;
     _onTintColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
+    _onFillColor = [UIColor clearColor];
     _onCheckColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
     _tintColor = [UIColor lightGrayColor];
     _lineWidth = 2.0;
     _animationDuration = 0.5;
     _onAnimationType = BEMAnimationTypeStroke;
     _offAnimationType = BEMAnimationTypeFade;
-    _mode = BEMCheckBoxModeStroke;
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapCheckBox:)];
     self.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark Setters
 - (void)setOn:(BOOL)on animated:(BOOL)animated {
+    // Sets the property to the correct value
     [self setOn:on];
+    
     [self drawEntireCheckBox];
     
-    if (self.on) {
+    if (on) {
         if (animated) {
             [self addOnAnimation];
         }
-        [self.layer addSublayer:self.onBoxLayer];
-        [self.layer addSublayer:self.checkMarkLayer];
     } else {
         if (animated) {
             [self addOffAnimation];
@@ -85,6 +86,8 @@
 - (void)drawRect:(CGRect)rect {
     [self setOn:self.on animated:NO];
 }
+
+/// Draws the entire checkbox, depending on the current state of the on property.
 - (void)drawEntireCheckBox {
     if (!self.hideBox) {
         if (!self.offBoxLayer) {
@@ -122,14 +125,10 @@
     self.onBoxLayer.lineWidth = self.lineWidth;
     self.onBoxLayer.rasterizationScale = 4.0 * [UIScreen mainScreen].scale;
     self.onBoxLayer.shouldRasterize = YES;
-
-    if (self.mode == BEMCheckBoxModeFill) {
-        self.onBoxLayer.fillColor = self.onTintColor.CGColor;
-        self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
-    } else {
-        self.onBoxLayer.fillColor = [UIColor clearColor].CGColor;
-        self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
-    }
+    self.onBoxLayer.fillColor = self.onFillColor.CGColor;
+    self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
+    [self.layer addSublayer:self.onBoxLayer];
+    
 }
 
 - (void)drawCheckMark {
@@ -143,6 +142,7 @@
     
     self.checkMarkLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
     self.checkMarkLayer.shouldRasterize = YES;
+    [self.layer addSublayer:self.checkMarkLayer];
 }
 
 #pragma mark Paths
