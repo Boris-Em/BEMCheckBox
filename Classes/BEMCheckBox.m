@@ -49,6 +49,7 @@
     _animationDuration = 0.5;
     _onAnimationType = BEMAnimationTypeStroke;
     _offAnimationType = BEMAnimationTypeFade;
+    _mode = BEMCheckBoxModeStroke;
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapCheckBox:)];
     self.backgroundColor = [UIColor clearColor];
 }
@@ -122,7 +123,7 @@
     self.onBoxLayer.rasterizationScale = 4.0 * [UIScreen mainScreen].scale;
     self.onBoxLayer.shouldRasterize = YES;
 
-    if (self.onAnimationType == BEMAnimationTypeFill) {
+    if (self.mode == BEMCheckBoxModeFill) {
         self.onBoxLayer.fillColor = self.onTintColor.CGColor;
         self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
     } else {
@@ -181,84 +182,100 @@
         return;
     }
     
-    CABasicAnimation *animation;
-    NSString *keyPath;
-    
-    animation = [CABasicAnimation animation];
-    animation.fromValue = [NSNumber numberWithFloat:0.0f];
-    animation.toValue = [NSNumber numberWithFloat:1.0f];
-    
     switch (self.onAnimationType) {
         case BEMAnimationTypeStroke: {
-            keyPath = @"strokeEnd";
+            CABasicAnimation *animation = [self strokeAnimationReverse:NO];
+            
+            [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
+            [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
-            break;
+            return;
             
         case BEMAnimationTypeFill: {
-            keyPath = @"transform";
-            
             CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 reverse:NO];
             wiggle.duration = self.animationDuration;
             
-            [self.onBoxLayer addAnimation:wiggle forKey:keyPath];
+            [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
+            [self.checkMarkLayer addAnimation:[self opacityAnimationReverse:NO] forKey:@"opacity"];
         }
             return;
             
         default: {
-            keyPath = @"opacity";
+            CABasicAnimation *animation = [self opacityAnimationReverse:NO];
+            [self.onBoxLayer addAnimation:animation forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:animation forKey:@"opacity"];
         }
-            break;
+            return;
     }
-    
-    animation.keyPath = keyPath;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.duration = self.animationDuration;
-
-    [self.onBoxLayer addAnimation:animation forKey:keyPath];
-    [self.checkMarkLayer addAnimation:animation forKey:keyPath];
 }
 
 - (void)addOffAnimation {
     if (self.animationDuration == 0.0) {
         [self.onBoxLayer removeFromSuperlayer];
         [self.checkMarkLayer removeFromSuperlayer];
+        return;
     }
-
-    CABasicAnimation *animation;
-    NSString *keyPath;
     
     switch (self.offAnimationType) {
         case BEMAnimationTypeStroke: {
-            keyPath = @"strokeEnd";
+            CABasicAnimation *animation = [self strokeAnimationReverse:YES];
+            
+            [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
+            [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
-            break;
+            return;
             
         case BEMAnimationTypeFill: {
-            keyPath = @"transform";
-            
             CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 reverse:YES];
             wiggle.duration = self.animationDuration;
             
-            [self.onBoxLayer addAnimation:wiggle forKey:keyPath];
+            [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
+            [self.checkMarkLayer addAnimation:[self opacityAnimationReverse:YES] forKey:@"opacity"];
         }
             return;
             
         default: {
-            keyPath = @"opacity";
+            CABasicAnimation *animation = [self opacityAnimationReverse:YES];
+            
+            [self.onBoxLayer addAnimation:animation forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:animation forKey:@"opacity"];
         }
-            break;
+            return;
     }
-    
-    animation = [CABasicAnimation animationWithKeyPath:keyPath];
+}
+
+- (CABasicAnimation *)strokeAnimationReverse:(BOOL)reverse {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     animation.duration = self.animationDuration;
-    animation.fromValue = [NSNumber numberWithFloat:1.0];
-    animation.toValue = [NSNumber numberWithFloat:0.0];
+    if (reverse) {
+        animation.fromValue = [NSNumber numberWithFloat:1.0];
+        animation.toValue = [NSNumber numberWithFloat:0.0];
+    } else {
+        animation.fromValue = [NSNumber numberWithFloat:0.0];
+        animation.toValue = [NSNumber numberWithFloat:1.0];
+    }
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    return animation;
+}
 
-    [self.onBoxLayer addAnimation:animation forKey:keyPath];
-    [self.checkMarkLayer addAnimation:animation forKey:keyPath];
+- (CABasicAnimation *)opacityAnimationReverse:(BOOL)reverse {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.duration = self.animationDuration;
+    if (reverse) {
+        animation.fromValue = [NSNumber numberWithFloat:1.0];
+        animation.toValue = [NSNumber numberWithFloat:0.0];
+    } else {
+        animation.fromValue = [NSNumber numberWithFloat:0.0];
+        animation.toValue = [NSNumber numberWithFloat:1.0];
+    }
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    return animation;
 }
 
 /** Animation engine to create a fill animation.

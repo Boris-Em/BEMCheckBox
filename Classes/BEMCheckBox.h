@@ -10,6 +10,11 @@
 
 IB_DESIGNABLE
 
+typedef NS_ENUM(NSInteger, BEMCheckBoxMode) {
+    BEMCheckBoxModeStroke,
+    BEMCheckBoxModeFill
+};
+
 typedef NS_ENUM(NSInteger, BEMBoxType) {
     BEMBoxTypeCircle,
     BEMBoxTypeSquare
@@ -44,6 +49,8 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 @property (nonatomic) BEMAnimationType onAnimationType;
 
 @property (nonatomic) BEMAnimationType offAnimationType;
+
+@property (nonatomic) BEMCheckBoxMode mode;
 
 /** Set the state of the switch to On or Off, optionally animating the transition. */
 - (void)setOn:(BOOL)on animated:(BOOL)animated;
