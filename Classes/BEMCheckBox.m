@@ -197,7 +197,7 @@
         case BEMAnimationTypeFill: {
             keyPath = @"transform";
             
-            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1];
+            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 reverse:NO];
             wiggle.duration = self.animationDuration;
             
             [self.onBoxLayer addAnimation:wiggle forKey:keyPath];
@@ -233,6 +233,16 @@
         }
             break;
             
+        case BEMAnimationTypeFill: {
+            keyPath = @"transform";
+            
+            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 reverse:YES];
+            wiggle.duration = self.animationDuration;
+            
+            [self.onBoxLayer addAnimation:wiggle forKey:keyPath];
+        }
+            return;
+            
         default: {
             keyPath = @"opacity";
         }
@@ -251,17 +261,34 @@
     [self.checkMarkLayer addAnimation:animation forKey:keyPath];
 }
 
-- (CAKeyframeAnimation *)fillAnimationWithBounces:(NSUInteger)bounces {
+/** Animation engine to create a fill animation.
+ * @param bounces The number of bounces for the animation.
+ * @param reserve Flag to track if the animation should fill or empty the layer.
+ * @return Returns the CAKeyframeAnimation object.
+ */
+- (CAKeyframeAnimation *)fillAnimationWithBounces:(NSUInteger)bounces reverse:(BOOL)reverse {
     NSMutableArray *values = [NSMutableArray new];
     NSMutableArray *keyTimes = [NSMutableArray new];
     
-    CGFloat amplitude = 0.15;
+    CGFloat amplitude = 0.17;
     
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0, 0, 0)]];
+    if (reverse) {
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
+    } else {
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0, 0, 0)]];
+    }
+    
     [keyTimes addObject:@0.0];
     
     for (NSUInteger i = 1; i <= bounces; i++) {
-        CGFloat scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
+        CGFloat scale;
+        if (reverse) {
+            scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
+        } else {
+            scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
+        }
+        
+        NSLog(@"%f", scale);
         
         CGFloat time = i * 1.0/(bounces + 1);
         
@@ -269,13 +296,19 @@
         [keyTimes addObject:[NSNumber numberWithFloat:time]];
     }
     
+    if (reverse) {
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0001, 0.0001, 0.0001)]];
+    } else {
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
+    }
     
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
     [keyTimes addObject:@1.0];
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.values = values;
     animation.keyTimes = keyTimes;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
     return animation;
