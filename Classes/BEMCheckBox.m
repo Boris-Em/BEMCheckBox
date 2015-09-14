@@ -33,12 +33,6 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    [self addGestureRecognizer:_tap];
-}
-
 - (void)commonInit {
     // Default values
     _on = NO;
@@ -53,6 +47,12 @@
     _offAnimationType = BEMAnimationTypeFade;
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapCheckBox:)];
     self.backgroundColor = [UIColor clearColor];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self addGestureRecognizer:_tap];
 }
 
 #pragma mark Setters
