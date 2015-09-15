@@ -193,11 +193,20 @@
             return;
             
         case BEMAnimationTypeFill: {
-            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 reverse:NO];
-            wiggle.duration = self.animationDuration;
+            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:0.18 reverse:NO];
             
             [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
             [self.checkMarkLayer addAnimation:[self opacityAnimationReverse:NO] forKey:@"opacity"];
+        }
+            return;
+            
+        case BEMAnimationTypeBounce: {
+            CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
+            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:amplitude reverse:NO];
+            CABasicAnimation *opacity = [self opacityAnimationReverse:NO];
+            opacity.duration = self.animationDuration / 1.4;
+            [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:wiggle forKey:@"transform"];
         }
             return;
             
@@ -228,11 +237,21 @@
             return;
             
         case BEMAnimationTypeFill: {
-            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 reverse:YES];
+            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:0.18 reverse:YES];
             wiggle.duration = self.animationDuration;
             
             [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
             [self.checkMarkLayer addAnimation:[self opacityAnimationReverse:YES] forKey:@"opacity"];
+        }
+            return;
+            
+        case BEMAnimationTypeBounce: {
+            CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
+            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:amplitude reverse:YES];
+            wiggle.duration = self.animationDuration / 1.1;
+            CABasicAnimation *opacity = [self opacityAnimationReverse:YES];
+            [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:wiggle forKey:@"transform"];
         }
             return;
             
@@ -285,11 +304,9 @@
  * @param reserve Flag to track if the animation should fill or empty the layer.
  * @return Returns the CAKeyframeAnimation object.
  */
-- (CAKeyframeAnimation *)fillAnimationWithBounces:(NSUInteger)bounces reverse:(BOOL)reverse {
+- (CAKeyframeAnimation *)fillAnimationWithBounces:(NSUInteger)bounces amplitude:(CGFloat)amplitude reverse:(BOOL)reverse {
     NSMutableArray *values = [NSMutableArray new];
     NSMutableArray *keyTimes = [NSMutableArray new];
-    
-    CGFloat amplitude = 0.17;
     
     if (reverse) {
         [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
@@ -320,6 +337,7 @@
     animation.keyTimes = keyTimes;
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
+    animation.duration = self.animationDuration;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
     return animation;

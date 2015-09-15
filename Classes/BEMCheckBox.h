@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, BEMBoxType) {
 typedef NS_ENUM(NSInteger, BEMAnimationType) {
     BEMAnimationTypeStroke,
     BEMAnimationTypeFill,
+    BEMAnimationTypeBounce,
     BEMAnimationTypeFade
 };
 
