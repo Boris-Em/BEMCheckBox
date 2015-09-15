@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF2AAED61BA7D0300096A7E7 /* BEMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		BF2AAEDC1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2AAEDB1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C32537131B9231780059F394 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537121B9231780059F394 /* main.m */; };
 		C32537161B9231780059F394 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537151B9231780059F394 /* AppDelegate.m */; };
-		C32537191B9231780059F394 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537181B9231780059F394 /* ViewController.m */; };
 		C325371C1B9231780059F394 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C325371A1B9231780059F394 /* Main.storyboard */; };
 		C325371E1B9231780059F394 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C325371D1B9231780059F394 /* Images.xcassets */; };
 		C32537211B9231780059F394 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C325371F1B9231780059F394 /* LaunchScreen.xib */; };
@@ -28,13 +29,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF2AAED41BA7D0300096A7E7 /* BEMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCollectionViewController.h; sourceTree = "<group>"; };
+		BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCollectionViewController.m; sourceTree = "<group>"; };
+		BF2AAEDA1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCustomCollectionViewCell.h; sourceTree = "<group>"; };
+		BF2AAEDB1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCustomCollectionViewCell.m; sourceTree = "<group>"; };
 		C325370D1B9231780059F394 /* CheckBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32537111B9231780059F394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C32537121B9231780059F394 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C32537141B9231780059F394 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C32537151B9231780059F394 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C32537171B9231780059F394 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C32537181B9231780059F394 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C325371B1B9231780059F394 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C325371D1B9231780059F394 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C32537201B9231780059F394 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -87,9 +90,11 @@
 			children = (
 				C32537141B9231780059F394 /* AppDelegate.h */,
 				C32537151B9231780059F394 /* AppDelegate.m */,
-				C32537171B9231780059F394 /* ViewController.h */,
-				C32537181B9231780059F394 /* ViewController.m */,
 				C325371A1B9231780059F394 /* Main.storyboard */,
+				BF2AAED41BA7D0300096A7E7 /* BEMCollectionViewController.h */,
+				BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */,
+				BF2AAEDA1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.h */,
+				BF2AAEDB1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m */,
 				C325371D1B9231780059F394 /* Images.xcassets */,
 				C325371F1B9231780059F394 /* LaunchScreen.xib */,
 				C32537101B9231780059F394 /* Supporting Files */,
@@ -232,8 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C32537191B9231780059F394 /* ViewController.m in Sources */,
+				BF2AAED61BA7D0300096A7E7 /* BEMCollectionViewController.m in Sources */,
 				C32537161B9231780059F394 /* AppDelegate.m in Sources */,
+				BF2AAEDC1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m in Sources */,
 				C32537131B9231780059F394 /* main.m in Sources */,
 				C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */,
 			);
