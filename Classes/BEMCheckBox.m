@@ -123,10 +123,10 @@
     self.onBoxLayer.frame = self.bounds;
     self.onBoxLayer.path = [self pathForBox].CGPath;
     self.onBoxLayer.lineWidth = self.lineWidth;
-    self.onBoxLayer.rasterizationScale = 4.0 * [UIScreen mainScreen].scale;
-    self.onBoxLayer.shouldRasterize = YES;
     self.onBoxLayer.fillColor = self.onFillColor.CGColor;
     self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
+    self.onBoxLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
+    self.onBoxLayer.shouldRasterize = YES;
     [self.layer addSublayer:self.onBoxLayer];
     
 }
@@ -139,6 +139,8 @@
     self.checkMarkLayer.strokeColor = self.onCheckColor.CGColor;
     self.checkMarkLayer.lineWidth = self.lineWidth;
     self.checkMarkLayer.fillColor = [UIColor clearColor].CGColor;
+    self.checkMarkLayer.lineCap = kCALineCapRound;
+    self.checkMarkLayer.lineJoin = kCALineJoinRound;
     
     self.checkMarkLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
     self.checkMarkLayer.shouldRasterize = YES;
