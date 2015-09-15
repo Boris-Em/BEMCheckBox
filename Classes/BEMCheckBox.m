@@ -128,7 +128,6 @@
     self.onBoxLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
     self.onBoxLayer.shouldRasterize = YES;
     [self.layer addSublayer:self.onBoxLayer];
-    
 }
 
 - (void)drawCheckMark {
@@ -269,7 +268,6 @@
 
 - (CABasicAnimation *)strokeAnimationReverse:(BOOL)reverse {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.duration = self.animationDuration;
     if (reverse) {
         animation.fromValue = [NSNumber numberWithFloat:1.0];
         animation.toValue = [NSNumber numberWithFloat:0.0];
@@ -277,7 +275,9 @@
         animation.fromValue = [NSNumber numberWithFloat:0.0];
         animation.toValue = [NSNumber numberWithFloat:1.0];
     }
+    animation.duration = self.animationDuration;
     animation.removedOnCompletion = NO;
+    animation.delegate = self;
     animation.fillMode = kCAFillModeForwards;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
@@ -286,15 +286,16 @@
 
 - (CABasicAnimation *)opacityAnimationReverse:(BOOL)reverse {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animation.duration = self.animationDuration;
     if (reverse) {
         animation.fromValue = [NSNumber numberWithFloat:1.0];
         animation.toValue = [NSNumber numberWithFloat:0.0];
     } else {
-        animation.fromValue = [NSNumber numberWithFloat:0.0];
+        animation.fromValue = [NSNumber numberWithFloat:-1.0];
         animation.toValue = [NSNumber numberWithFloat:1.0];
     }
+    animation.duration = self.animationDuration;
     animation.removedOnCompletion = NO;
+    animation.delegate = self;
     animation.fillMode = kCAFillModeForwards;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
@@ -336,6 +337,7 @@
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.values = values;
+    animation.delegate = self;
     animation.keyTimes = keyTimes;
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
@@ -343,6 +345,19 @@
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
     return animation;
+}
+
+
+#pragma mark Animation Delegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag == YES && self.on == NO) {
+        [self.onBoxLayer removeFromSuperlayer];
+        [self.checkMarkLayer removeFromSuperlayer];
+    }
+}
+
+- (void)dealloc {
+    NSLog(@"Dealloc");
 }
 
 @end
