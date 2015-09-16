@@ -210,6 +210,26 @@
         }
             return;
             
+        case BEMAnimationTypeFlat: {
+            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
+            animation.duration = self.animationDuration;
+            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            CABasicAnimation *opacity = [self opacityAnimationReverse:NO];
+            opacity.duration = self.animationDuration / 5;
+
+            UIBezierPath* checkMarkPath = [UIBezierPath bezierPath];
+            [checkMarkPath moveToPoint: CGPointMake(self.bounds.size.height/4, self.frame.size.height/2)];
+            [checkMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/2, self.frame.size.height/2)];
+            [checkMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/1.2, self.frame.size.height/2)];
+            
+            animation.fromValue = (id)checkMarkPath.CGPath;
+            animation.toValue = (id)[self pathForCheckMark].CGPath;
+            
+            [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:animation forKey:@"path"];
+        }
+            return;
+            
         default: {
             CABasicAnimation *animation = [self opacityAnimationReverse:NO];
             [self.onBoxLayer addAnimation:animation forKey:@"opacity"];
