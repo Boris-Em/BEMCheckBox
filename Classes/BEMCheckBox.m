@@ -177,6 +177,15 @@
     return checkMarkPath;
 }
 
+- (UIBezierPath *)pathForFlatCheckMark {
+    UIBezierPath* flatCheckMarkPath = [UIBezierPath bezierPath];
+    [flatCheckMarkPath moveToPoint: CGPointMake(self.bounds.size.height/4, self.frame.size.height/2)];
+    [flatCheckMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/2, self.frame.size.height/2)];
+    [flatCheckMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/1.2, self.frame.size.height/2)];
+
+    return flatCheckMarkPath;
+}
+
 #pragma mark Animations
 - (void)addOnAnimation {
     if (self.animationDuration == 0.0) {
@@ -203,27 +212,20 @@
         case BEMAnimationTypeBounce: {
             CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
             CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:amplitude reverse:NO];
+            
             CABasicAnimation *opacity = [self opacityAnimationReverse:NO];
             opacity.duration = self.animationDuration / 1.4;
+            
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:wiggle forKey:@"transform"];
         }
             return;
             
         case BEMAnimationTypeFlat: {
-            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
-            animation.duration = self.animationDuration;
-            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            CABasicAnimation *animation = [self flatAnimationReverse:NO];
+            
             CABasicAnimation *opacity = [self opacityAnimationReverse:NO];
             opacity.duration = self.animationDuration / 5;
-
-            UIBezierPath* checkMarkPath = [UIBezierPath bezierPath];
-            [checkMarkPath moveToPoint: CGPointMake(self.bounds.size.height/4, self.frame.size.height/2)];
-            [checkMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/2, self.frame.size.height/2)];
-            [checkMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/1.2, self.frame.size.height/2)];
-            
-            animation.fromValue = (id)checkMarkPath.CGPath;
-            animation.toValue = (id)[self pathForCheckMark].CGPath;
             
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"path"];
@@ -275,6 +277,17 @@
         }
             return;
             
+        case BEMAnimationTypeFlat: {
+            CABasicAnimation *animation = [self flatAnimationReverse:YES];
+            
+            CABasicAnimation *opacity = [self opacityAnimationReverse:YES];
+            opacity.duration = self.animationDuration;
+            
+            [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:animation forKey:@"path"];
+        }
+            return;
+            
         default: {
             CABasicAnimation *animation = [self opacityAnimationReverse:YES];
             
@@ -321,8 +334,27 @@
     return animation;
 }
 
+- (CABasicAnimation *)flatAnimationReverse:(BOOL)reverse {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
+    animation.duration = self.animationDuration;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    UIBezierPath *flatCheckMarkPath = [self pathForFlatCheckMark];
+    
+    if (reverse) {
+        animation.fromValue = (id)[self pathForCheckMark].CGPath;
+        animation.toValue = (id)flatCheckMarkPath.CGPath;
+    } else {
+        animation.fromValue = (id)flatCheckMarkPath.CGPath;
+        animation.toValue = (id)[self pathForCheckMark].CGPath;
+    }
+    
+    return animation;
+}
+
 /** Animation engine to create a fill animation.
  * @param bounces The number of bounces for the animation.
+ * @param amplitue How far does the animation bounce.
  * @param reserve Flag to track if the animation should fill or empty the layer.
  * @return Returns the CAKeyframeAnimation object.
  */
