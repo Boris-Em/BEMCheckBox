@@ -7,6 +7,8 @@
 //
 
 #import "BEMCheckBox.h"
+#import "BEMAnimationManager.h"
+#import "BEMPathManager.h"
 
 @interface BEMCheckBox ()
 
@@ -15,6 +17,9 @@
 @property (strong, nonatomic) CAShapeLayer *onBoxLayer;
 @property (strong, nonatomic) CAShapeLayer *offBoxLayer;
 @property (strong, nonatomic) CAShapeLayer *checkMarkLayer;
+
+@property (strong, nonatomic) BEMAnimationManager *animationManager;
+@property (strong, nonatomic) BEMPathManager *pathManager;
 
 @end
 
@@ -44,12 +49,23 @@
     _lineWidth = 2.0;
     _animationDuration = 0.5;
     _onAnimationType = BEMAnimationTypeStroke;
-    _offAnimationType = BEMAnimationTypeFade;
+    _offAnimationType = BEMAnimationTypeStroke;
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapCheckBox:)];
+    _animationManager = [[BEMAnimationManager alloc] initWithAnimationDuration:_animationDuration];
     self.backgroundColor = [UIColor clearColor];
+    
+    [self initPathManager];
+}
+
+- (void)initPathManager {
+    _pathManager = [BEMPathManager new];
+    _pathManager.lineWidth = _lineWidth;
+    _pathManager.boxType = _boxType;
 }
 
 - (void)layoutSubviews {
+    self.pathManager.size = self.frame.size.height;
+    
     [super layoutSubviews];
     
     [self addGestureRecognizer:_tap];
@@ -74,6 +90,25 @@
             [self.checkMarkLayer removeFromSuperlayer];
         }
     }
+}
+
+- (void)setAnimationDuration:(CGFloat)animationDuration {
+    _animationDuration = animationDuration;
+    _animationManager.animationDuration = animationDuration;
+}
+
+- (void)setBoxType:(BEMBoxType)boxType {
+    _boxType = boxType;
+    _pathManager.boxType = boxType;
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth {
+    _lineWidth = lineWidth;
+    _pathManager.lineWidth = lineWidth;
+}
+
+- (void)setOffAnimationType:(BEMAnimationType)offAnimationType {
+    _offAnimationType = offAnimationType;
 }
 
 #pragma mark Gesture Recognizer
@@ -105,7 +140,7 @@
     [self.offBoxLayer removeFromSuperlayer];
     self.offBoxLayer = [CAShapeLayer layer];
     self.offBoxLayer.frame = self.bounds;
-    self.offBoxLayer.path = [self pathForBox].CGPath;
+    self.offBoxLayer.path = [self.pathManager pathForBox].CGPath;
     self.offBoxLayer.fillColor = [UIColor clearColor].CGColor;
     self.offBoxLayer.strokeColor = self.tintColor.CGColor;
     self.offBoxLayer.lineWidth = self.lineWidth;
@@ -121,7 +156,7 @@
     [self.onBoxLayer removeFromSuperlayer];
     self.onBoxLayer = [CAShapeLayer layer];
     self.onBoxLayer.frame = self.bounds;
-    self.onBoxLayer.path = [self pathForBox].CGPath;
+    self.onBoxLayer.path = [self.pathManager pathForBox].CGPath;
     self.onBoxLayer.lineWidth = self.lineWidth;
     self.onBoxLayer.fillColor = self.onFillColor.CGColor;
     self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
@@ -134,7 +169,7 @@
     [self.checkMarkLayer removeFromSuperlayer];
     self.checkMarkLayer = [CAShapeLayer layer];
     self.checkMarkLayer.frame = self.bounds;
-    self.checkMarkLayer.path = [self pathForCheckMark].CGPath;
+    self.checkMarkLayer.path = [self.pathManager pathForCheckMark].CGPath;
     self.checkMarkLayer.strokeColor = self.onCheckColor.CGColor;
     self.checkMarkLayer.lineWidth = self.lineWidth;
     self.checkMarkLayer.fillColor = [UIColor clearColor].CGColor;
@@ -146,46 +181,6 @@
     [self.layer addSublayer:self.checkMarkLayer];
 }
 
-#pragma mark Paths
-- (UIBezierPath *)pathForBox {
-    UIBezierPath* path;
-    switch (self.boxType) {
-        case BEMBoxTypeSquare:
-            path = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:3.0];
-            break;
-            
-        default:
-            path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.lineWidth, self.lineWidth, self.bounds.size.width - self.lineWidth*2, self.bounds.size.height - self.lineWidth*2)];
-            break;
-    }
-    return path;
-}
-
-- (UIBezierPath *)pathForCheckMark {
-    UIBezierPath* checkMarkPath = [UIBezierPath bezierPath];
-    
-    [checkMarkPath moveToPoint: CGPointMake(self.bounds.size.height/3.1578, self.frame.size.height/2)];
-    [checkMarkPath addLineToPoint: CGPointMake(self.frame.size.height/2.0618, self.frame.size.height/1.57894)];
-    [checkMarkPath addLineToPoint: CGPointMake(self.frame.size.height/1.3953, self.frame.size.height/2.7272)];
-    
-    if (self.boxType == BEMBoxTypeSquare) {
-        // If we use a square box, the check mark should be a little bit bigger
-        [checkMarkPath applyTransform:CGAffineTransformMakeScale(1.5, 1.5)];
-        [checkMarkPath applyTransform:CGAffineTransformMakeTranslation(-self.bounds.size.height/4, -self.bounds.size.height/4)];
-    }
-    
-    return checkMarkPath;
-}
-
-- (UIBezierPath *)pathForFlatCheckMark {
-    UIBezierPath* flatCheckMarkPath = [UIBezierPath bezierPath];
-    [flatCheckMarkPath moveToPoint: CGPointMake(self.bounds.size.height/4, self.frame.size.height/2)];
-    [flatCheckMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/2, self.frame.size.height/2)];
-    [flatCheckMarkPath addLineToPoint: CGPointMake(self.bounds.size.height/1.2, self.frame.size.height/2)];
-
-    return flatCheckMarkPath;
-}
-
 #pragma mark Animations
 - (void)addOnAnimation {
     if (self.animationDuration == 0.0) {
@@ -194,7 +189,7 @@
     
     switch (self.onAnimationType) {
         case BEMAnimationTypeStroke: {
-            CABasicAnimation *animation = [self strokeAnimationReverse:NO];
+            CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:NO];
             
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
@@ -202,18 +197,18 @@
             return;
             
         case BEMAnimationTypeFill: {
-            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:0.18 reverse:NO];
+            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:0.18 reverse:NO];
             
             [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
-            [self.checkMarkLayer addAnimation:[self opacityAnimationReverse:NO] forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:[self.animationManager opacityAnimationReverse:NO] forKey:@"opacity"];
         }
             return;
             
         case BEMAnimationTypeBounce: {
             CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
-            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:amplitude reverse:NO];
+            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:amplitude reverse:NO];
             
-            CABasicAnimation *opacity = [self opacityAnimationReverse:NO];
+            CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:NO];
             opacity.duration = self.animationDuration / 1.4;
             
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
@@ -222,9 +217,9 @@
             return;
             
         case BEMAnimationTypeFlat: {
-            CABasicAnimation *animation = [self flatAnimationReverse:NO];
+            CABasicAnimation *animation = [self.animationManager morphAnimationFromPath:[self.pathManager pathForFlatCheckMark] toPath:[self.pathManager pathForCheckMark]];
             
-            CABasicAnimation *opacity = [self opacityAnimationReverse:NO];
+            CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:NO];
             opacity.duration = self.animationDuration / 5;
             
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
@@ -233,7 +228,7 @@
             return;
             
         default: {
-            CABasicAnimation *animation = [self opacityAnimationReverse:NO];
+            CABasicAnimation *animation = [self.animationManager opacityAnimationReverse:NO];
             [self.onBoxLayer addAnimation:animation forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"opacity"];
         }
@@ -250,37 +245,38 @@
     
     switch (self.offAnimationType) {
         case BEMAnimationTypeStroke: {
-            CABasicAnimation *animation = [self strokeAnimationReverse:YES];
+            CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:YES];
             
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
-            [self.onBoxLayer addAnimation:[self opacityAnimationReverse:YES] forKey:@"opacity"];
+            [self.onBoxLayer addAnimation:[self.animationManager opacityAnimationReverse:YES] forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
             return;
             
         case BEMAnimationTypeFill: {
-            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:0.18 reverse:YES];
+            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:0.18 reverse:YES];
             wiggle.duration = self.animationDuration;
             
             [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
-            [self.checkMarkLayer addAnimation:[self opacityAnimationReverse:YES] forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:[self.animationManager opacityAnimationReverse:YES] forKey:@"opacity"];
         }
             return;
             
         case BEMAnimationTypeBounce: {
             CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
-            CAKeyframeAnimation *wiggle = [self fillAnimationWithBounces:1 amplitude:amplitude reverse:YES];
+            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:amplitude reverse:YES];
             wiggle.duration = self.animationDuration / 1.1;
-            CABasicAnimation *opacity = [self opacityAnimationReverse:YES];
+            CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:YES];
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:wiggle forKey:@"transform"];
         }
             return;
             
         case BEMAnimationTypeFlat: {
-            CABasicAnimation *animation = [self flatAnimationReverse:YES];
+            CABasicAnimation *animation = [self.animationManager morphAnimationFromPath:[self.pathManager pathForCheckMark] toPath:[self.pathManager pathForFlatCheckMark]];
+            animation.delegate = self;
             
-            CABasicAnimation *opacity = [self opacityAnimationReverse:YES];
+            CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:YES];
             opacity.duration = self.animationDuration;
             
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
@@ -289,7 +285,7 @@
             return;
             
         default: {
-            CABasicAnimation *animation = [self opacityAnimationReverse:YES];
+            CABasicAnimation *animation = [self.animationManager opacityAnimationReverse:YES];
             
             [self.onBoxLayer addAnimation:animation forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"opacity"];

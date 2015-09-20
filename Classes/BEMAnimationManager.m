@@ -10,6 +10,15 @@
 
 @implementation BEMAnimationManager
 
+- (instancetype)initWithAnimationDuration:(CGFloat)animationDuration {
+    self = [super init];
+    if (self) {
+        _animationDuration = animationDuration;
+    }
+    
+    return self;
+}
+
 - (CABasicAnimation *)strokeAnimationReverse:(BOOL)reverse {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     if (reverse) {
@@ -46,20 +55,13 @@
     return animation;
 }
 
-- (CABasicAnimation *)flatAnimationReverse:(BOOL)reverse {
+- (CABasicAnimation *)morphAnimationFromPath:(UIBezierPath *)fromPath toPath:(UIBezierPath *)toPath {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
     animation.duration = self.animationDuration;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
-    UIBezierPath *flatCheckMarkPath = [self pathForFlatCheckMark];
-    
-    if (reverse) {
-        animation.fromValue = (id)[self pathForCheckMark].CGPath;
-        animation.toValue = (id)flatCheckMarkPath.CGPath;
-    } else {
-        animation.fromValue = (id)flatCheckMarkPath.CGPath;
-        animation.toValue = (id)[self pathForCheckMark].CGPath;
-    }
+    animation.fromValue = (id)fromPath.CGPath;
+    animation.toValue = (id)toPath.CGPath;
     
     return animation;
 }

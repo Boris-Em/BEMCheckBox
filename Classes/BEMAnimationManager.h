@@ -15,11 +15,13 @@
 
 @property (nonatomic) CGFloat animationDuration;
 
+- (instancetype)initWithAnimationDuration:(CGFloat)animationDuration;
+
 - (CABasicAnimation *)strokeAnimationReverse:(BOOL)reverse;
 
 - (CABasicAnimation *)opacityAnimationReverse:(BOOL)reverse;
 
-- (CABasicAnimation *)flatAnimationReverse:(BOOL)reverse;
+- (CABasicAnimation *)morphAnimationFromPath:(UIBezierPath *)fromPath toPath:(UIBezierPath *)toPath ;
 
 /** Animation engine to create a fill animation.
  * @param bounces The number of bounces for the animation.

@@ -17,6 +17,7 @@
 		C325372D1B9231780059F394 /* CheckBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C325372C1B9231780059F394 /* CheckBoxTests.m */; };
 		C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C325373B1B9231FD0059F394 /* BEMCheckBox.m */; };
 		C3E837AA1BAE3493004576D6 /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */; };
+		C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		C325373B1B9231FD0059F394 /* BEMCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMCheckBox.m; path = ../Classes/BEMCheckBox.m; sourceTree = "<group>"; };
 		C3E837A81BAE3493004576D6 /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnimationManager.h; path = ../Classes/BEMAnimationManager.h; sourceTree = "<group>"; };
 		C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnimationManager.m; path = ../Classes/BEMAnimationManager.m; sourceTree = "<group>"; };
+		C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMPathManager.h; path = ../Classes/BEMPathManager.h; sourceTree = "<group>"; };
+		C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMPathManager.m; path = ../Classes/BEMPathManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				C325373B1B9231FD0059F394 /* BEMCheckBox.m */,
 				C3E837A81BAE3493004576D6 /* BEMAnimationManager.h */,
 				C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */,
+				C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */,
+				C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */,
 				BF2AAED61BA7D0300096A7E7 /* BEMCollectionViewController.m in Sources */,
 				C32537161B9231780059F394 /* AppDelegate.m in Sources */,
 				BF2AAEDC1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m in Sources */,

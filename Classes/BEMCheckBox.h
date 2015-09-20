@@ -10,6 +10,8 @@
 
 IB_DESIGNABLE
 
+@interface BEMCheckBox : UIView
+
 typedef NS_ENUM(NSInteger, BEMBoxType) {
     BEMBoxTypeCircle,
     BEMBoxTypeSquare
@@ -22,8 +24,6 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
     BEMAnimationTypeFlat,
     BEMAnimationTypeFade
 };
-
-@interface BEMCheckBox : UIView
 
 /** This property allows you to retrieve and set (without animation) a value determining whether the UISwitch object is on or off.
     Default to NO. */
