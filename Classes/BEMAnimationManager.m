@@ -29,8 +29,8 @@
         animation.toValue = [NSNumber numberWithFloat:1.0];
     }
     animation.duration = self.animationDuration;
+    animation.delegate = self.delegate;
     animation.removedOnCompletion = NO;
-    animation.delegate = self;
     animation.fillMode = kCAFillModeForwards;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
@@ -47,8 +47,8 @@
         animation.toValue = [NSNumber numberWithFloat:1.0];
     }
     animation.duration = self.animationDuration;
+    animation.delegate = self.delegate;
     animation.removedOnCompletion = NO;
-    animation.delegate = self;
     animation.fillMode = kCAFillModeForwards;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
@@ -58,6 +58,7 @@
 - (CABasicAnimation *)morphAnimationFromPath:(UIBezierPath *)fromPath toPath:(UIBezierPath *)toPath {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
     animation.duration = self.animationDuration;
+    animation.delegate = self.delegate;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
     animation.fromValue = (id)fromPath.CGPath;
@@ -96,14 +97,18 @@
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.values = values;
-    animation.delegate = self;
     animation.keyTimes = keyTimes;
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
     animation.duration = self.animationDuration;
+    animation.delegate = self.delegate;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
     return animation;
+}
+
+- (void)dealloc {
+    self.delegate = nil;
 }
 
 @end

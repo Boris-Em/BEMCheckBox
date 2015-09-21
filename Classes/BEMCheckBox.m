@@ -51,16 +51,21 @@
     _onAnimationType = BEMAnimationTypeStroke;
     _offAnimationType = BEMAnimationTypeStroke;
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapCheckBox:)];
-    _animationManager = [[BEMAnimationManager alloc] initWithAnimationDuration:_animationDuration];
     self.backgroundColor = [UIColor clearColor];
     
     [self initPathManager];
+    [self initAnimationManager];
 }
 
 - (void)initPathManager {
     _pathManager = [BEMPathManager new];
     _pathManager.lineWidth = _lineWidth;
     _pathManager.boxType = _boxType;
+}
+
+- (void)initAnimationManager {
+    _animationManager = [[BEMAnimationManager alloc] initWithAnimationDuration:_animationDuration];
+    _animationManager.delegate = self;
 }
 
 - (void)layoutSubviews {
@@ -190,7 +195,7 @@
     switch (self.onAnimationType) {
         case BEMAnimationTypeStroke: {
             CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:NO];
-            
+
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
@@ -246,7 +251,7 @@
     switch (self.offAnimationType) {
         case BEMAnimationTypeStroke: {
             CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:YES];
-            
+
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
             [self.onBoxLayer addAnimation:[self.animationManager opacityAnimationReverse:YES] forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
@@ -303,7 +308,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"Dealloc");
+    self.animationManager.delegate = nil;
 }
 
 @end

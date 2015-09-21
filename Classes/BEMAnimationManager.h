@@ -13,6 +13,8 @@
  */
 @interface BEMAnimationManager : NSObject
 
+@property (weak, nonatomic) id delegate;
+
 @property (nonatomic) CGFloat animationDuration;
 
 - (instancetype)initWithAnimationDuration:(CGFloat)animationDuration;
