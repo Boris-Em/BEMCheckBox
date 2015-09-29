@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BF2AAED61BA7D0300096A7E7 /* BEMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */; };
-		BF2AAEDC1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2AAEDB1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m */; };
 		C32537131B9231780059F394 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537121B9231780059F394 /* main.m */; };
 		C32537161B9231780059F394 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537151B9231780059F394 /* AppDelegate.m */; };
 		C325371C1B9231780059F394 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C325371A1B9231780059F394 /* Main.storyboard */; };
@@ -16,6 +15,7 @@
 		C32537211B9231780059F394 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C325371F1B9231780059F394 /* LaunchScreen.xib */; };
 		C325372D1B9231780059F394 /* CheckBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C325372C1B9231780059F394 /* CheckBoxTests.m */; };
 		C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C325373B1B9231FD0059F394 /* BEMCheckBox.m */; };
+		C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */; };
 		C3E837AA1BAE3493004576D6 /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */; };
 		C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */; };
 /* End PBXBuildFile section */
@@ -33,8 +33,6 @@
 /* Begin PBXFileReference section */
 		BF2AAED41BA7D0300096A7E7 /* BEMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCollectionViewController.h; sourceTree = "<group>"; };
 		BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCollectionViewController.m; sourceTree = "<group>"; };
-		BF2AAEDA1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCustomCollectionViewCell.h; sourceTree = "<group>"; };
-		BF2AAEDB1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCustomCollectionViewCell.m; sourceTree = "<group>"; };
 		C325370D1B9231780059F394 /* CheckBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32537111B9231780059F394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C32537121B9231780059F394 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -48,6 +46,8 @@
 		C325372C1B9231780059F394 /* CheckBoxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckBoxTests.m; sourceTree = "<group>"; };
 		C325373A1B9231FD0059F394 /* BEMCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMCheckBox.h; path = ../Classes/BEMCheckBox.h; sourceTree = "<group>"; };
 		C325373B1B9231FD0059F394 /* BEMCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMCheckBox.m; path = ../Classes/BEMCheckBox.m; sourceTree = "<group>"; };
+		C39F1AB51BAFEAA400E8A023 /* BEMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMMainViewController.h; sourceTree = "<group>"; };
+		C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMMainViewController.m; sourceTree = "<group>"; };
 		C3E837A81BAE3493004576D6 /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnimationManager.h; path = ../Classes/BEMAnimationManager.h; sourceTree = "<group>"; };
 		C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnimationManager.m; path = ../Classes/BEMAnimationManager.m; sourceTree = "<group>"; };
 		C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMPathManager.h; path = ../Classes/BEMPathManager.h; sourceTree = "<group>"; };
@@ -97,10 +97,10 @@
 				C32537141B9231780059F394 /* AppDelegate.h */,
 				C32537151B9231780059F394 /* AppDelegate.m */,
 				C325371A1B9231780059F394 /* Main.storyboard */,
+				C39F1AB51BAFEAA400E8A023 /* BEMMainViewController.h */,
+				C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */,
 				BF2AAED41BA7D0300096A7E7 /* BEMCollectionViewController.h */,
 				BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */,
-				BF2AAEDA1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.h */,
-				BF2AAEDB1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m */,
 				C325371D1B9231780059F394 /* Images.xcassets */,
 				C325371F1B9231780059F394 /* LaunchScreen.xib */,
 				C32537101B9231780059F394 /* Supporting Files */,
@@ -249,8 +249,8 @@
 			files = (
 				C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */,
 				BF2AAED61BA7D0300096A7E7 /* BEMCollectionViewController.m in Sources */,
+				C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */,
 				C32537161B9231780059F394 /* AppDelegate.m in Sources */,
-				BF2AAEDC1BA7D31E0096A7E7 /* BEMCustomCollectionViewCell.m in Sources */,
 				C32537131B9231780059F394 /* main.m in Sources */,
 				C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */,
 				C3E837AA1BAE3493004576D6 /* BEMAnimationManager.m in Sources */,

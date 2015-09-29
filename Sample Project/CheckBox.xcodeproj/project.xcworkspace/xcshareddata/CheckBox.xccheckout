@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>D2CA03E9-13CD-4250-9470-315173FA2E88</string>
 	<key>IDESourceControlProjectName</key>
-	<string>CheckBox</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>375074DF4A073CA906B8C422E94433ECCC0AE38B</key>
 		<string>https://github.com/Boris-Em/BEMCheckBox.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Sample Project/CheckBox.xcodeproj</string>
+	<string>Sample Project/CheckBox.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>375074DF4A073CA906B8C422E94433ECCC0AE38B</key>

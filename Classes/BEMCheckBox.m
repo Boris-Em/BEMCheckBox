@@ -76,6 +76,20 @@
     [self addGestureRecognizer:_tap];
 }
 
+- (void)reload {
+    [self.offBoxLayer removeFromSuperlayer];
+    self.offBoxLayer = nil;
+    
+    [self.onBoxLayer removeFromSuperlayer];
+    self.onBoxLayer = nil;
+    
+    [self.checkMarkLayer removeFromSuperlayer];
+    self.checkMarkLayer = nil;
+    
+    [self setNeedsDisplay];
+    [self layoutIfNeeded];
+}
+
 #pragma mark Setters
 - (void)setOn:(BOOL)on animated:(BOOL)animated {
     // Sets the property to the correct value
@@ -121,7 +135,7 @@
     [self setOn:!self.on animated:YES];
 }
 
-#pragma  mark - Helper methods -
+#pragma  mark - Helper methods
 #pragma mark Drawings
 - (void)drawRect:(CGRect)rect {
     [self setOn:self.on animated:NO];
@@ -253,7 +267,6 @@
             CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:YES];
 
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
-            [self.onBoxLayer addAnimation:[self.animationManager opacityAnimationReverse:YES] forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
             return;

@@ -67,4 +67,9 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 /** Set the state of the switch to On or Off, optionally animating the transition. */
 - (void)setOn:(BOOL)on animated:(BOOL)animated;
 
+/** Forces a redraw of the entire check box.
+ * The current value of 'on' is kept.
+ */
+- (void)reload;
+
 @end
