@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF2AAED61BA7D0300096A7E7 /* BEMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */; };
 		C32537131B9231780059F394 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537121B9231780059F394 /* main.m */; };
 		C32537161B9231780059F394 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537151B9231780059F394 /* AppDelegate.m */; };
 		C325371C1B9231780059F394 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C325371A1B9231780059F394 /* Main.storyboard */; };
@@ -31,8 +30,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF2AAED41BA7D0300096A7E7 /* BEMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCollectionViewController.h; sourceTree = "<group>"; };
-		BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCollectionViewController.m; sourceTree = "<group>"; };
 		C325370D1B9231780059F394 /* CheckBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32537111B9231780059F394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C32537121B9231780059F394 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,8 +96,6 @@
 				C325371A1B9231780059F394 /* Main.storyboard */,
 				C39F1AB51BAFEAA400E8A023 /* BEMMainViewController.h */,
 				C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */,
-				BF2AAED41BA7D0300096A7E7 /* BEMCollectionViewController.h */,
-				BF2AAED51BA7D0300096A7E7 /* BEMCollectionViewController.m */,
 				C325371D1B9231780059F394 /* Images.xcassets */,
 				C325371F1B9231780059F394 /* LaunchScreen.xib */,
 				C32537101B9231780059F394 /* Supporting Files */,
@@ -248,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */,
-				BF2AAED61BA7D0300096A7E7 /* BEMCollectionViewController.m in Sources */,
 				C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */,
 				C32537161B9231780059F394 /* AppDelegate.m in Sources */,
 				C32537131B9231780059F394 /* main.m in Sources */,

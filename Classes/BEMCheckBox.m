@@ -92,8 +92,7 @@
 
 #pragma mark Setters
 - (void)setOn:(BOOL)on animated:(BOOL)animated {
-    // Sets the property to the correct value
-    [self setOn:on];
+    _on = on;
     
     [self drawEntireCheckBox];
     
@@ -109,6 +108,10 @@
             [self.checkMarkLayer removeFromSuperlayer];
         }
     }
+}
+
+- (void)setOn:(BOOL)on {
+    [self setOn:on animated:NO];
 }
 
 - (void)setAnimationDuration:(CGFloat)animationDuration {
