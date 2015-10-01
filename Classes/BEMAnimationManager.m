@@ -43,7 +43,7 @@
         animation.fromValue = [NSNumber numberWithFloat:1.0];
         animation.toValue = [NSNumber numberWithFloat:0.0];
     } else {
-        animation.fromValue = [NSNumber numberWithFloat:-1.0];
+        animation.fromValue = [NSNumber numberWithFloat:0.0];
         animation.toValue = [NSNumber numberWithFloat:1.0];
     }
     animation.duration = self.animationDuration;
