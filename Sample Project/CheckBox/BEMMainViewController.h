@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BEMAnimationsTableViewController.h"
 
-@interface BEMMainViewController : UIViewController
+@interface BEMMainViewController : UIViewController <BEMAnimationsTableViewDelegate>
 
 @end

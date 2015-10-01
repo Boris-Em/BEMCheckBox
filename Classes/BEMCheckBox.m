@@ -246,6 +246,7 @@
             
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"path"];
+            [self.checkMarkLayer addAnimation:opacity forKey:@"opacity"];
         }
             return;
             
@@ -302,6 +303,7 @@
             
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"path"];
+            [self.checkMarkLayer addAnimation:opacity forKey:@"opacity"];
         }
             return;
             

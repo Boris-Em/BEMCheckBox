@@ -16,6 +16,7 @@
 		C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C325373B1B9231FD0059F394 /* BEMCheckBox.m */; };
 		C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */; };
 		C3DFB9BA1BBA475B00D2F8B4 /* AnimationManangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9B91BBA475B00D2F8B4 /* AnimationManangerTests.m */; settings = {ASSET_TAGS = (); }; };
+		C3DFB9BD1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9BC1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C3E837AA1BAE3493004576D6 /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */; };
 		C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,8 @@
 		C39F1AB51BAFEAA400E8A023 /* BEMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMMainViewController.h; sourceTree = "<group>"; };
 		C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMMainViewController.m; sourceTree = "<group>"; };
 		C3DFB9B91BBA475B00D2F8B4 /* AnimationManangerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationManangerTests.m; sourceTree = "<group>"; };
+		C3DFB9BB1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAnimationsTableViewController.h; sourceTree = "<group>"; };
+		C3DFB9BC1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAnimationsTableViewController.m; sourceTree = "<group>"; };
 		C3E837A81BAE3493004576D6 /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnimationManager.h; path = ../Classes/BEMAnimationManager.h; sourceTree = "<group>"; };
 		C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnimationManager.m; path = ../Classes/BEMAnimationManager.m; sourceTree = "<group>"; };
 		C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMPathManager.h; path = ../Classes/BEMPathManager.h; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 				C325371A1B9231780059F394 /* Main.storyboard */,
 				C39F1AB51BAFEAA400E8A023 /* BEMMainViewController.h */,
 				C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */,
+				C3DFB9BB1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.h */,
+				C3DFB9BC1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m */,
 				C325371D1B9231780059F394 /* Images.xcassets */,
 				C325371F1B9231780059F394 /* LaunchScreen.xib */,
 				C32537101B9231780059F394 /* Supporting Files */,
@@ -247,6 +252,7 @@
 			files = (
 				C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */,
 				C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */,
+				C3DFB9BD1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m in Sources */,
 				C32537161B9231780059F394 /* AppDelegate.m in Sources */,
 				C32537131B9231780059F394 /* main.m in Sources */,
 				C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */,
