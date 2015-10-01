@@ -8,21 +8,41 @@
 
 @import UIKit;
 
-/*
- * Animation object used by BEMCheckBox to generate animations.
+/** Animation object used by BEMCheckBox to generate animations.
  */
 @interface BEMAnimationManager : NSObject
 
+/** The animation delegate
+ */
 @property (weak, nonatomic) id delegate;
 
+/** The duration of the animation created by the BEMAnimationManager object.
+ */
 @property (nonatomic) CGFloat animationDuration;
 
+/** Designated initializer.
+ * @param animationDuration The duration of the animations created with the BEMAnimationManager object.
+ * @return Returns the a fully initialized BEMAnimationManager object.
+ */
 - (instancetype)initWithAnimationDuration:(CGFloat)animationDuration;
 
+/** Returns a CABasicAnimation which the stroke.
+ * @param reverse The direction of the animation. Set to YES if the animation should go from opacity 0 to 1, or NO for the opposite.
+ * @return Returns the CABasicAnimation object.
+ */
 - (CABasicAnimation *)strokeAnimationReverse:(BOOL)reverse;
 
+/** Returns a CABasicAnimation which animates the opacity.
+ * @param reverse The direction of the animation. Set to YES if the animation should go from opacity 0 to 1, or NO for the opposite.
+ * @return Returns the CABasicAnimation object.
+ */
 - (CABasicAnimation *)opacityAnimationReverse:(BOOL)reverse;
 
+/** Returns a CABasicAnimation which animates between two paths.
+ * @param fromPath The path to transform (morph) from.
+ * @param toPath The path to transform (morph) to.
+ * @return Returns the CABasicAnimation object.
+ */
 - (CABasicAnimation *)morphAnimationFromPath:(UIBezierPath *)fromPath toPath:(UIBezierPath *)toPath ;
 
 /** Animation engine to create a fill animation.
