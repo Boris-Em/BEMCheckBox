@@ -21,15 +21,34 @@
     [super setUp];
     
     self.manager = [[BEMAnimationManager alloc] initWithAnimationDuration:10.0];
+    self.manager.delegate = self;
 }
 
 - (void)testInit {
     
     XCTAssertNotNil(self.manager);
     XCTAssert(self.manager.animationDuration == 10.0);
+    
+}
+
+- (void)testStrokeAnimation {
+    CABasicAnimation * animation = [self.manager strokeAnimationReverse:NO];
+    XCTAssertNotNil(animation);
+    XCTAssert(animation.duration == 10.0);
+    XCTAssert(animation.delegate == self);
+    XCTAssert([animation.fromValue isEqualToNumber:@0.0]);
+    XCTAssert([animation.toValue isEqualToNumber:@1.0]);
+    XCTAssert(animation.removedOnCompletion == NO);
+    XCTAssert(animation.fillMode == kCAFillModeForwards);
+    XCTAssert([animation.keyPath isEqualToString:@"strokeEnd"]);
+    
+    animation = [self.manager strokeAnimationReverse:YES];
+    XCTAssert([animation.fromValue isEqualToNumber:@1.0]);
+    XCTAssert([animation.toValue isEqualToNumber:@0.0]);
 }
 
 - (void)tearDown {
+    self.manager = nil;
     [super tearDown];
 }
 
