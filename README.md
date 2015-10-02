@@ -11,6 +11,9 @@
   * [License](#license)
   * [Support](#support)
   * [Sample App](#sample-app)
+* [**Getting Started**](#getting-started)
+  * [Installation](#installation)
+  * [Setup](#setup)
 
 ## Project Details
 Learn more about the **BEMCheckBox** project, lincesing support etc.
@@ -29,3 +32,38 @@ Join us on [Gitter](https://gitter.im/Boris-Em/BEMCheckBox) if you need any help
 
 ### Sample App
 The iOS Sample App included with this project demonstrates one way to correctly setup and use **BEMCheckBox**.
+
+## Getting Started
+It only takes a few simple step to install and setup **BEMCheckBox** to your project.
+
+###Installation
+The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To do so, simply add the following line to your `Podfile`:
+	<pre><code>pod 'BEMCheckBox'</code></pre>
+	
+The other way to install **BEMCheckBox**, is to drag and drop the *Classes* folder into your Xcode project. When you do so, make sure to check the "*Copy items into destination group's folder*" box.
+
+### Setup
+Setting up **BEMCheckBox** to your project couldn't be more simple. It is modeled after `UISwitch`. In fact, you could even replace instances of `UISwitch` by **BEMCheckBox** in your project!  
+Here are the steps to follow to get everything up and running:
+
+ 1. Import `"BEMCheckBox.h"` to the header of your view controller:
+
+ ```objective-c
+ #import "BEMCheckBox.h"
+ ```
+
+ 2. **BEMCheckBox** can either be initialized programatically (throught code) or with Interface Builder (Storyboard file). Use the method that makes the most sense for your project.
+ 
+ **Programmatical Initialization**  
+ Just add the following code to your implementation (usually the `viewDidLoad` method of your View Controller).
+
+ ```objective-c
+ BEMCheckBox *myCheckBox = [[BEMCheckBox alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+ [self.view addSubview:myCheckBox];
+ ```
+ 
+ **Interface Initialization**  
+ 1 - Drag a `UIView` to your `UIViewController`  
+ 2 - Change the class of the new `UIView` to `BEMCheckBox`  
+ 3 - Select the `BEMCheckBox` and open the Attributes Inspector. Most of the customizable properties can easily be set from the Attributes Inspector. The Sample App demonstrates this capability.
+
