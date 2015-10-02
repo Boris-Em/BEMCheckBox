@@ -16,7 +16,7 @@
   * [Setup](#setup)
 
 ## Project Details
-Learn more about the **BEMCheckBox** project, lincesing support etc.
+Learn more about the **BEMCheckBox** project, licensing, support etc.
 
 ### Requirements
  - Requires iOS 7 or later. The sample project is optimized for iOS 9.
@@ -24,7 +24,7 @@ Learn more about the **BEMCheckBox** project, lincesing support etc.
  - Optimized for ARM64 Architecture.
 
 ### License
-See the [License](https://github.com/Boris-Em/BEMCheckBox/blob/master/LICENSE). You are free to make changes and use this in either personal or commercial projects. Attribution is not required, but is highly appreciated. A little "Thanks!" (or something to that affect) is always welcome. If you use **BEMCheckBox** in your app, please let us know!
+See the [License](https://github.com/Boris-Em/BEMCheckBox/blob/master/LICENSE). You are free to make changes and use this in either personal or commercial projects. Attribution is not required, but highly appreciated. A little "Thanks!" (or something to that affect) is always welcome. If you use **BEMCheckBox** in your app, please let us know!
 
 ### Support
 [![Gitter chat](https://badges.gitter.im/Boris-Em/BEMCheckBox.png)](https://gitter.im/Boris-Em/BEMCheckBox)  
@@ -34,7 +34,7 @@ Join us on [Gitter](https://gitter.im/Boris-Em/BEMCheckBox) if you need any help
 The iOS Sample App included with this project demonstrates one way to correctly setup and use **BEMCheckBox**.
 
 ## Getting Started
-It only takes a few simple step to install and setup **BEMCheckBox** to your project.
+It only takes a few simple steps to install and setup **BEMCheckBox** to your project.
 
 ###Installation
 The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To do so, simply add the following line to your `Podfile`:
@@ -43,7 +43,7 @@ The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.o
 The other way to install **BEMCheckBox**, is to drag and drop the *Classes* folder into your Xcode project. When you do so, make sure to check the "*Copy items into destination group's folder*" box.
 
 ### Setup
-Setting up **BEMCheckBox** to your project couldn't be more simple. It is modeled after `UISwitch`. In fact, you could even replace instances of `UISwitch` by **BEMCheckBox** in your project!  
+Setting up **BEMCheckBox** to your project couldn't be more simple. It is modeled after `UISwitch`. In fact, you could just replace instances of `UISwitch` by **BEMCheckBox** in your project!  
 Here are the steps to follow to get everything up and running:
 
  1. Import `"BEMCheckBox.h"` to the header of your view controller:
