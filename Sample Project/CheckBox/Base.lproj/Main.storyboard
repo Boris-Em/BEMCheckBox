@@ -24,8 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7i-Ug-gMp">
                                 <rect key="frame" x="0.0" y="268" width="600" height="268"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Qf-YQ-Uzc">
-                                        <rect key="frame" x="54" y="35" width="121" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Qf-YQ-Uzc">
+                                        <rect key="frame" x="115" y="26" width="123" height="29"/>
                                         <segments>
                                             <segment title="Stroke"/>
                                             <segment title="Fill"/>
@@ -35,42 +35,91 @@
                                             <action selector="didTapOnDrawTypeSegmentedControl:" destination="T4m-fZ-8sp" eventType="valueChanged" id="fWJ-X1-Phj"/>
                                         </connections>
                                     </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6n-co-1uw">
+                                        <rect key="frame" x="367" y="26" width="123" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="123" id="BC3-VT-rcC"/>
+                                            <constraint firstAttribute="height" constant="28" id="cOH-E8-9Ty"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Circle"/>
+                                            <segment title="Square"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="didTapOnBoxTypeSegmentedControl:" destination="T4m-fZ-8sp" eventType="valueChanged" id="PPo-0I-jGF"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDN-Q4-Fo2">
+                                        <rect key="frame" x="250" y="206" width="100" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="OQy-8d-smC"/>
+                                            <constraint firstAttribute="width" constant="100" id="Vw7-vJ-bSu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Animations">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="cmS-0S-drb" kind="show" identifier="toAnimationSelection" id="a14-i5-8qG"/>
+                                        </connections>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.20000000000000001" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="6Jw-4O-Gha">
+                                        <rect key="frame" x="482" y="92" width="104" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7T9-1R-ob0"/>
+                                            <constraint firstAttribute="width" constant="100" id="bDA-qt-36c"/>
+                                        </constraints>
+                                        <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="didDragAnimationSpeedSlider:" destination="T4m-fZ-8sp" eventType="valueChanged" id="0MY-f5-nlw"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="3" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="FCH-Wq-LuG">
+                                        <rect key="frame" x="482" y="146" width="104" height="31"/>
+                                        <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="didDragLineWidthSlider:" destination="T4m-fZ-8sp" eventType="valueChanged" id="i4p-bx-Hcd"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animation duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wb-v7-Vyy">
+                                        <rect key="frame" x="16" y="98.5" width="127" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line width" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLj-je-UrO">
+                                        <rect key="frame" x="16" y="152.5" width="69" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6n-co-1uw">
-                                <rect key="frame" x="447" y="254" width="123" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="BC3-VT-rcC"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="123" id="GbG-rY-chk"/>
-                                    <constraint firstAttribute="height" constant="28" id="cOH-E8-9Ty"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="mvv-3F-jJg"/>
+                                    <constraint firstItem="qDN-Q4-Fo2" firstAttribute="centerX" secondItem="m7i-Ug-gMp" secondAttribute="centerX" id="1rA-LY-oT5"/>
+                                    <constraint firstItem="Z6n-co-1uw" firstAttribute="centerX" secondItem="m7i-Ug-gMp" secondAttribute="centerX" multiplier="1.42857" id="7a1-vw-Qqv"/>
+                                    <constraint firstItem="4Qf-YQ-Uzc" firstAttribute="centerY" secondItem="m7i-Ug-gMp" secondAttribute="centerY" multiplier="0.3" id="A8A-XX-gfe"/>
+                                    <constraint firstItem="uLj-je-UrO" firstAttribute="centerY" secondItem="FCH-Wq-LuG" secondAttribute="centerY" id="Bfk-L8-B7h"/>
+                                    <constraint firstItem="FCH-Wq-LuG" firstAttribute="centerX" secondItem="6Jw-4O-Gha" secondAttribute="centerX" id="CLs-KU-MxY"/>
+                                    <constraint firstItem="0Wb-v7-Vyy" firstAttribute="centerY" secondItem="6Jw-4O-Gha" secondAttribute="centerY" id="DTj-dl-zsW"/>
+                                    <constraint firstItem="6Jw-4O-Gha" firstAttribute="centerY" secondItem="m7i-Ug-gMp" secondAttribute="centerY" multiplier="0.8" id="DZr-AV-avQ"/>
+                                    <constraint firstItem="Z6n-co-1uw" firstAttribute="height" secondItem="4Qf-YQ-Uzc" secondAttribute="height" id="L6a-kg-Vi5"/>
+                                    <constraint firstItem="0Wb-v7-Vyy" firstAttribute="leading" secondItem="m7i-Ug-gMp" secondAttribute="leading" constant="16" id="NSp-hC-eku"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Jw-4O-Gha" secondAttribute="trailing" constant="16" id="RhL-ku-BkJ"/>
+                                    <constraint firstItem="FCH-Wq-LuG" firstAttribute="width" secondItem="6Jw-4O-Gha" secondAttribute="width" id="XZe-0c-7XE"/>
+                                    <constraint firstItem="Z6n-co-1uw" firstAttribute="width" secondItem="4Qf-YQ-Uzc" secondAttribute="width" id="diG-HL-D2a"/>
+                                    <constraint firstItem="FCH-Wq-LuG" firstAttribute="centerY" secondItem="m7i-Ug-gMp" secondAttribute="centerY" multiplier="1.2" id="faO-ki-sFo"/>
+                                    <constraint firstItem="qDN-Q4-Fo2" firstAttribute="centerY" secondItem="m7i-Ug-gMp" secondAttribute="centerY" multiplier="1.7" id="gPx-4u-pQm"/>
+                                    <constraint firstItem="4Qf-YQ-Uzc" firstAttribute="centerX" secondItem="m7i-Ug-gMp" secondAttribute="centerX" multiplier="0.588235" id="nVN-tZ-ggg"/>
+                                    <constraint firstItem="uLj-je-UrO" firstAttribute="leading" secondItem="m7i-Ug-gMp" secondAttribute="leading" constant="16" id="qMW-98-jgC"/>
+                                    <constraint firstItem="Z6n-co-1uw" firstAttribute="centerY" secondItem="4Qf-YQ-Uzc" secondAttribute="centerY" id="rWJ-Bv-jvD"/>
+                                    <constraint firstItem="FCH-Wq-LuG" firstAttribute="height" secondItem="6Jw-4O-Gha" secondAttribute="height" id="ybb-6L-8Q4"/>
                                 </constraints>
-                                <segments>
-                                    <segment title="Circle"/>
-                                    <segment title="Square"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="GbG-rY-chk"/>
-                                        <exclude reference="mvv-3F-jJg"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="didTapOnBoxTypeSegmentedControl:" destination="T4m-fZ-8sp" eventType="valueChanged" id="PPo-0I-jGF"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDN-Q4-Fo2">
-                                <rect key="frame" x="265" y="454" width="69" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Animation">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="cmS-0S-drb" kind="show" identifier="toAnimationSelection" id="a14-i5-8qG"/>
-                                </connections>
-                            </button>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0f-ld-n4G" customClass="BEMCheckBox">
                                 <rect key="frame" x="250" y="84" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,62 +148,15 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.20000000000000001" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="6Jw-4O-Gha">
-                                <rect key="frame" x="468" y="320" width="104" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="7T9-1R-ob0"/>
-                                    <constraint firstAttribute="width" constant="100" id="bDA-qt-36c"/>
-                                </constraints>
-                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="didDragAnimationSpeedSlider:" destination="T4m-fZ-8sp" eventType="valueChanged" id="0MY-f5-nlw"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="3" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="FCH-Wq-LuG">
-                                <rect key="frame" x="468" y="387" width="104" height="31"/>
-                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="didDragLineWidthSlider:" destination="T4m-fZ-8sp" eventType="valueChanged" id="i4p-bx-Hcd"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animation duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wb-v7-Vyy">
-                                <rect key="frame" x="30" y="326" width="127" height="17.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line width" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLj-je-UrO">
-                                <rect key="frame" x="30" y="393" width="69" height="17.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="qDN-Q4-Fo2" secondAttribute="centerX" id="0HE-VY-dcd"/>
-                            <constraint firstItem="0Wb-v7-Vyy" firstAttribute="centerY" secondItem="cbC-3r-5tA" secondAttribute="centerY" multiplier="1.25" id="0rP-dO-8mS"/>
                             <constraint firstItem="m7i-Ug-gMp" firstAttribute="top" secondItem="cbC-3r-5tA" secondAttribute="centerY" id="3Im-Ev-VTo"/>
                             <constraint firstAttribute="centerX" secondItem="O0f-ld-n4G" secondAttribute="centerX" id="8lr-2m-AQf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Z6n-co-1uw" secondAttribute="trailing" constant="10" id="9h4-vX-Bae"/>
                             <constraint firstItem="O0f-ld-n4G" firstAttribute="centerY" secondItem="cbC-3r-5tA" secondAttribute="centerY" multiplier="0.5" id="EdG-yZ-H0u"/>
                             <constraint firstAttribute="bottom" secondItem="m7i-Ug-gMp" secondAttribute="bottom" id="G8n-sJ-iya"/>
-                            <constraint firstItem="uLj-je-UrO" firstAttribute="leading" secondItem="cbC-3r-5tA" secondAttribute="leadingMargin" constant="10" id="GgK-VD-QnJ"/>
-                            <constraint firstItem="FCH-Wq-LuG" firstAttribute="centerY" secondItem="uLj-je-UrO" secondAttribute="centerY" id="LkA-tF-AUf"/>
                             <constraint firstItem="m7i-Ug-gMp" firstAttribute="trailing" secondItem="cbC-3r-5tA" secondAttribute="trailing" id="Olz-2j-uo2"/>
-                            <constraint firstItem="qDN-Q4-Fo2" firstAttribute="centerY" secondItem="cbC-3r-5tA" secondAttribute="centerY" multiplier="1.75" id="PYw-7a-DSE"/>
-                            <constraint firstItem="FCH-Wq-LuG" firstAttribute="height" secondItem="6Jw-4O-Gha" secondAttribute="height" id="TuO-gq-JMj"/>
-                            <constraint firstAttribute="centerY" secondItem="Z6n-co-1uw" secondAttribute="centerY" id="dYS-WV-aDl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6Jw-4O-Gha" secondAttribute="trailing" constant="10" id="dyg-RK-7Vk"/>
-                            <constraint firstItem="FCH-Wq-LuG" firstAttribute="width" secondItem="6Jw-4O-Gha" secondAttribute="width" id="jwL-RU-STS"/>
                             <constraint firstItem="m7i-Ug-gMp" firstAttribute="leading" secondItem="cbC-3r-5tA" secondAttribute="leading" id="k7J-U9-SrW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FCH-Wq-LuG" secondAttribute="trailing" constant="10" id="kZM-Y0-H4z"/>
-                            <constraint firstItem="0Wb-v7-Vyy" firstAttribute="leading" secondItem="cbC-3r-5tA" secondAttribute="leadingMargin" constant="10" id="re7-0b-2Li"/>
-                            <constraint firstItem="uLj-je-UrO" firstAttribute="centerY" secondItem="cbC-3r-5tA" secondAttribute="centerY" multiplier="1.5" id="wmb-FR-N3X"/>
-                            <constraint firstItem="0Wb-v7-Vyy" firstAttribute="centerY" secondItem="6Jw-4O-Gha" secondAttribute="centerY" id="xcP-vX-DNj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="BEMCheckBox" id="A1M-5x-9ee">
@@ -165,6 +167,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="animationButton" destination="qDN-Q4-Fo2" id="H53-3v-u5c"/>
                         <outlet property="checkBox" destination="O0f-ld-n4G" id="B3V-wg-FIk"/>
                         <outlet property="drawTypeSegmentedControl" destination="4Qf-YQ-Uzc" id="7la-uU-gMt"/>
                     </connections>

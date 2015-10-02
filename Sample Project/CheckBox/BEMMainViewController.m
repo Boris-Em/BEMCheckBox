@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *drawTypeSegmentedControl;
 
+@property (strong, nonatomic) IBOutlet UIButton *animationButton;
+
 @end
 
 @implementation BEMMainViewController
@@ -25,6 +27,10 @@
     
     self.checkBox.onAnimationType = BEMAnimationTypeBounce;
     self.checkBox.offAnimationType = BEMAnimationTypeBounce;
+    
+    self.animationButton.layer.cornerRadius = 5.0;
+    self.animationButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.animationButton.layer.borderWidth = 1.0;
 }
 
 - (void)didReceiveMemoryWarning {
