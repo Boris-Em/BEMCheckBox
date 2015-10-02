@@ -13,58 +13,93 @@ IB_DESIGNABLE
 @interface BEMCheckBox : UIView
 
 typedef NS_ENUM(NSInteger, BEMBoxType) {
+    /** Circled box.
+     */
     BEMBoxTypeCircle,
+    
+    /** Squared box.
+     */
     BEMBoxTypeSquare
 };
 
 typedef NS_ENUM(NSInteger, BEMAnimationType) {
+    /** Animates the outside circle of the checkbox as if it was drawn.
+     *  Should be used with a clear colored onFillColor property.
+     */
     BEMAnimationTypeStroke,
+    
+    /** When tapped, the checkbox is filled from its centered.
+     * Should be used with a colored onFillColor property.
+     */
     BEMAnimationTypeFill,
+    
+    /** When tapped, the checkbox is filled from its centered.
+     * Should be used with a colored onFillColor property.
+     */
     BEMAnimationTypeBounce,
+    
+    /** When tapped, the checkbox is filled from its centered.
+     * Should be used with a colored onFillColor property.
+     */
     BEMAnimationTypeFlat,
+    
+    /** When tapped, the checkbox is fading in (opacity).
+     */
     BEMAnimationTypeFade
 };
 
 /** This property allows you to retrieve and set (without animation) a value determining whether the UISwitch object is on or off.
-    Default to NO. */
+    Default to NO.
+ */
 @property (nonatomic) IBInspectable BOOL on;
 
-/// The width of the line of the check mark and around the box. Default to 2.0.
+/** The width of the line of the check mark and around the box. Default to 2.0.
+ */
 @property (nonatomic) IBInspectable CGFloat lineWidth;
 
-/// The duration in seconds of the animation when the check box switches from on and off. Default to 0.5.
+/** The duration in seconds of the animation when the check box switches from on and off. Default to 0.5.
+ */
 @property (nonatomic) IBInspectable CGFloat animationDuration;
 
-/// BOOL to control if the box when the control if off should be hidden or not. Defaults to NO.
+/** BOOL to control if the box when the control if off should be hidden or not. Defaults to NO.
+ */
 @property (nonatomic) IBInspectable BOOL hideBox;
 
-/// The color of the line around the box when it is "on".
+/** The color of the line around the box when it is "on".
+ */
 @property (strong, nonatomic) IBInspectable UIColor *onTintColor;
 
-/// The color of the inside of the box when it is "on".
+/** The color of the inside of the box when it is "on".
+ */
 @property (strong, nonatomic) IBInspectable UIColor *onFillColor;
 
-/// The color of the check mark (only visible when "on").
+/** The color of the check mark (only visible when "on").
+ */
 @property (strong, nonatomic) IBInspectable UIColor *onCheckColor;
 
-/// The color of the box when it is "off"
+/** The color of the box when it is "off"
+ */
 @property (strong, nonatomic) IBInspectable UIColor *tintColor;
 
 /** The type of box.
- * @see BEMBoxType. */
+ * @see BEMBoxType. 
+ */
 @property (nonatomic) BEMBoxType boxType;
 
 /** The animation type when the check mark is gets set to "on".
  * @warning Some animations might not look as intended if the different colors of the control are not appropriatly configured.
- * @see BEMAnimationType. */
+ * @see BEMAnimationType. 
+ */
 @property (nonatomic) BEMAnimationType onAnimationType;
 
 /** The animation type when the check mark is gets set to "off".
  * @warning Some animations might not look as intended if the different colors of the control are not appropriatly configured.
- * @see BEMAnimationType. */
+ * @see BEMAnimationType. 
+ */
 @property (nonatomic) BEMAnimationType offAnimationType;
 
-/** Set the state of the switch to On or Off, optionally animating the transition. */
+/** Set the state of the switch to On or Off, optionally animating the transition. 
+ */
 - (void)setOn:(BOOL)on animated:(BOOL)animated;
 
 /** Forces a redraw of the entire check box.
