@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
     BEMAnimationTypeFade
 };
 
-/** This property allows you to retrieve and set (without animation) a value determining whether the UISwitch object is on or off.
+/** This property allows you to retrieve and set (without animation) a value determining whether the BEMCheckBox object is on or off.
     Default to NO.
  */
 @property (nonatomic) IBInspectable BOOL on;
