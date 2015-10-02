@@ -22,7 +22,9 @@
 #pragma mark View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.checkBox.onAnimationType = BEMAnimationTypeBounce;
+    self.checkBox.offAnimationType = BEMAnimationTypeBounce;
 }
 
 - (void)didReceiveMemoryWarning {
