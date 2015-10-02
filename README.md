@@ -52,18 +52,18 @@ Here are the steps to follow to get everything up and running:
  #import "BEMCheckBox.h"
  ```
 
- 2. **BEMCheckBox** can either be initialized programatically (throught code) or with Interface Builder (Storyboard file). Use the method that makes the most sense for your project.
+ 2. **BEMCheckBox** can either be initialized programatically (through code) or with Interface Builder (Storyboard file). Use the method that makes the most sense for your project.
  
  **Programmatical Initialization**  
- Just add the following code to your implementation (usually the `viewDidLoad` method of your View Controller).
+ Just add the following code to your implementation (usually in the `viewDidLoad` method of your View Controller).
 
  ```objective-c
  BEMCheckBox *myCheckBox = [[BEMCheckBox alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
  [self.view addSubview:myCheckBox];
  ```
  
- **Interface Initialization**  
- 1 - Drag a `UIView` to your `UIViewController`  
- 2 - Change the class of the new `UIView` to `BEMCheckBox`  
+ **Interface Builder Initialization**  
+ 1 - Drag a `UIView` to your `UIViewController`.  
+ 2 - Change the class of the new `UIView` to `BEMCheckBox`.  
  3 - Select the `BEMCheckBox` and open the Attributes Inspector. Most of the customizable properties can easily be set from the Attributes Inspector. The Sample App demonstrates this capability.
 
