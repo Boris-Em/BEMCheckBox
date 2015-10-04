@@ -19,8 +19,14 @@
             path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.size, self.size) cornerRadius:3.0];
             break;
             
-        default:
-            path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.lineWidth, self.lineWidth, self.size - self.lineWidth*2, self.size - self.lineWidth*2)];
+        default: {
+            CGFloat radius = self.size / 2;
+            path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.size / 2, self.size / 2)
+                                                              radius: radius
+                                                          startAngle: - M_PI / 4
+                                                            endAngle:  2 * M_PI - M_PI / 4
+                                                           clockwise:YES];
+        }
             break;
     }
     return path;
