@@ -212,7 +212,7 @@
     switch (self.onAnimationType) {
         case BEMAnimationTypeStroke: {
             CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:NO];
-
+            
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
@@ -294,7 +294,6 @@
     switch (self.offAnimationType) {
         case BEMAnimationTypeStroke: {
             CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:YES];
-
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
@@ -329,6 +328,30 @@
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:animation forKey:@"path"];
             [self.checkMarkLayer addAnimation:opacity forKey:@"opacity"];
+        }
+            return;
+            
+        case BEMAnimationTypeOneStroke: {
+            CABasicAnimation *checkMorphAnimation = [self.animationManager morphAnimationFromPath:[self.pathManager pathForCheckMark] toPath:[self.pathManager pathForLongCheckMark]];
+            checkMorphAnimation.delegate = nil;
+            checkMorphAnimation.duration = checkMorphAnimation.duration / 6;
+            [self.checkMarkLayer addAnimation:checkMorphAnimation forKey:@"path"];
+            
+            CABasicAnimation *checkStrokeAnimation = [self.animationManager strokeAnimationReverse:YES];
+            checkStrokeAnimation.delegate = nil;
+            checkStrokeAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration;
+            checkStrokeAnimation.duration = checkStrokeAnimation.duration / 3;
+            [self.checkMarkLayer addAnimation:checkStrokeAnimation forKey:@"strokeEnd"];
+            
+            __weak __typeof__(self) weakSelf = self;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(CACurrentMediaTime() + checkMorphAnimation.duration + checkStrokeAnimation.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                weakSelf.checkMarkLayer.lineCap = kCALineCapButt;
+            });
+            
+            CABasicAnimation *boxStrokeAnimation = [self.animationManager strokeAnimationReverse:YES];
+            boxStrokeAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration + checkStrokeAnimation.duration;
+            boxStrokeAnimation.duration = boxStrokeAnimation.duration / 2;
+            [self.onBoxLayer addAnimation:boxStrokeAnimation forKey:@"strokeEnd"];
         }
             return;
             
