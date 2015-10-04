@@ -250,6 +250,31 @@
         }
             return;
             
+        case BEMAnimationTypeOneStroke: {
+            // Temporary set the path of the checkmarl to the long checkmarl
+            self.checkMarkLayer.path = [[self.pathManager pathForLongCheckMark] bezierPathByReversingPath].CGPath;
+            
+            CABasicAnimation *boxStrokeAnimation = [self.animationManager strokeAnimationReverse:NO];
+            boxStrokeAnimation.duration = boxStrokeAnimation.duration / 2;
+            [self.onBoxLayer addAnimation:boxStrokeAnimation forKey:@"strokeEnd"];
+            
+            CABasicAnimation *checkStrokeAnimation = [self.animationManager strokeAnimationReverse:NO];
+            checkStrokeAnimation.duration = checkStrokeAnimation.duration / 3;
+            checkStrokeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            checkStrokeAnimation.fillMode = kCAFillModeBackwards;
+            checkStrokeAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration;
+            [self.checkMarkLayer addAnimation:checkStrokeAnimation forKey:@"strokeEnd"];
+            
+            CABasicAnimation *checkMorphAnimation = [self.animationManager morphAnimationFromPath:[self.pathManager pathForLongCheckMark] toPath:[self.pathManager pathForCheckMark]];
+            checkMorphAnimation.duration = checkMorphAnimation.duration / 6;
+            checkMorphAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            checkMorphAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration + checkStrokeAnimation.duration;
+            checkMorphAnimation.removedOnCompletion = NO;
+            checkMorphAnimation.fillMode = kCAFillModeForwards;
+            [self.checkMarkLayer addAnimation:checkMorphAnimation forKey:@"path"];
+        }
+            return;
+            
         default: {
             CABasicAnimation *animation = [self.animationManager opacityAnimationReverse:NO];
             [self.onBoxLayer addAnimation:animation forKey:@"opacity"];

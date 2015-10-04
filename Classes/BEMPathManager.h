@@ -38,6 +38,11 @@
  */
 - (UIBezierPath *)pathForCheckMark;
 
+/** Returns a UIBezierPath object for an extra long checkmark which is in contact with the box.
+ * @returns The path of the checkmark.
+ */
+- (UIBezierPath *)pathForLongCheckMark;
+
 /** Returns a UIBezierPath object for the flat checkmark of the checkbox
  * @see BEMAnimationTypeFlat
  * @returns The path of the flat checkmark.

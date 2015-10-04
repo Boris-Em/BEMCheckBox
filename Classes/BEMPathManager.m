@@ -48,6 +48,23 @@
     return checkMarkPath;
 }
 
+- (UIBezierPath *)pathForLongCheckMark {
+    UIBezierPath* checkMarkPath = [UIBezierPath bezierPath];
+    
+    [checkMarkPath moveToPoint: CGPointMake(self.size/3.1578, self.size/2)];
+    [checkMarkPath addLineToPoint: CGPointMake(self.size/2.0618, self.size/1.57894)];
+    [checkMarkPath addLineToPoint: CGPointMake(self.size/1.1553, self.size/5.9272)];
+    
+    if (self.boxType == BEMBoxTypeSquare) {
+        // If we use a square box, the check mark should be a little bit bigger
+        [checkMarkPath applyTransform:CGAffineTransformMakeScale(1.5, 1.5)];
+        [checkMarkPath applyTransform:CGAffineTransformMakeTranslation(-self.size/4, -self.size/4)];
+    }
+    
+    return checkMarkPath;
+
+}
+
 - (UIBezierPath *)pathForFlatCheckMark {
     UIBezierPath* flatCheckMarkPath = [UIBezierPath bezierPath];
     [flatCheckMarkPath moveToPoint: CGPointMake(self.size/4, self.size/2)];

@@ -81,7 +81,7 @@
     self.checkBox.onAnimationType = animationType;
     self.checkBox.offAnimationType = animationType;
     
-    if (animationType == BEMAnimationTypeStroke) {
+    if (animationType == BEMAnimationTypeStroke || animationType == BEMAnimationTypeOneStroke) {
         self.drawTypeSegmentedControl.selectedSegmentIndex = 0;
         [self.drawTypeSegmentedControl sendActionsForControlEvents:UIControlEventValueChanged];
         self.drawTypeSegmentedControl.enabled = NO;

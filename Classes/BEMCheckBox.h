@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, BEMBoxType) {
 };
 
 typedef NS_ENUM(NSInteger, BEMAnimationType) {
-    /** Animates the outside circle of the checkbox as if it was drawn.
+    /** Animates the box and the check as if they were drawn.
      *  Should be used with a clear colored onFillColor property.
      */
     BEMAnimationTypeStroke,
@@ -42,6 +42,11 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
      * Should be used with a colored onFillColor property.
      */
     BEMAnimationTypeFlat,
+    
+    /** Animates the box and check as if they were drawn in one line.
+     * Should be used with a clear colored onFillColor property.
+     */
+    BEMAnimationTypeOneStroke,
     
     /** When tapped, the checkbox is fading in (opacity).
      */
