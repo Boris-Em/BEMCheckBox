@@ -54,11 +54,11 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 };
 
 /** This property allows you to retrieve and set (without animation) a value determining whether the BEMCheckBox object is on or off.
-    Default to NO.
+  * Default to NO.
  */
 @property (nonatomic) IBInspectable BOOL on;
 
-/** The width of the line of the check mark and around the box. Default to 2.0.
+/** The width of the lines of the check mark and the box. Default to 2.0.
  */
 @property (nonatomic) IBInspectable CGFloat lineWidth;
 
@@ -66,23 +66,23 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
  */
 @property (nonatomic) IBInspectable CGFloat animationDuration;
 
-/** BOOL to control if the box when the control if off should be hidden or not. Defaults to NO.
+/** BOOL to control if the box should be hidden or not. Defaults to NO.
  */
 @property (nonatomic) IBInspectable BOOL hideBox;
 
-/** The color of the line around the box when it is "on".
+/** The color of the line around the box when it is On.
  */
 @property (strong, nonatomic) IBInspectable UIColor *onTintColor;
 
-/** The color of the inside of the box when it is "on".
+/** The color of the inside of the box when it is On.
  */
 @property (strong, nonatomic) IBInspectable UIColor *onFillColor;
 
-/** The color of the check mark (only visible when "on").
+/** The color of the check mark when it is On.
  */
 @property (strong, nonatomic) IBInspectable UIColor *onCheckColor;
 
-/** The color of the box when it is "off"
+/** The color of the box when the checkbox is Off.
  */
 @property (strong, nonatomic) IBInspectable UIColor *tintColor;
 
@@ -103,7 +103,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
  */
 @property (nonatomic) BEMAnimationType offAnimationType;
 
-/** Set the state of the switch to On or Off, optionally animating the transition. 
+/** Set the state of the check box to On or Off, optionally animating the transition.
  */
 - (void)setOn:(BOOL)on animated:(BOOL)animated;
 
