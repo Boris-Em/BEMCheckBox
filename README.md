@@ -14,6 +14,8 @@
 * [**Getting Started**](#getting-started)
   * [Installation](#installation)
   * [Setup](#setup)
+* [**Documentation**](#documentation)
+  * [Customization](#Customization)
 
 ## Project Details
 Learn more about the **BEMCheckBox** project, licensing, support etc.
@@ -31,7 +33,7 @@ See the [License](https://github.com/Boris-Em/BEMCheckBox/blob/master/LICENSE). 
 Join us on [Gitter](https://gitter.im/Boris-Em/BEMCheckBox) if you need any help or want to talk about the project.
 
 ### Sample App
-The iOS Sample App included with this project demonstrates one way to correctly setup and use **BEMCheckBox**.
+The iOS Sample App included with this project demonstrates one way to correctly setup and use **BEMCheckBox**. It also offers the possibility to customize the checkbox within the app.
 
 ## Getting Started
 It only takes a few simple steps to install and setup **BEMCheckBox** to your project.
@@ -67,3 +69,34 @@ Here are the steps to follow to get everything up and running:
  2 - Change the class of the new `UIView` to `BEMCheckBox`.  
  3 - Select the `BEMCheckBox` and open the Attributes Inspector. Most of the customizable properties can easily be set from the Attributes Inspector. The Sample App demonstrates this capability.
 
+## Documentation
+All of the methods and properties available for **BEMCheckBox** are documented below.
+
+### Customization
+**BEMCheckBox** is exclusively customizable though properties.  
+The following diagram provides a good overview:
+PICTURE 
+
+##### Apparence Properties
+
+`lineWidth`  
+The width of the lines of the check mark and box. Defaults to 2.0  
+
+`hideBox`  
+BOOL to control if the box should be hidden or not. Setting this property to `YES` will basically turn the checkbox into a check mark. Default to `NO`. PICTURE  
+
+`boxType`  
+The type of box to use. See `BEMBoxType` for possible values. Default to `BEMBoxTypeCircle`. 
+PICTURE
+
+`tintColor`  
+The color of the box when the checkbox is Off.
+
+`onCheckColor`  
+The color of the check mark when it is On.
+
+`onFillColor`  
+The color of the inside of the box when it is On.
+
+`onTintColor`  
+The color of the line around the box when it is On.
