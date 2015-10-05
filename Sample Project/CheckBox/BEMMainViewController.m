@@ -8,6 +8,7 @@
 
 #import "BEMMainViewController.h"
 #import "BEMCheckBox.h"
+#import "BEMCurrentSetupTableViewController.h"
 
 @interface BEMMainViewController ()
 
@@ -100,6 +101,9 @@
         BEMAnimationsTableViewController *destVC = (BEMAnimationsTableViewController *)segue.destinationViewController;
         destVC.delegate = self;
         destVC.selectedAnimation = self.checkBox.onAnimationType;
+    } else if ([segue.identifier isEqualToString:@"toCurrentSetup"]) {
+        BEMCurrentSetupTableViewController *destVC = (BEMCurrentSetupTableViewController *)segue.destinationViewController;
+        destVC.checkBox = self.checkBox;
     }
 }
 
