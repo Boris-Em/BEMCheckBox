@@ -83,10 +83,10 @@ PICTURE
 The width of the lines of the check mark and box. Defaults to 2.0  
 
 `hideBox`  
-BOOL to control if the box should be hidden or not. Setting this property to `YES` will basically turn the checkbox into a check mark. Default to `NO`. PICTURE  
+BOOL to control if the box should be hidden or not. Setting this property to `YES` will basically turn the checkbox into a check mark. Defaults to `NO`. PICTURE  
 
 `boxType`  
-The type of box to use. See `BEMBoxType` for possible values. Default to `BEMBoxTypeCircle`. 
+The type of box to use. See `BEMBoxType` for possible values. Defaults to `BEMBoxTypeCircle`. 
 PICTURE
 
 `tintColor`  
@@ -103,11 +103,14 @@ The color of the line around the box when it is On.
 
 ##### Animations
 
+`animationDuration`  
+The duration in seconds of the animations. Defaults to `0.5`.
+
 `onAnimationType`  
-The type of animation to use when the checkbox gets checked. Default to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
+The type of animation to use when the checkbox gets checked. Defaults to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
 
 `offAnimationType`  
-The type of animation to use when the checkbox gets unchecked. Default to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
+The type of animation to use when the checkbox gets unchecked. Defaults to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
 
 `BEMAnimationType`  
 The possible values for `onAnimationType` and `offAnimationType`.  
