@@ -106,7 +106,9 @@ The following diagram provides a good overview:
 The width of the lines of the check mark and box. Defaults to 2.0.  
 
 `hideBox` - BOOL  
-BOOL to control if the box should be hidden or not. Setting this property to `YES` will basically turn the checkbox into a check mark. Defaults to `NO`. PICTURE  
+<img align="left" width="100" height="86" src="http://s30.postimg.org/w89156q0x/BEMCheck_Box_hide_box.jpg">
+
+BOOL to control if the box should be hidden or not. Setting this property to `YES` will basically turn the checkbox into a check mark. Defaults to `NO`.
 
 `boxType` - BEMBoxType   
 The type of box to use. See `BEMBoxType` for possible values. Defaults to `BEMBoxTypeCircle`. 
