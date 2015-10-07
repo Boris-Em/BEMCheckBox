@@ -138,8 +138,20 @@ The type of animation to use when the checkbox gets unchecked. Defaults to `BEMA
 `BEMAnimationType`  
 The possible values for `onAnimationType` and `offAnimationType`.  
 - `BEMAnimationTypeStroke`
-<p align="left"><img src="http://s3.postimg.org/g3xoqqn73/BEMAnimation_Type_Stroke.gif"/></p>
+<p align="left"><img src="http://s28.postimg.org/yjzlxyap5/BEMAnimation_Type_Stroke.gif"/></p>
 
 - `BEMAnimationTypeFill`
-<p align="left"><img src="http://s29.postimg.org/40whxf2qr/BEMAnimation_Type_Fill.gif"/></p>
+<p align="left"><img src="http://s14.postimg.org/6ap9fka3x/BEMAnimation_Type_Fill.gif"/></p>
+
+- `BEMAnimationTypeBounce`
+<p align="left"><img src="http://s4.postimg.org/9twu6pn61/BEMAnimation_Type_Bounce.gif"/></p>
+
+- `BEMAnimationTypeFlat`
+<p align="left"><img src="http://s11.postimg.org/7op754xe7/BEMAnimation_Type_Flat.gif"/></p>
+
+- `BEMAnimationTypeOneStroke`
+<p align="left"><img src="http://s7.postimg.org/jaabag2p3/BEMAnimation_Type_One_Stroke.gif"/></p>
+
+- `BEMAnimationTypeFade`
+<p align="left"><img src="http://s24.postimg.org/3n1rre1cx/BEMAnimation_Type_Fade.gif"/></p>
 
