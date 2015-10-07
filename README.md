@@ -15,7 +15,9 @@
   * [Installation](#installation)
   * [Setup](#setup)
 * [**Documentation**](#documentation)
-  * [Customization](#Customization)
+  * [Enabling / Disabling the Checkbox](#enabling-/-disabling-the-checkbox) 
+  * [Reloading](#reloading)
+  * [Customization](#customization)
 
 ## Project Details
 Learn more about the **BEMCheckBox** project, licensing, support etc.
@@ -72,13 +74,33 @@ Here are the steps to follow to get everything up and running:
 ## Documentation
 All of the methods and properties available for **BEMCheckBox** are documented below.
 
+### Enabling / Disabling the Checkbox
+##### The `on` Property
+Just like `UISwitch`, **BEMCheckBox** provides the boolean property `on` that allows you to retrieve and set (without animation) a value determining wether the BEMCheckBox object is `on` or `off`. Defaults to `NO`.  
+Example usage:
+```objective-c
+self.myCheckBox.on = YES;
+```
+##### `setOn:animated:`
+Just like `UISwitch`, **BEMCheckBox** provides an instance method `setOn:animated:` that sets the state of the checkbox to On or Off, optionally animating the transition.  
+Example usage:
+```objective-c
+[self.myCheckBox setOn:YES animated:YES];
+```
+
+### Reloading
+The instance method `reload` lets you redraw the entire checkbox, keeping the current `on` value.  
+Example usage:  
+```objective-c
+[self.myCheckBox reload]
+```
+
 ### Customization
 **BEMCheckBox** is exclusively customizable though properties.  
 The following diagram provides a good overview:
 PICTURE 
 
 ##### Apparence Properties
-
 `lineWidth`  
 The width of the lines of the check mark and box. Defaults to 2.0  
 
@@ -102,7 +124,6 @@ The color of the inside of the box when it is On.
 The color of the line around the box when it is On.
 
 ##### Animations
-
 `animationDuration`  
 The duration in seconds of the animations. Defaults to `0.5`.
 
