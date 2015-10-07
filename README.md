@@ -101,36 +101,36 @@ The following diagram provides a good overview:
 PICTURE 
 
 ##### Apparence Properties
-`lineWidth`  
-The width of the lines of the check mark and box. Defaults to 2.0  
+`lineWidth` - CGFloat  
+The width of the lines of the check mark and box. Defaults to 2.0.  
 
-`hideBox`  
+`hideBox` - BOOL  
 BOOL to control if the box should be hidden or not. Setting this property to `YES` will basically turn the checkbox into a check mark. Defaults to `NO`. PICTURE  
 
-`boxType`  
+`boxType` - BEMBoxType   
 The type of box to use. See `BEMBoxType` for possible values. Defaults to `BEMBoxTypeCircle`. 
 PICTURE
 
-`tintColor`  
+`tintColor` - UIColor  
 The color of the box when the checkbox is Off.
 
-`onCheckColor`  
+`onCheckColor` - UIColor  
 The color of the check mark when it is On.
 
-`onFillColor`  
+`onFillColor` - UIColor  
 The color of the inside of the box when it is On.
 
-`onTintColor`  
+`onTintColor` - UIColor  
 The color of the line around the box when it is On.
 
 ##### Animations
-`animationDuration`  
+`animationDuration` - CGFloat  
 The duration in seconds of the animations. Defaults to `0.5`.
 
-`onAnimationType`  
+`onAnimationType` - BEMAnimationType  
 The type of animation to use when the checkbox gets checked. Defaults to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
 
-`offAnimationType`  
+`offAnimationType` - BEMAnimationType  
 The type of animation to use when the checkbox gets unchecked. Defaults to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
 
 `BEMAnimationType`  
