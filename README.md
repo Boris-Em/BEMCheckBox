@@ -15,7 +15,7 @@
   * [Installation](#installation)
   * [Setup](#setup)
 * [**Documentation**](#documentation)
-  * [Enabling / Disabling the Checkbox](#enabling-/-disabling-the-checkbox) 
+  * [Enabling / Disabling the Checkbox](#enabling--disabling-the-checkbox) 
   * [Reloading](#reloading)
   * [Customization](#customization)
 
