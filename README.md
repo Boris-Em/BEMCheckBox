@@ -100,3 +100,15 @@ The color of the inside of the box when it is On.
 
 `onTintColor`  
 The color of the line around the box when it is On.
+
+##### Animations
+
+`onAnimationType`  
+The type of animation to use when the checkbox gets checked. Default to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
+
+`offAnimationType`  
+The type of animation to use when the checkbox gets unchecked. Default to `BEMAnimationTypeStroke`. See `BEMAnimationType` bellow for possible values.
+
+`BEMAnimationType`  
+The possible values for `onAnimationType` and `offAnimationType`.  
+PICTURES
