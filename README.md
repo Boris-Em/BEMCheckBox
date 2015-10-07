@@ -137,4 +137,6 @@ The type of animation to use when the checkbox gets unchecked. Defaults to `BEMA
 
 `BEMAnimationType`  
 The possible values for `onAnimationType` and `offAnimationType`.  
-PICTURES
+- `BEMAnimationTypeStroke`
+<p align="left"><img src="http://s3.postimg.org/g3xoqqn73/BEMAnimation_Type_Stroke.gif"/></p>
+
