@@ -111,7 +111,7 @@ BOOL to control if the box should be hidden or not. Setting this property to `YE
 
 `boxType` - BEMBoxType   
 The type of box to use. See `BEMBoxType` for possible values. Defaults to `BEMBoxTypeCircle`. 
-PICTURE
+<p align="center"><img src="http://s10.postimg.org/uui5vyry1/BEMCheck_Box_box_type.jpg"/></p>
 
 `tintColor` - UIColor  
 The color of the box when the checkbox is Off.
