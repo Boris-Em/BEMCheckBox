@@ -98,7 +98,7 @@ Example usage:
 ### Customization
 **BEMCheckBox** is exclusively customizable though properties.  
 The following diagram provides a good overview:  
-<p align="center"><img src="http://s22.postimg.org/6gyutl53l/BEMCheck_Box_Properties.jpg"/></p>
+<p align="center"><img src="http://s12.postimg.org/6bmtv86jx/BEMCheck_Box_Properties.jpg"/></p>
 
 
 ##### Apparence Properties
