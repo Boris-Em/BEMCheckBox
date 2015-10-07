@@ -140,3 +140,6 @@ The possible values for `onAnimationType` and `offAnimationType`.
 - `BEMAnimationTypeStroke`
 <p align="left"><img src="http://s3.postimg.org/g3xoqqn73/BEMAnimation_Type_Stroke.gif"/></p>
 
+- `BEMAnimationTypeFill`
+<p align="left"><img src="http://s29.postimg.org/40whxf2qr/BEMAnimation_Type_Fill.gif"/></p>
+
