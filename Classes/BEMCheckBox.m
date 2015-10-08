@@ -152,8 +152,10 @@
         }
         if (self.on) {
             [self drawOnBox];
-            [self drawCheckMark];
         }
+    }
+    if (self.on) {
+        [self drawCheckMark];
     }
 }
 
