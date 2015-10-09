@@ -30,22 +30,21 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
      */
     BEMAnimationTypeStroke,
     
-    /** When tapped, the checkbox is filled from its centered.
+    /** When tapped, the checkbox is filled from its center.
      * Should be used with a colored onFillColor property.
      */
     BEMAnimationTypeFill,
     
-    /** When tapped, the checkbox is filled from its centered.
-     * Should be used with a colored onFillColor property.
+    /** Animates the check mark with a bouncy effect.
      */
     BEMAnimationTypeBounce,
     
-    /** When tapped, the checkbox is filled from its centered.
+    /** Morphs the checkmark from a line.
      * Should be used with a colored onFillColor property.
      */
     BEMAnimationTypeFlat,
     
-    /** Animates the box and check as if they were drawn in one line.
+    /** Animates the box and check as if they were drawn in one continuous line.
      * Should be used with a clear colored onFillColor property.
      */
     BEMAnimationTypeOneStroke,
