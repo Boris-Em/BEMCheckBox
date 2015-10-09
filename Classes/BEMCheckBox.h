@@ -10,6 +10,8 @@
 
 IB_DESIGNABLE
 
+/**  Tasteful Checkbox for iOS.
+ */
 @interface BEMCheckBox : UIView
 
 typedef NS_ENUM(NSInteger, BEMBoxType) {

@@ -12,13 +12,24 @@
 
 @interface BEMCheckBox ()
 
-@property (strong, nonatomic) UITapGestureRecognizer *tap;
-
+/** The layer where the box is drawn when the check box is set to On.
+ */
 @property (strong, nonatomic) CAShapeLayer *onBoxLayer;
+
+/** The layer where the box is drawn when the check box is set to Off.
+ */
 @property (strong, nonatomic) CAShapeLayer *offBoxLayer;
+
+/** The layer where the check mark is drawn when the check box is set to On.
+ */
 @property (strong, nonatomic) CAShapeLayer *checkMarkLayer;
 
+/** The BEMAnimationManager object used to generate animations.
+ */
 @property (strong, nonatomic) BEMAnimationManager *animationManager;
+
+/** The BEMPathManager object used to generate paths.
+ */
 @property (strong, nonatomic) BEMPathManager *pathManager;
 
 @end
@@ -50,11 +61,12 @@
     _animationDuration = 0.5;
     _onAnimationType = BEMAnimationTypeStroke;
     _offAnimationType = BEMAnimationTypeStroke;
-    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapCheckBox:)];
     self.backgroundColor = [UIColor clearColor];
     
     [self initPathManager];
     [self initAnimationManager];
+    
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapCheckBox:)]];
 }
 
 - (void)initPathManager {
@@ -72,8 +84,6 @@
     self.pathManager.size = self.frame.size.height;
     
     [super layoutSubviews];
-    
-    [self addGestureRecognizer:_tap];
 }
 
 - (void)reload {
@@ -144,7 +154,8 @@
     [self setOn:self.on animated:NO];
 }
 
-/// Draws the entire checkbox, depending on the current state of the on property.
+/** Draws the entire checkbox, depending on the current state of the on property.
+ */
 - (void)drawEntireCheckBox {
     if (!self.hideBox) {
         if (!self.offBoxLayer) {
@@ -159,7 +170,8 @@
     }
 }
 
-/// Draws the box used when the checkbox is set to NO.
+/** Draws the box used when the checkbox is set to Off.
+ */
 - (void)drawOffBox {
     [self.offBoxLayer removeFromSuperlayer];
     self.offBoxLayer = [CAShapeLayer layer];
@@ -175,7 +187,8 @@
     [self.layer addSublayer:self.offBoxLayer];
 }
 
-/// Draws the box when the checkbox is set to YES.
+/** Draws the box when the checkbox is set to On.
+ */
 - (void)drawOnBox {
     [self.onBoxLayer removeFromSuperlayer];
     self.onBoxLayer = [CAShapeLayer layer];
@@ -189,6 +202,8 @@
     [self.layer addSublayer:self.onBoxLayer];
 }
 
+/** Draws the check mark when the checkbox is set to On.
+ */
 - (void)drawCheckMark {
     [self.checkMarkLayer removeFromSuperlayer];
     self.checkMarkLayer = [CAShapeLayer layer];
