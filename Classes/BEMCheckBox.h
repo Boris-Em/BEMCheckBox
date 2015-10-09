@@ -14,8 +14,8 @@ IB_DESIGNABLE
  */
 @interface BEMCheckBox : UIView
 
-/**
- * @see different type of boxes available.
+/** The different type of boxes available.
+ * @see boxType
  */
 typedef NS_ENUM(NSInteger, BEMBoxType) {
     /** Circled box.

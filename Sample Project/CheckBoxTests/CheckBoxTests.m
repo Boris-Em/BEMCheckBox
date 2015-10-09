@@ -83,7 +83,6 @@
     XCTAssert(offLayer.lineWidth == 2.0);
     XCTAssert(self.checkBox.layer.sublayers.count == 1);
     
-    
     [self.checkBox reload];
     self.checkBox.on = NO;
 
