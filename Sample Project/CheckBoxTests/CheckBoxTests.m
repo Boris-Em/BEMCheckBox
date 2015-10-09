@@ -49,16 +49,19 @@
 }
 
 - (void)testSetOnAnimated {
-    [self.checkBox setOn:YES animated:YES];
-    XCTAssert(self.checkBox.on == YES);
-    
-    [self.checkBox setOn:NO animated:YES];
-    XCTAssert(self.checkBox.on == NO);
-    
     [self.checkBox setOn:YES animated:NO];
     XCTAssert(self.checkBox.on == YES);
+    XCTAssert(self.checkBox.layer.sublayers.count == 3);
     
     [self.checkBox setOn:NO animated:NO];
+    XCTAssert(self.checkBox.on == NO);
+    XCTAssert(self.checkBox.layer.sublayers.count == 1);
+    
+    [self.checkBox setOn:YES animated:YES];
+    XCTAssert(self.checkBox.on == YES);
+    XCTAssert(self.checkBox.layer.sublayers.count == 3);
+    
+    [self.checkBox setOn:NO animated:YES];
     XCTAssert(self.checkBox.on == NO);
 }
 
@@ -69,6 +72,24 @@
     
     self.checkBox.on = NO;
     XCTAssert(self.checkBox.on == NO);
+    XCTAssert(self.checkBox.layer.sublayers.count == 1);
+}
+
+- (void)testReload {
+    self.checkBox.on = NO;
+    self.checkBox.lineWidth = 5.0;
+    CAShapeLayer *offLayer = (CAShapeLayer *)[self.checkBox.layer.sublayers firstObject];
+    XCTAssertNotNil(offLayer);
+    XCTAssert(offLayer.lineWidth == 2.0);
+    XCTAssert(self.checkBox.layer.sublayers.count == 1);
+    
+    
+    [self.checkBox reload];
+    self.checkBox.on = NO;
+
+    offLayer = (CAShapeLayer *)[self.checkBox.layer.sublayers firstObject];
+    XCTAssertNotNil(offLayer);
+    XCTAssert(offLayer.lineWidth == 5.0);
     XCTAssert(self.checkBox.layer.sublayers.count == 1);
 }
 
