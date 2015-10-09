@@ -334,6 +334,8 @@
             return;
             
         case BEMAnimationTypeOneStroke: {
+            self.checkMarkLayer.path = [[self.pathManager pathForLongCheckMark] bezierPathByReversingPath].CGPath;
+            
             CABasicAnimation *checkMorphAnimation = [self.animationManager morphAnimationFromPath:[self.pathManager pathForCheckMark] toPath:[self.pathManager pathForLongCheckMark]];
             checkMorphAnimation.delegate = nil;
             checkMorphAnimation.duration = checkMorphAnimation.duration / 6;
