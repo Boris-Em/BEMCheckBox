@@ -138,7 +138,7 @@
     [self setOn:!self.on animated:YES];
 }
 
-#pragma  mark - Helper methods
+#pragma  mark - Helper methods -
 #pragma mark Drawings
 - (void)drawRect:(CGRect)rect {
     [self setOn:self.on animated:NO];
