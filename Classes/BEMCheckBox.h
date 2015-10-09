@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
     BEMAnimationTypeFade
 };
 
-/** This property allows you to retrieve and set (without animation) a value determining whether the BEMCheckBox object is on or off.
+/** This property allows you to retrieve and set (without animation) a value determining whether the BEMCheckBox object is On or Off.
   * Default to NO.
  */
 @property (nonatomic) IBInspectable BOOL on;
@@ -98,13 +98,13 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
  */
 @property (nonatomic) BEMBoxType boxType;
 
-/** The animation type when the check mark is gets set to "on".
+/** The animation type when the check mark gets set to On.
  * @warning Some animations might not look as intended if the different colors of the control are not appropriatly configured.
  * @see BEMAnimationType. 
  */
 @property (nonatomic) BEMAnimationType onAnimationType;
 
-/** The animation type when the check mark is gets set to "off".
+/** The animation type when the check mark gets set to Off.
  * @warning Some animations might not look as intended if the different colors of the control are not appropriatly configured.
  * @see BEMAnimationType. 
  */
@@ -115,7 +115,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 - (void)setOn:(BOOL)on animated:(BOOL)animated;
 
 /** Forces a redraw of the entire check box.
- * The current value of 'on' is kept.
+ * The current value of On is kept.
  */
 - (void)reload;
 
