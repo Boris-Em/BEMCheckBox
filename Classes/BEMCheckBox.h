@@ -14,6 +14,9 @@ IB_DESIGNABLE
  */
 @interface BEMCheckBox : UIView
 
+/**
+ * @see different type of boxes available.
+ */
 typedef NS_ENUM(NSInteger, BEMBoxType) {
     /** Circled box.
      */
@@ -24,6 +27,9 @@ typedef NS_ENUM(NSInteger, BEMBoxType) {
     BEMBoxTypeSquare
 };
 
+/** The different type of animations available.
+ * @see onAnimationType and offAnimationType.
+ */
 typedef NS_ENUM(NSInteger, BEMAnimationType) {
     /** Animates the box and the check as if they were drawn.
      *  Should be used with a clear colored onFillColor property.
@@ -49,7 +55,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
      */
     BEMAnimationTypeOneStroke,
     
-    /** When tapped, the checkbox is fading in (opacity).
+    /** When tapped, the checkbox is fading in or out (opacity).
      */
     BEMAnimationTypeFade
 };
