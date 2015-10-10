@@ -22,6 +22,8 @@
 ## Project Details
 Learn more about the **BEMCheckBox** project, licensing, support etc.
 
+<p align="center"><img src="http://s12.postimg.org/vn2irahjx/BEMCheck_Box.gif"/></p>	
+
 ### Requirements
  - Requires iOS 7 or later. The sample project is optimized for iOS 9.
  - Requires Automatic Reference Counting (ARC).
