@@ -1,0 +1,29 @@
+{
+  "name": "BEMCheckBox",
+  "version": "1.0.0",
+  "summary": "Tastefully grafted Checkbox for iOS.",
+  "description": "BEMCheckBox lets your create beautiful check boxes for iOS.",
+  "homepage": "https://github.com/Boris-Em/BEMSimpleLineGraph",
+  "screenshots": [
+    "http://s12.postimg.org/vn2irahjx/BEMCheck_Box.gif"
+  ],
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Boris Emorine": "boris.emorine@gmail.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source": {
+    "git": "https://github.com/Boris-Em/BEMCheckBox.git",
+    "tag": "v1.0.0"
+  },
+  "source_files": [
+    "Classes",
+    "Classes/**/*.{h,m}"
+  ]
+}
