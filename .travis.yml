@@ -4,4 +4,4 @@ osx_image: xcode6.4
 # xcode_scheme: CheckBoxTests
 # xcode_sdk: iphonesimulator
 script:
-  - xcodebuild clean build test -project "Sample Project/CheckBox.xcodeproj" -scheme CheckBoxTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO 
+  - xcodebuild clean build test -project "Sample Project/CheckBox.xcodeproj" -scheme CheckBox -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO 
