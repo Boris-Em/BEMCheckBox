@@ -1,4 +1,8 @@
 # BEMCheckBox
+[![Build Status](https://travis-ci.org/Boris-Em/BEMCheckBox.svg)](https://travis-ci.org/Boris-Em/BEMCheckBox)
+[![Version](https://img.shields.io/cocoapods/v/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
+[![License](https://img.shields.io/cocoapods/l/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
+[![Platform](https://img.shields.io/cocoapods/p/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
 
 <p align="center"><img src="http://s1.postimg.org/mcnwdl88v/BEMCheck_Box.jpg"/></p>	
 
