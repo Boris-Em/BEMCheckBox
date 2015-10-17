@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BEMAnimationsTableViewController.h"
 
-@interface BEMMainViewController : UIViewController <BEMAnimationsTableViewDelegate, BEMCheckBoxDelegate>
+@interface BEMMainViewController : UIViewController <BEMAnimationsTableViewDelegate>
 
 @end
