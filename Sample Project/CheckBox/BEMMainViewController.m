@@ -51,7 +51,6 @@
 }
 
 - (IBAction)didTapOnBoxTypeSegmentedControl:(UISegmentedControl *)segmentedControl {
-    
     self.checkBox.boxType = (segmentedControl.selectedSegmentIndex == 0) ?BEMBoxTypeCircle : BEMBoxTypeSquare;
     
     [self.checkBox reload];
@@ -95,7 +94,7 @@
     }
 }
 
-#pragma mark - Navigation
+#pragma mark Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toAnimationSelection"]) {
         BEMAnimationsTableViewController *destVC = (BEMAnimationsTableViewController *)segue.destinationViewController;
