@@ -10,6 +10,16 @@
 
 IB_DESIGNABLE
 
+/** The BEMCheckBoxDelegate protocol. Used to receive life cycle events.
+ */
+@protocol BEMCheckBoxDelegate <NSObject>
+
+@optional
+
+- (void)didTapCheckBox;
+
+@end
+
 /**  Tasteful Checkbox for iOS.
  */
 @interface BEMCheckBox : UIView
@@ -59,6 +69,11 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
      */
     BEMAnimationTypeFade
 };
+
+/** The object that acts as the delegate of the receiving check box.
+* @discussion The delegate must adopt the \p BEMCheckBoxDelegate protocol. The delegate is not retained.
+ */
+@property (nonatomic, weak) IBOutlet id <BEMCheckBoxDelegate> delegate;
 
 /** This property allows you to retrieve and set (without animation) a value determining whether the BEMCheckBox object is On or Off.
   * Default to NO.
