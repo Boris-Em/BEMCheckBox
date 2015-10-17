@@ -8,21 +8,14 @@
 
 @import UIKit;
 
-IB_DESIGNABLE
+@protocol BEMCheckBoxDelegate;
 
-/** The BEMCheckBoxDelegate protocol. Used to receive life cycle events.
- */
-@protocol BEMCheckBoxDelegate <NSObject>
-
-@optional
-
-- (void)didTapCheckBox;
-
-@end
+// Tell the compiler to assume that no method should have a NULL value
+NS_ASSUME_NONNULL_BEGIN
 
 /**  Tasteful Checkbox for iOS.
  */
-@interface BEMCheckBox : UIView
+IB_DESIGNABLE @interface BEMCheckBox : UIView
 
 /** The different type of boxes available.
  * @see boxType
@@ -135,3 +128,16 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 - (void)reload;
 
 @end
+
+
+/** The BEMCheckBoxDelegate protocol. Used to receive life cycle events.
+ */
+@protocol BEMCheckBoxDelegate <NSObject>
+
+@optional
+
+- (void)didTapCheckBox:(BEMCheckBox*)checkBox;
+
+@end
+
+NS_ASSUME_NONNULL_END
