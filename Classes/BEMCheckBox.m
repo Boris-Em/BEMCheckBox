@@ -77,7 +77,6 @@
 
 - (void)initAnimationManager {
     _animationManager = [[BEMAnimationManager alloc] initWithAnimationDuration:_animationDuration];
-    _animationManager.delegate = self;
 }
 
 - (void)layoutSubviews {
@@ -146,6 +145,9 @@
 #pragma mark Gesture Recognizer
 - (void)handleTapCheckBox:(UITapGestureRecognizer *)recognizer {
     [self setOn:!self.on animated:YES];
+    if ([self.delegate respondsToSelector:@selector(didTapCheckBox:)]) {
+        [self.delegate didTapCheckBox:self];
+    }
 }
 
 #pragma  mark - Helper methods -
@@ -231,21 +233,25 @@
             CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:NO];
             
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
+            animation.delegate = self;
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
             return;
             
         case BEMAnimationTypeFill: {
             CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:0.18 reverse:NO];
+            CABasicAnimation *opacityAnimation = [self.animationManager opacityAnimationReverse:NO];
+            opacityAnimation.delegate = self;
             
             [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
-            [self.checkMarkLayer addAnimation:[self.animationManager opacityAnimationReverse:NO] forKey:@"opacity"];
+            [self.checkMarkLayer addAnimation:opacityAnimation forKey:@"opacity"];
         }
             return;
             
         case BEMAnimationTypeBounce: {
             CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
             CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:amplitude reverse:NO];
+            wiggle.delegate = self;
             
             CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:NO];
             opacity.duration = self.animationDuration / 1.4;
@@ -256,13 +262,14 @@
             return;
             
         case BEMAnimationTypeFlat: {
-            CABasicAnimation *animation = [self.animationManager morphAnimationFromPath:[self.pathManager pathForFlatCheckMark] toPath:[self.pathManager pathForCheckMark]];
+            CABasicAnimation *morphAnimation = [self.animationManager morphAnimationFromPath:[self.pathManager pathForFlatCheckMark] toPath:[self.pathManager pathForCheckMark]];
+            morphAnimation.delegate = self;
             
             CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:NO];
             opacity.duration = self.animationDuration / 5;
             
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
-            [self.checkMarkLayer addAnimation:animation forKey:@"path"];
+            [self.checkMarkLayer addAnimation:morphAnimation forKey:@"path"];
             [self.checkMarkLayer addAnimation:opacity forKey:@"opacity"];
         }
             return;
@@ -288,6 +295,7 @@
             checkMorphAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration + checkStrokeAnimation.duration;
             checkMorphAnimation.removedOnCompletion = NO;
             checkMorphAnimation.fillMode = kCAFillModeForwards;
+            checkMorphAnimation.delegate = self;
             [self.checkMarkLayer addAnimation:checkMorphAnimation forKey:@"path"];
         }
             return;
@@ -295,6 +303,7 @@
         default: {
             CABasicAnimation *animation = [self.animationManager opacityAnimationReverse:NO];
             [self.onBoxLayer addAnimation:animation forKey:@"opacity"];
+            animation.delegate = self;
             [self.checkMarkLayer addAnimation:animation forKey:@"opacity"];
         }
             return;
@@ -312,6 +321,7 @@
         case BEMAnimationTypeStroke: {
             CABasicAnimation *animation = [self.animationManager strokeAnimationReverse:YES];
             [self.onBoxLayer addAnimation:animation forKey:@"strokeEnd"];
+            animation.delegate = self;
             [self.checkMarkLayer addAnimation:animation forKey:@"strokeEnd"];
         }
             return;
@@ -319,6 +329,7 @@
         case BEMAnimationTypeFill: {
             CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:0.18 reverse:YES];
             wiggle.duration = self.animationDuration;
+            wiggle.delegate = self;
             
             [self.onBoxLayer addAnimation:wiggle forKey:@"transform"];
             [self.checkMarkLayer addAnimation:[self.animationManager opacityAnimationReverse:YES] forKey:@"opacity"];
@@ -330,6 +341,8 @@
             CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:amplitude reverse:YES];
             wiggle.duration = self.animationDuration / 1.1;
             CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:YES];
+            opacity.delegate = self;
+            
             [self.onBoxLayer addAnimation:opacity forKey:@"opacity"];
             [self.checkMarkLayer addAnimation:wiggle forKey:@"transform"];
         }
@@ -370,6 +383,7 @@
             CABasicAnimation *boxStrokeAnimation = [self.animationManager strokeAnimationReverse:YES];
             boxStrokeAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration + checkStrokeAnimation.duration;
             boxStrokeAnimation.duration = boxStrokeAnimation.duration / 2;
+            boxStrokeAnimation.delegate = self;
             [self.onBoxLayer addAnimation:boxStrokeAnimation forKey:@"strokeEnd"];
         }
             return;
@@ -378,6 +392,7 @@
             CABasicAnimation *animation = [self.animationManager opacityAnimationReverse:YES];
             
             [self.onBoxLayer addAnimation:animation forKey:@"opacity"];
+            animation.delegate = self;
             [self.checkMarkLayer addAnimation:animation forKey:@"opacity"];
         }
             return;
@@ -386,14 +401,20 @@
 
 #pragma mark Animation Delegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    if (flag == YES && self.on == NO) {
-        [self.onBoxLayer removeFromSuperlayer];
-        [self.checkMarkLayer removeFromSuperlayer];
+    if (flag == YES) {
+        if (self.on == NO) {
+            [self.onBoxLayer removeFromSuperlayer];
+            [self.checkMarkLayer removeFromSuperlayer];
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(animationDidStopForCheckBox:)]) {
+            [self.delegate animationDidStopForCheckBox:self];
+        }
     }
 }
 
 - (void)dealloc {
-    self.animationManager.delegate = nil;
+    self.delegate = nil;
 }
 
 @end

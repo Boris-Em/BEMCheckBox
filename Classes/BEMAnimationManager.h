@@ -12,10 +12,6 @@
  */
 @interface BEMAnimationManager : NSObject
 
-/** The animation delegate
- */
-@property (weak, nonatomic) id delegate;
-
 /** The duration of the animation created by the BEMAnimationManager object.
  */
 @property (nonatomic) CGFloat animationDuration;

@@ -21,7 +21,6 @@
     [super setUp];
     
     self.manager = [[BEMAnimationManager alloc] initWithAnimationDuration:10.0];
-    self.manager.delegate = self;
 }
 
 - (void)testInit {
@@ -35,7 +34,6 @@
     CABasicAnimation * animation = [self.manager strokeAnimationReverse:NO];
     XCTAssertNotNil(animation);
     XCTAssert(animation.duration == 10.0);
-    XCTAssert(animation.delegate == self);
     XCTAssert([animation.fromValue isEqualToNumber:@0.0]);
     XCTAssert([animation.toValue isEqualToNumber:@1.0]);
     XCTAssert(animation.removedOnCompletion == NO);
