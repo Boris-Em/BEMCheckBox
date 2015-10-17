@@ -9,7 +9,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--BEMCheckBox-->
+        <!--Delegate-->
         <scene sceneID="ovb-nr-Et5">
             <objects>
                 <viewController id="T4m-fZ-8sp" customClass="BEMMainViewController" sceneMemberID="viewController">
@@ -147,6 +147,9 @@
                                         <exclude reference="0fd-Ud-sN6"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="T4m-fZ-8sp" id="16l-9c-SBT"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
