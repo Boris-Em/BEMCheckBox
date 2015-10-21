@@ -160,7 +160,7 @@
  */
 - (void)drawEntireCheckBox {
     if (!self.hideBox) {
-        if (!self.offBoxLayer) {
+        if (!self.offBoxLayer && self.pathManager.size != 0) {
             [self drawOffBox];
         }
         if (self.on) {
