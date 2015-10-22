@@ -160,7 +160,7 @@
  */
 - (void)drawEntireCheckBox {
     if (!self.hideBox) {
-        if (!self.offBoxLayer && self.pathManager.size != 0) {
+        if (!self.offBoxLayer || CGPathGetBoundingBox(self.offBoxLayer.path).size.height == 0.0) {
             [self drawOffBox];
         }
         if (self.on) {
