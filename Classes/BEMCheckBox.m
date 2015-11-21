@@ -131,15 +131,37 @@
 - (void)setBoxType:(BEMBoxType)boxType {
     _boxType = boxType;
     _pathManager.boxType = boxType;
+    [self reload];
 }
 
 - (void)setLineWidth:(CGFloat)lineWidth {
     _lineWidth = lineWidth;
     _pathManager.lineWidth = lineWidth;
+    [self reload];
 }
 
 - (void)setOffAnimationType:(BEMAnimationType)offAnimationType {
     _offAnimationType = offAnimationType;
+}
+
+- (void)setTintColor:(UIColor *)tintColor {
+    _tintColor = tintColor;
+    [self drawOffBox];
+}
+
+- (void)setOnTintColor:(UIColor *)onTintColor {
+    _onTintColor = onTintColor;
+    [self reload];
+}
+
+- (void)setOnFillColor:(UIColor *)onFillColor {
+    _onFillColor = onFillColor;
+    [self reload];
+}
+
+- (void)setOnCheckColor:(UIColor *)onCheckColor {
+    _onCheckColor = onCheckColor;
+    [self reload];
 }
 
 #pragma mark Gesture Recognizer
