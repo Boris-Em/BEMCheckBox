@@ -77,19 +77,13 @@
 
 - (void)testReload {
     self.checkBox.on = NO;
-    self.checkBox.lineWidth = 5.0;
-    CAShapeLayer *offLayer = (CAShapeLayer *)[self.checkBox.layer.sublayers firstObject];
-    XCTAssertNotNil(offLayer);
-    XCTAssert(offLayer.lineWidth == 2.0);
-    XCTAssert(self.checkBox.layer.sublayers.count == 1);
-    
+    XCTAssert(self.checkBox.on == NO);
     [self.checkBox reload];
-    self.checkBox.on = NO;
-
-    offLayer = (CAShapeLayer *)[self.checkBox.layer.sublayers firstObject];
-    XCTAssertNotNil(offLayer);
-    XCTAssert(offLayer.lineWidth == 5.0);
-    XCTAssert(self.checkBox.layer.sublayers.count == 1);
+    XCTAssert(self.checkBox.on == NO);
+    self.checkBox.on = YES;
+    XCTAssert(self.checkBox.on == YES);
+    [self.checkBox reload];
+    XCTAssert(self.checkBox.on == YES);
 }
 
 @end
