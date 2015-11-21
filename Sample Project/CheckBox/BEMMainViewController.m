@@ -43,7 +43,6 @@
 #pragma mark Actions
 - (IBAction)didDragLineWidthSlider:(UISlider *)slider {
     self.checkBox.lineWidth = slider.value;
-    [self.checkBox reload];
 }
 
 - (IBAction)didDragAnimationSpeedSlider:(UISlider *)slider {
@@ -52,8 +51,6 @@
 
 - (IBAction)didTapOnBoxTypeSegmentedControl:(UISegmentedControl *)segmentedControl {
     self.checkBox.boxType = (segmentedControl.selectedSegmentIndex == 0) ?BEMBoxTypeCircle : BEMBoxTypeSquare;
-    
-    [self.checkBox reload];
 }
 
 - (IBAction)didTapOnDrawTypeSegmentedControl:(UISegmentedControl *)segmentedControl {
@@ -63,7 +60,6 @@
             self.checkBox.onTintColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
             self.checkBox.onFillColor = [UIColor clearColor];
             self.checkBox.onCheckColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
-            [self.checkBox reload];
             break;
             
         default:
@@ -71,7 +67,6 @@
             self.checkBox.onTintColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
             self.checkBox.onFillColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
             self.checkBox.onCheckColor = [UIColor whiteColor];
-            [self.checkBox reload];
             break;
     }
 }
