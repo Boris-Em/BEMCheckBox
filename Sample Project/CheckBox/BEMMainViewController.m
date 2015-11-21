@@ -51,8 +51,6 @@
 
 - (IBAction)didTapOnBoxTypeSegmentedControl:(UISegmentedControl *)segmentedControl {
     self.checkBox.boxType = (segmentedControl.selectedSegmentIndex == 0) ?BEMBoxTypeCircle : BEMBoxTypeSquare;
-    
-    [self.checkBox reload];
 }
 
 - (IBAction)didTapOnDrawTypeSegmentedControl:(UISegmentedControl *)segmentedControl {
