@@ -59,6 +59,7 @@
     _tintColor = [UIColor lightGrayColor];
     _lineWidth = 2.0;
     _animationDuration = 0.5;
+    _minimumTouchSize = CGSizeMake(44, 44);
     _onAnimationType = BEMAnimationTypeStroke;
     _offAnimationType = BEMAnimationTypeStroke;
     self.backgroundColor = [UIColor clearColor];
@@ -172,20 +173,20 @@
     }
 }
 
-// increase touch area
+#pragma mark Increase touch area
 - (BOOL) pointInside:(CGPoint)point withEvent:(UIEvent *)event;
 {
     BOOL found = [super pointInside:point withEvent:event];
     
-    CGFloat minimumSize = 44;
-    CGFloat w = self.frame.size.width;
-    CGFloat h = self.frame.size.height;
+    CGSize minimumSize = self.minimumTouchSize;
+    CGFloat width = self.bounds.size.width;
+    CGFloat height = self.bounds.size.height;
     
-    if (found == NO && (w < minimumSize || h < minimumSize)) {
-        CGFloat increaseW = minimumSize - w;
-        CGFloat increaseH = minimumSize - h;
+    if (found == NO && (width < minimumSize.width || height < minimumSize.height)) {
+        CGFloat increaseWidth = minimumSize.width - width;
+        CGFloat increaseHeight = minimumSize.height - height;
         
-        CGRect rect = CGRectInset(self.bounds, (-increaseW/2), (-increaseH/2));
+        CGRect rect = CGRectInset(self.bounds, (-increaseWidth / 2), (-increaseHeight / 2));
         
         found = CGRectContainsPoint(rect, point);
     }

@@ -118,6 +118,10 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
  */
 @property (nonatomic) BEMAnimationType offAnimationType;
 
+/** If the checkbox width or height is smaller than this value, the touch area will be increased. Allows for visually small checkboxes to still be easily tapped. Default: (44, 44)
+ */
+@property (assign, nonatomic) IBInspectable CGSize minimumTouchSize;
+
 /** Set the state of the check box to On or Off, optionally animating the transition.
  */
 - (void)setOn:(BOOL)on animated:(BOOL)animated;
