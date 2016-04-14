@@ -173,6 +173,8 @@
     }
 }
 
+#pragma  mark - Helper methods -
+
 #pragma mark Increase touch area
 - (BOOL) pointInside:(CGPoint)point withEvent:(UIEvent *)event;
 {
@@ -194,7 +196,6 @@
     return found;
 }
 
-#pragma  mark - Helper methods -
 #pragma mark Drawings
 - (void)drawRect:(CGRect)rect {
     [self setOn:self.on animated:NO];
