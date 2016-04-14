@@ -172,6 +172,27 @@
     }
 }
 
+// increase touch area
+- (BOOL) pointInside:(CGPoint)point withEvent:(UIEvent *)event;
+{
+    BOOL found = [super pointInside:point withEvent:event];
+    
+    CGFloat minimumSize = 44;
+    CGFloat w = self.frame.size.width;
+    CGFloat h = self.frame.size.height;
+    
+    if (found == NO && (w < minimumSize || h < minimumSize)) {
+        CGFloat increaseW = minimumSize - w;
+        CGFloat increaseH = minimumSize - h;
+        
+        CGRect rect = CGRectInset(self.bounds, (-increaseW/2), (-increaseH/2));
+        
+        found = CGRectContainsPoint(rect, point);
+    }
+    
+    return found;
+}
+
 #pragma  mark - Helper methods -
 #pragma mark Drawings
 - (void)drawRect:(CGRect)rect {
