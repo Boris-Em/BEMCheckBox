@@ -7,7 +7,6 @@
 //
 
 @import UIKit;
-
 @protocol BEMCheckBoxDelegate;
 
 // Tell the compiler to assume that no method should have a NULL value
