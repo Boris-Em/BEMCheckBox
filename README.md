@@ -110,7 +110,7 @@ Example usage:
 **BEMCheckBox** uses a delegate to receive check box events. The delegate object must conform to the `BEMCheckBoxDelegate` protocol, which is composed of two optional methods:
 
 - `didTapCheckBox:`  
-Sent to the delegate every time the check box gets tapped, after its properties are updated (on), but before the animations are completed.
+Sent to the delegate every time the check box gets tapped, after its properties are updated (`on`), but before the animations are completed.
 
 - `animationDidStopForCheckBox:`  
 Sent to the delegate every time the check box finishes being animated.
