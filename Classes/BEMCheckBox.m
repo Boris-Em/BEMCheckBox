@@ -320,7 +320,7 @@
             return;
             
         case BEMAnimationTypeOneStroke: {
-            // Temporary set the path of the checkmarl to the long checkmarl
+            // Temporary set the path of the checkmark to the long checkmark
             self.checkMarkLayer.path = [[self.pathManager pathForLongCheckMark] bezierPathByReversingPath].CGPath;
             
             CABasicAnimation *boxStrokeAnimation = [self.animationManager strokeAnimationReverse:NO];
