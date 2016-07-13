@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**  Tasteful Checkbox for iOS.
  */
-IB_DESIGNABLE @interface BEMCheckBox : UIView
+IB_DESIGNABLE @interface BEMCheckBox : UIView <CAAnimationDelegate>
 
 /** The different type of boxes available.
  * @see boxType
