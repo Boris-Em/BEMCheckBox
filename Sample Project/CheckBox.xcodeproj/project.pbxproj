@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5643F12E1CDE722C0020E238 /* CheckBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 5643F12D1CDE722C0020E238 /* CheckBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5643F1321CDE722C0020E238 /* BEMCheckBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5643F12B1CDE722C0020E238 /* BEMCheckBox.framework */; };
 		5643F1331CDE722C0020E238 /* BEMCheckBox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5643F12B1CDE722C0020E238 /* BEMCheckBox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5643F1381CDE724A0020E238 /* BEMCheckBox.h in Headers */ = {isa = PBXBuildFile; fileRef = C325373A1B9231FD0059F394 /* BEMCheckBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,13 +21,10 @@
 		C325371E1B9231780059F394 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C325371D1B9231780059F394 /* Images.xcassets */; };
 		C32537211B9231780059F394 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C325371F1B9231780059F394 /* LaunchScreen.xib */; };
 		C325372D1B9231780059F394 /* CheckBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C325372C1B9231780059F394 /* CheckBoxTests.m */; };
-		C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C325373B1B9231FD0059F394 /* BEMCheckBox.m */; };
 		C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */; };
 		C3DFB9BA1BBA475B00D2F8B4 /* AnimationManangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9B91BBA475B00D2F8B4 /* AnimationManangerTests.m */; };
 		C3DFB9BD1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9BC1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m */; };
 		C3E594901BC220C7005EA38B /* BEMCurrentSetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E5948F1BC220C7005EA38B /* BEMCurrentSetupTableViewController.m */; };
-		C3E837AA1BAE3493004576D6 /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */; };
-		C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,7 +211,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5643F1381CDE724A0020E238 /* BEMCheckBox.h in Headers */,
-				5643F12E1CDE722C0020E238 /* CheckBox.h in Headers */,
 				5643F13C1CDE724A0020E238 /* BEMPathManager.h in Headers */,
 				5643F13A1CDE724A0020E238 /* BEMAnimationManager.h in Headers */,
 			);
@@ -362,14 +357,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3E837AD1BAE35D8004576D6 /* BEMPathManager.m in Sources */,
 				C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */,
 				C3DFB9BD1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m in Sources */,
 				C32537161B9231780059F394 /* AppDelegate.m in Sources */,
 				C32537131B9231780059F394 /* main.m in Sources */,
-				C325373C1B9231FD0059F394 /* BEMCheckBox.m in Sources */,
 				C3E594901BC220C7005EA38B /* BEMCurrentSetupTableViewController.m in Sources */,
-				C3E837AA1BAE3493004576D6 /* BEMAnimationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CheckBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = "BEM.$(PRODUCT_NAME:rfc1034identifier).exampleApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "BEM.$(PRODUCT_NAME:rfc1034identifier).exampleApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -560,7 +552,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CheckBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = "BEM.$(PRODUCT_NAME:rfc1034identifier).exampleApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "BEM.$(PRODUCT_NAME:rfc1034identifier).exampleApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
