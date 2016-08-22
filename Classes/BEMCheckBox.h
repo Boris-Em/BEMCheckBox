@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Boris Emorine. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
+
 @protocol BEMCheckBoxDelegate;
 
 /** The different type of boxes available.
@@ -30,7 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**  Tasteful Checkbox for iOS.
  */
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_9_3
+IB_DESIGNABLE @interface BEMCheckBox : UIView <CAAnimationDelegate>
+#else
 IB_DESIGNABLE @interface BEMCheckBox : UIView
+#endif
 
 /** The different type of animations available.
  * @see onAnimationType and offAnimationType.
