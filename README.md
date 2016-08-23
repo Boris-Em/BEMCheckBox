@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
 [![License](https://img.shields.io/cocoapods/l/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
 [![Platform](https://img.shields.io/cocoapods/p/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 <p align="center"><img src="http://s1.postimg.org/mcnwdl88v/BEMCheck_Box.jpg"/></p>	
 
@@ -54,6 +55,27 @@ It only takes a few simple steps to install and setup **BEMCheckBox** to your pr
 ###Installation
 The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To do so, simply add the following line to your `Podfile`:
 	<pre><code>pod 'BEMCheckBox'</code></pre>
+
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate BEMCheckBox into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "Boris-Em/BEMCheckBox"
+```
+
+Run `carthage update` to build the framework and drag the built `BEMCheckBox.framework` into your Xcode project.
+
 	
 The other way to install **BEMCheckBox**, is to drag and drop the *Classes* folder into your Xcode project. When you do so, make sure to check the "*Copy items into destination group's folder*" box.
 

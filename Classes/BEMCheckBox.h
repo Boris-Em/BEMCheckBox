@@ -10,17 +10,6 @@
 
 @protocol BEMCheckBoxDelegate;
 
-// Tell the compiler to assume that no method should have a NULL value
-NS_ASSUME_NONNULL_BEGIN
-
-/**  Tasteful Checkbox for iOS.
- */
-#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_9_3
-IB_DESIGNABLE @interface BEMCheckBox : UIView <CAAnimationDelegate>
-#else
-IB_DESIGNABLE @interface BEMCheckBox : UIView
-#endif
-
 /** The different type of boxes available.
  * @see boxType
  */
@@ -33,6 +22,20 @@ typedef NS_ENUM(NSInteger, BEMBoxType) {
      */
     BEMBoxTypeSquare
 };
+
+#import "BEMPathManager.h"
+#import "BEMAnimationManager.h"
+
+// Tell the compiler to assume that no method should have a NULL value
+NS_ASSUME_NONNULL_BEGIN
+
+/**  Tasteful Checkbox for iOS.
+ */
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_9_3
+IB_DESIGNABLE @interface BEMCheckBox : UIView <CAAnimationDelegate>
+#else
+IB_DESIGNABLE @interface BEMCheckBox : UIView
+#endif
 
 /** The different type of animations available.
  * @see onAnimationType and offAnimationType.
