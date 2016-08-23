@@ -52,32 +52,20 @@ The iOS Sample App included with this project demonstrates one way to correctly 
 ## Getting Started
 It only takes a few simple steps to install and setup **BEMCheckBox** to your project.
 
-###Installation
+### Installation
+
+#### CocoaPods
 The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To do so, simply add the following line to your `Podfile`:
 	<pre><code>pod 'BEMCheckBox'</code></pre>
 
 
-### Carthage
-
+#### Carthage
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
-To integrate BEMCheckBox into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "Boris-Em/BEMCheckBox"
-```
 
 Run `carthage update` to build the framework and drag the built `BEMCheckBox.framework` into your Xcode project.
 
-	
-The other way to install **BEMCheckBox**, is to drag and drop the *Classes* folder into your Xcode project. When you do so, make sure to check the "*Copy items into destination group's folder*" box.
+#### Manually	
+Finally, you can install **BEMCheckBox** manually. Simply drag and drop the *Classes* folder into your Xcode project. When you do so, make sure to check the "*Copy items into destination group's folder*" box.
 
 ### Setup
 Setting up **BEMCheckBox** to your project couldn't be more simple. It is modeled after `UISwitch`. In fact, you could just replace instances of `UISwitch` by **BEMCheckBox** in your project!  
