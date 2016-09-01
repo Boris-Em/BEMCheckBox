@@ -81,9 +81,13 @@
 }
 
 - (void)layoutSubviews {
-    self.pathManager.size = self.frame.size.height;
+    self.pathManager.size = CGRectGetHeight(self.frame);
     
     [super layoutSubviews];
+}
+
+- (CGSize)intrinsicContentSize {
+    return self.frame.size;
 }
 
 - (void)reload {
@@ -181,8 +185,8 @@
     BOOL found = [super pointInside:point withEvent:event];
     
     CGSize minimumSize = self.minimumTouchSize;
-    CGFloat width = self.bounds.size.width;
-    CGFloat height = self.bounds.size.height;
+    CGFloat width = CGRectGetWidth(self.bounds);
+    CGFloat height = CGRectGetHeight(self.bounds);
     
     if (found == NO && (width < minimumSize.width || height < minimumSize.height)) {
         CGFloat increaseWidth = minimumSize.width - width;
@@ -205,7 +209,7 @@
  */
 - (void)drawEntireCheckBox {
     if (!self.hideBox) {
-        if (!self.offBoxLayer || CGPathGetBoundingBox(self.offBoxLayer.path).size.height == 0.0) {
+        if (!self.offBoxLayer || CGRectGetHeight(CGPathGetBoundingBox(self.offBoxLayer.path)) == 0.0) {
             [self drawOffBox];
         }
         if (self.on) {

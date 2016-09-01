@@ -8,5 +8,4 @@ ehthumbs.db
 Thumbs.db
 xcuserdata/
 *.xcuserstate
-
-*.xcuserstate
+.idea
