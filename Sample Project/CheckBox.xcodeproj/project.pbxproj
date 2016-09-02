@@ -146,8 +146,8 @@
 			children = (
 				C32537361B92318C0059F394 /* Classes */,
 				C325370F1B9231780059F394 /* CheckBox */,
-				C32537291B9231780059F394 /* CheckBoxTests */,
 				5643F12C1CDE722C0020E238 /* BEMCheckBox */,
+				C32537291B9231780059F394 /* CheckBoxTests */,
 				FC76C2431D7A121200EE3AA4 /* CheckBoxUITests */,
 				C325370E1B9231780059F394 /* Products */,
 			);
@@ -737,6 +737,7 @@
 				FC76C24A1D7A121200EE3AA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
