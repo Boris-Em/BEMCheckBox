@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "BEMCheckBox.h"
 
 @interface CheckBoxUITests : XCTestCase
 
@@ -23,6 +24,17 @@
 
 - (void)tearDown {
     [super tearDown];
+}
+
+- (void)testOn {
+    XCUIElement *element = [[[[[[[[XCUIApplication alloc] init].otherElements containingType:XCUIElementTypeNavigationBar identifier:@"BEMCheckBox"] childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther] elementBoundByIndex:0];
+    XCTAssertTrue(element.isHittable);
+    
+    [element tap];
+    XCTAssertTrue(element.isHittable);
+    
+    [element tap];
+    XCTAssertTrue(element.isHittable);
 }
 
 @end
