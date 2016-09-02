@@ -25,6 +25,7 @@
 		C3DFB9BA1BBA475B00D2F8B4 /* AnimationManangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9B91BBA475B00D2F8B4 /* AnimationManangerTests.m */; };
 		C3DFB9BD1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9BC1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m */; };
 		C3E594901BC220C7005EA38B /* BEMCurrentSetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E5948F1BC220C7005EA38B /* BEMCurrentSetupTableViewController.m */; };
+		FC76C2451D7A121200EE3AA4 /* CheckBoxUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC76C2441D7A121200EE3AA4 /* CheckBoxUITests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,13 @@
 			remoteInfo = BEMCheckBox;
 		};
 		C32537271B9231780059F394 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C32537051B9231780059F394 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C325370C1B9231780059F394;
+			remoteInfo = CheckBox;
+		};
+		FC76C2471D7A121200EE3AA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C32537051B9231780059F394 /* Project object */;
 			proxyType = 1;
@@ -86,6 +94,9 @@
 		C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnimationManager.m; path = ../Classes/BEMAnimationManager.m; sourceTree = "<group>"; };
 		C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMPathManager.h; path = ../Classes/BEMPathManager.h; sourceTree = "<group>"; };
 		C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMPathManager.m; path = ../Classes/BEMPathManager.m; sourceTree = "<group>"; };
+		FC76C2421D7A121200EE3AA4 /* CheckBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC76C2441D7A121200EE3AA4 /* CheckBoxUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckBoxUITests.m; sourceTree = "<group>"; };
+		FC76C2461D7A121200EE3AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +122,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FC76C23F1D7A121200EE3AA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -130,6 +148,7 @@
 				C325370F1B9231780059F394 /* CheckBox */,
 				C32537291B9231780059F394 /* CheckBoxTests */,
 				5643F12C1CDE722C0020E238 /* BEMCheckBox */,
+				FC76C2431D7A121200EE3AA4 /* CheckBoxUITests */,
 				C325370E1B9231780059F394 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -140,6 +159,7 @@
 				C325370D1B9231780059F394 /* CheckBox.app */,
 				C32537261B9231780059F394 /* CheckBoxTests.xctest */,
 				5643F12B1CDE722C0020E238 /* BEMCheckBox.framework */,
+				FC76C2421D7A121200EE3AA4 /* CheckBoxUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,6 +221,15 @@
 				C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		FC76C2431D7A121200EE3AA4 /* CheckBoxUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FC76C2441D7A121200EE3AA4 /* CheckBoxUITests.m */,
+				FC76C2461D7A121200EE3AA4 /* Info.plist */,
+			);
+			path = CheckBoxUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +303,24 @@
 			productReference = C32537261B9231780059F394 /* CheckBoxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FC76C2411D7A121200EE3AA4 /* CheckBoxUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC76C24B1D7A121200EE3AA4 /* Build configuration list for PBXNativeTarget "CheckBoxUITests" */;
+			buildPhases = (
+				FC76C23E1D7A121200EE3AA4 /* Sources */,
+				FC76C23F1D7A121200EE3AA4 /* Frameworks */,
+				FC76C2401D7A121200EE3AA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC76C2481D7A121200EE3AA4 /* PBXTargetDependency */,
+			);
+			name = CheckBoxUITests;
+			productName = CheckBoxUITests;
+			productReference = FC76C2421D7A121200EE3AA4 /* CheckBoxUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -291,6 +338,11 @@
 					};
 					C32537251B9231780059F394 = {
 						CreatedOnToolsVersion = 6.4;
+						TestTargetID = C325370C1B9231780059F394;
+					};
+					FC76C2411D7A121200EE3AA4 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = C325370C1B9231780059F394;
 					};
 				};
@@ -311,6 +363,7 @@
 				C325370C1B9231780059F394 /* CheckBox */,
 				C32537251B9231780059F394 /* CheckBoxTests */,
 				5643F12A1CDE722C0020E238 /* BEMCheckBox */,
+				FC76C2411D7A121200EE3AA4 /* CheckBoxUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -334,6 +387,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C32537241B9231780059F394 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC76C2401D7A121200EE3AA4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,6 +434,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FC76C23E1D7A121200EE3AA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC76C2451D7A121200EE3AA4 /* CheckBoxUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -386,6 +454,11 @@
 			isa = PBXTargetDependency;
 			target = C325370C1B9231780059F394 /* CheckBox */;
 			targetProxy = C32537271B9231780059F394 /* PBXContainerItemProxy */;
+		};
+		FC76C2481D7A121200EE3AA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C325370C1B9231780059F394 /* CheckBox */;
+			targetProxy = FC76C2471D7A121200EE3AA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -585,6 +658,39 @@
 			};
 			name = Release;
 		};
+		FC76C2491D7A121200EE3AA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = CheckBoxUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = borisemorine.CheckBoxUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CheckBox;
+			};
+			name = Debug;
+		};
+		FC76C24A1D7A121200EE3AA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = CheckBoxUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = borisemorine.CheckBoxUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CheckBox;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -623,6 +729,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FC76C24B1D7A121200EE3AA4 /* Build configuration list for PBXNativeTarget "CheckBoxUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC76C2491D7A121200EE3AA4 /* Debug */,
+				FC76C24A1D7A121200EE3AA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
