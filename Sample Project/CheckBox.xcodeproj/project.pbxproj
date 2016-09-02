@@ -362,8 +362,8 @@
 			targets = (
 				C325370C1B9231780059F394 /* CheckBox */,
 				C32537251B9231780059F394 /* CheckBoxTests */,
-				5643F12A1CDE722C0020E238 /* BEMCheckBox */,
 				FC76C2411D7A121200EE3AA4 /* CheckBoxUITests */,
+				5643F12A1CDE722C0020E238 /* BEMCheckBox */,
 			);
 		};
 /* End PBXProject section */
