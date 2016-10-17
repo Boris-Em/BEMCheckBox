@@ -32,9 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**  Tasteful Checkbox for iOS.
  */
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_9_3
-IB_DESIGNABLE @interface BEMCheckBox : UIView <CAAnimationDelegate>
+IB_DESIGNABLE @interface BEMCheckBox : UIControl <CAAnimationDelegate>
 #else
-IB_DESIGNABLE @interface BEMCheckBox : UIView
+IB_DESIGNABLE @interface BEMCheckBox : UIControl
 #endif
 
 /** The different type of animations available.
