@@ -171,6 +171,7 @@
     if ([self.delegate respondsToSelector:@selector(didTapCheckBox:)]) {
         [self.delegate didTapCheckBox:self];
     }
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 #pragma  mark - Helper methods -
