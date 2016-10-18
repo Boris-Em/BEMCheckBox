@@ -46,7 +46,7 @@
 }
 
 - (void)addCheckBoxToGroup:(nonnull BEMCheckBox *)checkBox {
-    if([checkBox group]){
+    if ([checkBox group]) {
         // Already has a group, remove first
         [[checkBox group] removeCheckBoxFromGroup:checkBox];
     }
@@ -57,7 +57,7 @@
 }
 
 - (void)removeCheckBoxFromGroup:(nonnull BEMCheckBox *)checkBox {
-    if(![self.checkBoxes containsObject:checkBox]){
+    if (![self.checkBoxes containsObject:checkBox]) {
         // Not in this group
         return;
     }
@@ -81,11 +81,11 @@
 }
 
 - (void)setSelectedCheckBox:(BEMCheckBox *)selectedCheckBox {
-    if(selectedCheckBox){
-        for (BEMCheckBox *b in self.checkBoxes) {
-            BOOL shouldBeOn = (b == selectedCheckBox);
-            if([b on] != shouldBeOn){
-                [b _setOn:shouldBeOn animated:YES notifyGroup:NO];
+    if (selectedCheckBox) {
+        for (BEMCheckBox *checkBox in self.checkBoxes) {
+            BOOL shouldBeOn = (checkBox == selectedCheckBox);
+            if([checkBox on] != shouldBeOn){
+                [checkBox _setOn:shouldBeOn animated:YES notifyGroup:NO];
             }
         }
     } else {
@@ -104,11 +104,11 @@
     }
 }
 
-- (void)setMustHaveSelection:(BOOL)mustHaveSelection{
+- (void)setMustHaveSelection:(BOOL)mustHaveSelection {
     _mustHaveSelection = mustHaveSelection;
     
     // If it must have a selection and we currently don't, select the first box
-    if(mustHaveSelection && !self.selectedCheckBox){
+    if (mustHaveSelection && !self.selectedCheckBox) {
         [self setSelectedCheckBox:[self.checkBoxes firstObject]];
     }
 }
@@ -116,7 +116,7 @@
 #pragma mark Private methods called by BEMCheckBox
 
 - (void)_checkBoxSelectionChanged:(BEMCheckBox *)checkBox {
-    if([checkBox on]){
+    if ([checkBox on]) {
         // Change selected checkbox to this one
         [self setSelectedCheckBox:checkBox];
     } else if(checkBox == self.selectedCheckBox) {
