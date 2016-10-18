@@ -132,7 +132,6 @@
         }
     }
     
-    // Notify our group if we have one that something has changed
     if(notifyGroup){
         [self.group _checkBoxSelectionChanged:self];
     }

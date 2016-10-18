@@ -11,7 +11,7 @@
 
 @interface BEMCheckBoxGroup ()
 
-@property (nonatomic, strong, nonnull) NSArray<BEMCheckBox *> *checkBoxes;
+@property (nonatomic, strong, nonnull) NSOrderedSet<BEMCheckBox *> *checkBoxes;
 
 @end
 
@@ -31,7 +31,7 @@
     self = [super init];
     if (self) {
         _mustHaveSelection = NO;
-        _checkBoxes = @[];
+        _checkBoxes = [NSOrderedSet orderedSet];
     }
     return self;
 }
@@ -46,14 +46,15 @@
 }
 
 - (void)addCheckBoxToGroup:(nonnull BEMCheckBox *)checkBox {
-    if ([checkBox group]) {
-        // Already has a group, remove first
-        [[checkBox group] removeCheckBoxFromGroup:checkBox];
+    if (checkBox.group) {
+        [checkBox.group removeCheckBoxFromGroup:checkBox];
     }
     
     [checkBox _setOn:NO animated:NO notifyGroup:NO];
-    [checkBox setGroup:self];
-    self.checkBoxes = [self.checkBoxes arrayByAddingObject:checkBox];
+    checkBox.group = self;
+    NSMutableOrderedSet *mutableBoxes = [self.checkBoxes mutableCopy];
+    [mutableBoxes addObject:checkBox];
+    self.checkBoxes = [NSOrderedSet orderedSetWithOrderedSet:mutableBoxes];
 }
 
 - (void)removeCheckBoxFromGroup:(nonnull BEMCheckBox *)checkBox {
@@ -62,29 +63,33 @@
         return;
     }
     
-    [checkBox setGroup:nil];
-    NSMutableArray *mutableBoxes = [self.checkBoxes mutableCopy];
+    checkBox.group = nil;
+    NSMutableOrderedSet *mutableBoxes = [self.checkBoxes mutableCopy];
     [mutableBoxes removeObject:checkBox];
-    self.checkBoxes = [NSArray arrayWithArray:mutableBoxes];
+    self.checkBoxes = [NSOrderedSet orderedSetWithOrderedSet:mutableBoxes];
 }
 
+#pragma mark Getters
+
 - (BEMCheckBox *)selectedCheckBox {
-    BEMCheckBox *checkbox = nil;
-    for (BEMCheckBox *b in self.checkBoxes) {
-        if([b on]){
-            checkbox = b;
+    BEMCheckBox *selected = nil;
+    for (BEMCheckBox *checkBox in self.checkBoxes) {
+        if(checkBox.on){
+            selected = checkBox;
             break;
         }
     }
     
-    return checkbox;
+    return selected;
 }
+
+#pragma mark Setters
 
 - (void)setSelectedCheckBox:(BEMCheckBox *)selectedCheckBox {
     if (selectedCheckBox) {
         for (BEMCheckBox *checkBox in self.checkBoxes) {
             BOOL shouldBeOn = (checkBox == selectedCheckBox);
-            if([checkBox on] != shouldBeOn){
+            if(checkBox.on != shouldBeOn){
                 [checkBox _setOn:shouldBeOn animated:YES notifyGroup:NO];
             }
         }
@@ -92,12 +97,12 @@
         // Selection is nil
         if(self.mustHaveSelection && [self.checkBoxes count] > 0){
             // We must have a selected checkbox, so re-call this method with the first checkbox
-            [self setSelectedCheckBox:[self.checkBoxes firstObject]];
+            self.selectedCheckBox = [self.checkBoxes firstObject];
         } else {
-            for (BEMCheckBox *b in self.checkBoxes) {
+            for (BEMCheckBox *checkBox in self.checkBoxes) {
                 BOOL shouldBeOn = NO;
-                if([b on] != shouldBeOn){
-                    [b _setOn:shouldBeOn animated:YES notifyGroup:NO];
+                if(checkBox.on != shouldBeOn){
+                    [checkBox _setOn:shouldBeOn animated:YES notifyGroup:NO];
                 }
             }
         }
@@ -109,7 +114,7 @@
     
     // If it must have a selection and we currently don't, select the first box
     if (mustHaveSelection && !self.selectedCheckBox) {
-        [self setSelectedCheckBox:[self.checkBoxes firstObject]];
+        self.selectedCheckBox = [self.checkBoxes firstObject];
     }
 }
 
@@ -118,10 +123,10 @@
 - (void)_checkBoxSelectionChanged:(BEMCheckBox *)checkBox {
     if ([checkBox on]) {
         // Change selected checkbox to this one
-        [self setSelectedCheckBox:checkBox];
+        self.selectedCheckBox = checkBox;
     } else if(checkBox == self.selectedCheckBox) {
         // Selected checkbox was this one, clear it
-        [self setSelectedCheckBox:nil];
+        self.selectedCheckBox = nil;
     }
 }
 

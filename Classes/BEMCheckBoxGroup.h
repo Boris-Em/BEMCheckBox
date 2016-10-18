@@ -6,7 +6,7 @@
 //  Copyright © 2016 Boris Emorine. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class BEMCheckBox;
 
@@ -14,7 +14,7 @@
 
 /** An array of check boxes in this group.
  */
-@property (nonatomic, strong, nonnull, readonly) NSArray<BEMCheckBox *> *checkBoxes;
+@property (nonatomic, strong, nonnull, readonly) NSOrderedSet<BEMCheckBox *> *checkBoxes;
 
 /** The currently selected check box. Only can be nil if mustHaveSelection is NO. Setting this value will cause the other check boxes to deselect automatically.
  */
