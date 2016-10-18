@@ -25,6 +25,7 @@
   * [Reloading](#reloading)
   * [Delegate] (#delegate)
   * [Customization](#customization)
+  * [Group / Radio Button Functionality](#group--radio-button-functionality)
 
 ## Project Details
 Learn more about the **BEMCheckBox** project, licensing, support etc.
@@ -185,3 +186,22 @@ The possible values for `onAnimationType` and `offAnimationType`.
 - `BEMAnimationTypeFade`
 <p align="left"><img src="http://s24.postimg.org/3n1rre1cx/BEMAnimation_Type_Fade.gif"/></p>
 
+### Group / Radio Button Functionality
+**BEMCheckBox**es can be easily grouped together to form radio button functionality. This will automatically manage the state of each checkbox in the group so that only one is selected at a time, and can optionally require that the group has a selection at all times.
+
+Example group creation:
+```objective-c
+self.group = [BEMCheckBoxGroup groupWithCheckBoxes:@[self.checkBox1, self.checkBox2, self.checkBox3]];
+self.group.selectedCheckBox = self.checkBox2; // Optionally set which checkbox is pre-selected
+self.group.mustHaveSelection = YES; // Define if the group must always have a selection
+```
+
+To see which checkbox is selected in that group, just ask for it:
+```objective-c
+BEMCheckBox *selection = self.group.selectedCheckBox;
+```
+
+To manually update the selection for a group, just set it:
+```objective-c
+self.group.selectedCheckBox = self.checkBox1;
+```
