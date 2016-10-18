@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class BEMCheckBoxGroup;
 @protocol BEMCheckBoxDelegate;
 
 /** The different type of boxes available.
@@ -107,6 +108,10 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 /** The color of the box when the checkbox is Off.
  */
 @property (strong, nonatomic) IBInspectable UIColor *tintColor;
+
+/** The group this box is associated with.
+ */
+@property (weak, nonatomic, nullable, readonly) BEMCheckBoxGroup *group;
 
 /** The type of box.
  * @see BEMBoxType. 

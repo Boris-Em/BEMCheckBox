@@ -9,6 +9,7 @@
 #import "BEMCheckBox.h"
 #import "BEMAnimationManager.h"
 #import "BEMPathManager.h"
+#import "BEMCheckBoxGroup.h"
 
 @interface BEMCheckBox ()
 
@@ -31,6 +32,18 @@
 /** The BEMPathManager object used to generate paths.
  */
 @property (strong, nonatomic) BEMPathManager *pathManager;
+
+/** The group this box is associated with.
+ */
+@property (weak, nonatomic, nullable) BEMCheckBoxGroup *group;
+
+@end
+
+/** Defines private methods that we can call to update our group's status.
+ */
+@interface BEMCheckBoxGroup ()
+
+- (void)_checkBoxSelectionChanged:(BEMCheckBox *)checkBox;
 
 @end
 
@@ -101,7 +114,7 @@
 }
 
 #pragma mark Setters
-- (void)setOn:(BOOL)on animated:(BOOL)animated {
+- (void)_setOn:(BOOL)on animated:(BOOL)animated notifyGroup:(BOOL)notifyGroup {
     _on = on;
     
     [self drawEntireCheckBox];
@@ -118,6 +131,15 @@
             [self.checkMarkLayer removeFromSuperlayer];
         }
     }
+    
+    // Notify our group if we have one that something has changed
+    if(notifyGroup){
+        [self.group _checkBoxSelectionChanged:self];
+    }
+}
+
+- (void)setOn:(BOOL)on animated:(BOOL)animated {
+    [self _setOn:on animated:animated notifyGroup:YES];
 }
 
 - (void)setOn:(BOOL)on {
@@ -167,6 +189,11 @@
 
 #pragma mark Gesture Recognizer
 - (void)handleTapCheckBox:(UITapGestureRecognizer *)recognizer {
+    // If we have a group that requires a selection, and we're already selected, don't allow a deselection
+    if(self.group && self.group.mustHaveSelection && self.on){
+        return;
+    }
+    
     [self setOn:!self.on animated:YES];
     if ([self.delegate respondsToSelector:@selector(didTapCheckBox:)]) {
         [self.delegate didTapCheckBox:self];
