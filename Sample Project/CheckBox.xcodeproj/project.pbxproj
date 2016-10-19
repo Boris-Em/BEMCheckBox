@@ -25,6 +25,7 @@
 		C32537211B9231780059F394 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C325371F1B9231780059F394 /* LaunchScreen.xib */; };
 		C325372D1B9231780059F394 /* CheckBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C325372C1B9231780059F394 /* CheckBoxTests.m */; };
 		C39F1AB71BAFEAA400E8A023 /* BEMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */; };
+		C3C066E61DB7002C00178397 /* GroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C066E51DB7002C00178397 /* GroupTests.m */; };
 		C3DFB9BA1BBA475B00D2F8B4 /* AnimationManangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9B91BBA475B00D2F8B4 /* AnimationManangerTests.m */; };
 		C3DFB9BD1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DFB9BC1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m */; };
 		C3E594901BC220C7005EA38B /* BEMCurrentSetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E5948F1BC220C7005EA38B /* BEMCurrentSetupTableViewController.m */; };
@@ -90,6 +91,7 @@
 		C325373B1B9231FD0059F394 /* BEMCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMCheckBox.m; path = ../Classes/BEMCheckBox.m; sourceTree = "<group>"; };
 		C39F1AB51BAFEAA400E8A023 /* BEMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMMainViewController.h; sourceTree = "<group>"; };
 		C39F1AB61BAFEAA400E8A023 /* BEMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMMainViewController.m; sourceTree = "<group>"; };
+		C3C066E51DB7002C00178397 /* GroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTests.m; sourceTree = "<group>"; };
 		C3DFB9B91BBA475B00D2F8B4 /* AnimationManangerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationManangerTests.m; sourceTree = "<group>"; };
 		C3DFB9BB1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAnimationsTableViewController.h; sourceTree = "<group>"; };
 		C3DFB9BC1BBD0E2800D2F8B4 /* BEMAnimationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAnimationsTableViewController.m; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				C325372C1B9231780059F394 /* CheckBoxTests.m */,
+				C3C066E51DB7002C00178397 /* GroupTests.m */,
 				C3DFB9B91BBA475B00D2F8B4 /* AnimationManangerTests.m */,
 				C325372A1B9231780059F394 /* Supporting Files */,
 			);
@@ -439,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C066E61DB7002C00178397 /* GroupTests.m in Sources */,
 				C325372D1B9231780059F394 /* CheckBoxTests.m in Sources */,
 				C3DFB9BA1BBA475B00D2F8B4 /* AnimationManangerTests.m in Sources */,
 			);
