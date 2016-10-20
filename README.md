@@ -118,7 +118,7 @@ Example usage:
 ```
 
 ### Group / Radio Button Functionality
-**BEMCheckBox**es can be easily grouped together to form radio button functionality. This will automatically manage the state of each checkbox in the group so that only one is selected at a time, and can optionally require that the group has a selection at all times.
+**BEMCheckBox**es can easily be grouped together to form radio button functionality. This will automatically manage the state of each checkbox in the group, so that only one is selected at a time, and can optionally require that the group has a selection at all times.
 
 ```objective-c
 self.group = [BEMCheckBoxGroup groupWithCheckBoxes:@[self.checkBox1, self.checkBox2, self.checkBox3]];
