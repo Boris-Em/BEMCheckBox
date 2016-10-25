@@ -155,7 +155,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 /** Sent to the delegate every time the check box gets tapped.
  * @discussion This method gets triggered after the properties are updated (on), but before the animations, if any, are completed.
  * @seealso animationDidStopForCheckBox:
- * @param checkBox: The BEMCheckBox instance that has been tapped.
+ * @param checkBox The BEMCheckBox instance that has been tapped.
  */
 - (void)didTapCheckBox:(BEMCheckBox*)checkBox;
 
@@ -163,7 +163,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 /** Sent to the delegate every time the check box finishes being animated.
  * @discussion This method gets triggered after the properties are updated (on), and after the animations are completed. It won't be triggered if no animations are started.
  * @seealso didTapCheckBox:
- * @param checkBox: The BEMCheckBox instance that was animated.
+ * @param checkBox The BEMCheckBox instance that was animated.
  */
 - (void)animationDidStopForCheckBox:(BEMCheckBox *)checkBox;
 
