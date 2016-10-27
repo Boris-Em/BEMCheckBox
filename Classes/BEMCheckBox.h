@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BEMCheckBoxGroup.h"
 
-@class BEMCheckBoxGroup;
 @protocol BEMCheckBoxDelegate;
 
 /** The different type of boxes available.
@@ -23,9 +23,6 @@ typedef NS_ENUM(NSInteger, BEMBoxType) {
      */
     BEMBoxTypeSquare
 };
-
-#import "BEMPathManager.h"
-#import "BEMAnimationManager.h"
 
 // Tell the compiler to assume that no method should have a NULL value
 NS_ASSUME_NONNULL_BEGIN

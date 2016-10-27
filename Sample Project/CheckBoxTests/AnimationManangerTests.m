@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "BEMAnimationManager.h"
+#import <BEMCheckBox/BEMAnimationManager.h>
 
 @interface AnimationManangerTests : XCTestCase
 
@@ -24,10 +24,8 @@
 }
 
 - (void)testInit {
-    
     XCTAssertNotNil(self.manager);
     XCTAssert(self.manager.animationDuration == 10.0);
-    
 }
 
 - (void)testStrokeAnimation {

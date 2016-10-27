@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "BEMCheckBox.h"
-#import "BEMCheckBoxGroup.h"
+#import <BEMCheckBox/BEMCheckBox.h>
+#import <BEMCheckBox/BEMCheckBoxGroup.h>
 
 @interface GroupTests : XCTestCase
 
