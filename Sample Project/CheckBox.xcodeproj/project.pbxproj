@@ -11,11 +11,11 @@
 		5643F1331CDE722C0020E238 /* BEMCheckBox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5643F12B1CDE722C0020E238 /* BEMCheckBox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5643F1381CDE724A0020E238 /* BEMCheckBox.h in Headers */ = {isa = PBXBuildFile; fileRef = C325373A1B9231FD0059F394 /* BEMCheckBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5643F1391CDE724A0020E238 /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C325373B1B9231FD0059F394 /* BEMCheckBox.m */; };
-		5643F13A1CDE724A0020E238 /* BEMAnimationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E837A81BAE3493004576D6 /* BEMAnimationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5643F13A1CDE724A0020E238 /* BEMAnimationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E837A81BAE3493004576D6 /* BEMAnimationManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		5643F13B1CDE724A0020E238 /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */; };
-		5643F13C1CDE724A0020E238 /* BEMPathManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5643F13C1CDE724A0020E238 /* BEMPathManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		5643F13D1CDE724A0020E238 /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */; };
-		984F9E0F1DB59228002F746B /* BEMCheckBoxGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 984F9E0D1DB59228002F746B /* BEMCheckBoxGroup.h */; };
+		984F9E0F1DB59228002F746B /* BEMCheckBoxGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 984F9E0D1DB59228002F746B /* BEMCheckBoxGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		984F9E101DB59228002F746B /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 984F9E0E1DB59228002F746B /* BEMCheckBoxGroup.m */; };
 		984F9E111DB59228002F746B /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 984F9E0E1DB59228002F746B /* BEMCheckBoxGroup.m */; };
 		C32537131B9231780059F394 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C32537121B9231780059F394 /* main.m */; };
@@ -223,12 +223,12 @@
 			children = (
 				C325373A1B9231FD0059F394 /* BEMCheckBox.h */,
 				C325373B1B9231FD0059F394 /* BEMCheckBox.m */,
+				984F9E0D1DB59228002F746B /* BEMCheckBoxGroup.h */,
+				984F9E0E1DB59228002F746B /* BEMCheckBoxGroup.m */,
 				C3E837A81BAE3493004576D6 /* BEMAnimationManager.h */,
 				C3E837A91BAE3493004576D6 /* BEMAnimationManager.m */,
 				C3E837AB1BAE35D8004576D6 /* BEMPathManager.h */,
 				C3E837AC1BAE35D8004576D6 /* BEMPathManager.m */,
-				984F9E0D1DB59228002F746B /* BEMCheckBoxGroup.h */,
-				984F9E0E1DB59228002F746B /* BEMCheckBoxGroup.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

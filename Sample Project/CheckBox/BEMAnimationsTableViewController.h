@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BEMCheckBox.h"
+#import <BEMCheckBox/BEMCheckBox.h>
 
 @protocol BEMAnimationsTableViewDelegate <NSObject>
 
