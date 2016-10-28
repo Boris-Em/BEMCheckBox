@@ -63,7 +63,7 @@ The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.o
 #### Carthage
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
-Run `carthage update` to build the framework and drag the built `BEMCheckBox.framework` into your Xcode project.
+Run `carthage update` after adding **BEMCheckBox** to your Cartfile to build the framework. Drag the built `BEMCheckBox.framework` into your Xcode project.
 
 #### Manually	
 Finally, you can install **BEMCheckBox** manually. Simply drag and drop the *Classes* folder into your Xcode project. When you do so, make sure to check the "*Copy items into destination group's folder*" box.
