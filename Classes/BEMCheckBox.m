@@ -55,6 +55,7 @@
     _hideBox = NO;
     _onTintColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
     _onFillColor = [UIColor clearColor];
+    _offFillColor = [UIColor clearColor];
     _onCheckColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
     _tintColor = [UIColor lightGrayColor];
     _lineWidth = 2.0;
@@ -160,6 +161,11 @@
     [self reload];
 }
 
+- (void)setOffFillColor:(UIColor *)offFillColor {
+    _offFillColor = offFillColor;
+    [self reload];
+}
+
 - (void)setOnCheckColor:(UIColor *)onCheckColor {
     _onCheckColor = onCheckColor;
     [self reload];
@@ -224,10 +230,9 @@
     self.offBoxLayer = [CAShapeLayer layer];
     self.offBoxLayer.frame = self.bounds;
     self.offBoxLayer.path = [self.pathManager pathForBox].CGPath;
-    self.offBoxLayer.fillColor = [UIColor clearColor].CGColor;
+    self.offBoxLayer.fillColor = self.offFillColor.CGColor;
     self.offBoxLayer.strokeColor = self.tintColor.CGColor;
     self.offBoxLayer.lineWidth = self.lineWidth;
-    
     self.offBoxLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
     self.offBoxLayer.shouldRasterize = YES;
     
