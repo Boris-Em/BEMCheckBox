@@ -98,6 +98,10 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
  */
 @property (strong, nonatomic) IBInspectable UIColor *onFillColor;
 
+/** The color of the inside of the box when it is Off.
+ */
+@property (strong, nonatomic) IBInspectable UIColor *offFillColor;
+
 /** The color of the check mark when it is On.
  */
 @property (strong, nonatomic) IBInspectable UIColor *onCheckColor;
