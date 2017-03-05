@@ -72,6 +72,7 @@
     _onCheckColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
     _tintColor = [UIColor lightGrayColor];
     _lineWidth = 2.0;
+    _cornerRadius = 3.0;
     _animationDuration = 0.5;
     _minimumTouchSize = CGSizeMake(44, 44);
     _onAnimationType = BEMAnimationTypeStroke;
@@ -87,6 +88,7 @@
 - (void)initPathManager {
     _pathManager = [BEMPathManager new];
     _pathManager.lineWidth = _lineWidth;
+    _pathManager.cornerRadius = _cornerRadius;
     _pathManager.boxType = _boxType;
 }
 
@@ -164,6 +166,12 @@
 - (void)setLineWidth:(CGFloat)lineWidth {
     _lineWidth = lineWidth;
     _pathManager.lineWidth = lineWidth;
+    [self reload];
+}
+
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+    _cornerRadius = cornerRadius;
+    _pathManager.cornerRadius = cornerRadius;
     [self reload];
 }
 
