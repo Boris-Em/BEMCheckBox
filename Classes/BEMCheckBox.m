@@ -35,7 +35,7 @@
 
 /** The group this box is associated with.
  */
-@property (weak, nonatomic, nullable) BEMCheckBoxGroup *group;
+@property (strong, nonatomic, nullable) BEMCheckBoxGroup *group;
 
 @end
 

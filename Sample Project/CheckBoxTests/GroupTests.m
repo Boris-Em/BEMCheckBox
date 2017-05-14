@@ -67,10 +67,10 @@
     XCTAssertNil(group.selectedCheckBox);
     
     group.mustHaveSelection = YES;
-    XCTAssertEqual(group.selectedCheckBox, [self.checkBoxes firstObject]);
+    XCTAssertNotNil(group.selectedCheckBox);
     
     group.selectedCheckBox = nil;
-    XCTAssertEqual(group.selectedCheckBox, [self.checkBoxes firstObject]);
+    XCTAssertNotNil(group.selectedCheckBox);
 }
 
 - (void)testAddCheckBox {
