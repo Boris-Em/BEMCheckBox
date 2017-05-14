@@ -116,7 +116,7 @@ typedef NS_ENUM(NSInteger, BEMAnimationType) {
 
 /** The group this box is associated with.
  */
-@property (weak, nonatomic, nullable, readonly) BEMCheckBoxGroup *group;
+@property (strong, nonatomic, nullable, readonly) BEMCheckBoxGroup *group;
 
 /** The type of box.
  * @see BEMBoxType. 
