@@ -11,7 +11,7 @@
 
 @interface BEMCheckBoxGroup ()
 
-@property (nonatomic, strong, nonnull) NSOrderedSet<BEMCheckBox *> *checkBoxes;
+@property (nonatomic, strong, nonnull) NSHashTable *checkBoxes;
 
 @end
 
@@ -19,7 +19,7 @@
  */
 @interface BEMCheckBox ()
 
-@property (weak, nonatomic, nullable) BEMCheckBoxGroup *group;
+@property (strong, nonatomic, nullable) BEMCheckBoxGroup *group;
 
 - (void)_setOn:(BOOL)on animated:(BOOL)animated notifyGroup:(BOOL)notifyGroup;
 
@@ -31,7 +31,7 @@
     self = [super init];
     if (self) {
         _mustHaveSelection = NO;
-        _checkBoxes = [NSOrderedSet orderedSet];
+        _checkBoxes = [NSHashTable hashTableWithOptions:NSPointerFunctionsWeakMemory];
     }
     return self;
 }
@@ -52,9 +52,8 @@
     
     [checkBox _setOn:NO animated:NO notifyGroup:NO];
     checkBox.group = self;
-    NSMutableOrderedSet *mutableBoxes = [self.checkBoxes mutableCopy];
-    [mutableBoxes addObject:checkBox];
-    self.checkBoxes = [NSOrderedSet orderedSetWithOrderedSet:mutableBoxes];
+
+    [self.checkBoxes addObject:checkBox];
 }
 
 - (void)removeCheckBoxFromGroup:(nonnull BEMCheckBox *)checkBox {
@@ -64,9 +63,7 @@
     }
     
     checkBox.group = nil;
-    NSMutableOrderedSet *mutableBoxes = [self.checkBoxes mutableCopy];
-    [mutableBoxes removeObject:checkBox];
-    self.checkBoxes = [NSOrderedSet orderedSetWithOrderedSet:mutableBoxes];
+    [self.checkBoxes removeObject:checkBox];
 }
 
 #pragma mark Getters
@@ -97,7 +94,7 @@
         // Selection is nil
         if(self.mustHaveSelection && [self.checkBoxes count] > 0){
             // We must have a selected checkbox, so re-call this method with the first checkbox
-            self.selectedCheckBox = [self.checkBoxes firstObject];
+            self.selectedCheckBox = [self.checkBoxes anyObject];
         } else {
             for (BEMCheckBox *checkBox in self.checkBoxes) {
                 BOOL shouldBeOn = NO;
@@ -114,7 +111,7 @@
     
     // If it must have a selection and we currently don't, select the first box
     if (mustHaveSelection && !self.selectedCheckBox) {
-        self.selectedCheckBox = [self.checkBoxes firstObject];
+        self.selectedCheckBox = [self.checkBoxes anyObject];
     }
 }
 
