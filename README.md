@@ -16,7 +16,7 @@
   * [License](#license)
   * [Support](#support)
   * [Sample App](#sample-app)
-  * [React Native] (#react-native)
+  * [React Native](#react-native)
 * [**Getting Started**](#getting-started)
   * [Installation](#installation)
   * [Setup](#setup)
