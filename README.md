@@ -24,7 +24,7 @@
   * [Enabling / Disabling the Checkbox](#enabling--disabling-the-checkbox) 
   * [Reloading](#reloading)
   * [Group / Radio Button Functionality](#group--radio-button-functionality)
-  * [Delegate] (#delegate)
+  * [Delegate](#delegate)
   * [Customization](#customization)
 
 ## Project Details
