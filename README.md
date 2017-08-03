@@ -17,6 +17,7 @@
   * [Support](#support)
   * [Sample App](#sample-app)
   * [React Native](#react-native)
+  * [Xamarin](#xamarin)
 * [**Getting Started**](#getting-started)
   * [Installation](#installation)
   * [Setup](#setup)
@@ -48,7 +49,10 @@ Join us on [Gitter](https://gitter.im/Boris-Em/BEMCheckBox) if you need any help
 The iOS Sample App included with this project demonstrates one way to correctly setup and use **BEMCheckBox**. It also offers the possibility to customize the checkbox within the app.
 
 ### React Native  
-**BEMCheckBox** can now be used with React Native: [React-Native-BEMCheckBox](https://github.com/torifat/react-native-bem-check-box)
+**BEMCheckBox** can be used with React Native: [React-Native-BEMCheckBox](https://github.com/torifat/react-native-bem-check-box)
+
+### Xamarin
+**BEMCheckBox** can also be used with Xamarin: [XPlugins.iOS.BEMCheckBox](https://github.com/saturdaymp/XPlugins.iOS.BEMCheckBox)
 
 ## Getting Started
 It only takes a few simple steps to install and setup **BEMCheckBox** to your project.
