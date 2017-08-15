@@ -16,13 +16,13 @@
     UIBezierPath* path;
     switch (self.boxType) {
         case BEMBoxTypeSquare:
-            path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.size, self.size) cornerRadius:self.cornerRadius];
+            path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0 + (_lineWidth / 2.0), 0.0 + (_lineWidth / 2.0), self.size - _lineWidth, self.size - _lineWidth) cornerRadius:self.cornerRadius];
             [path applyTransform:CGAffineTransformRotate(CGAffineTransformIdentity, M_PI * 2.5)];
             [path applyTransform:CGAffineTransformMakeTranslation(self.size, 0)];
             break;
             
         default: {
-            CGFloat radius = self.size / 2;
+            CGFloat radius = (self.size / 2.0) - (self.lineWidth / 2.0);;
             path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.size / 2, self.size / 2)
                                                   radius: radius
                                               startAngle: - M_PI / 4
