@@ -221,9 +221,13 @@
 #pragma  mark - Helper methods -
 
 #pragma mark Increase touch area
-- (BOOL) pointInside:(CGPoint)point withEvent:(UIEvent *)event;
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;
 {
-    BOOL found = [super pointInside:point withEvent:event];
+    BOOL found = NO;
+    
+    if ((found = [super pointInside:point withEvent:event])) {
+        return found;
+    }
     
     CGSize minimumSize = self.minimumTouchSize;
     CGFloat width = CGRectGetWidth(self.bounds);
