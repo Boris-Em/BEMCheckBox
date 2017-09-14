@@ -223,9 +223,9 @@
 #pragma mark Increase touch area
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;
 {
-    BOOL found = NO;
+    BOOL found = [super pointInside:point withEvent:event];
     
-    if ((found = [super pointInside:point withEvent:event])) {
+    if (found) {
         return found;
     }
     
