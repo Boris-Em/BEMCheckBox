@@ -7,20 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 /** Animation object used by BEMCheckBox to generate animations.
  */
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_9_3
+@interface BEMAnimationManager : NSObject <CAAnimationDelegate>
+#else
 @interface BEMAnimationManager : NSObject
+#endif
 
 /** The duration of the animation created by the BEMAnimationManager object.
  */
 @property (nonatomic) CGFloat animationDuration;
 
+@property (nonatomic, weak) id delegate;
+
 /** Designated initializer.
  * @param animationDuration The duration of the animations created with the BEMAnimationManager object.
  * @return Returns the a fully initialized BEMAnimationManager object.
  */
-- (instancetype)initWithAnimationDuration:(CGFloat)animationDuration;
+- (instancetype)initWithAnimationDuration:(CGFloat)animationDuration delegate:(id)delegate;
 
 /** Returns a CABasicAnimation which the stroke.
  * @param reverse The direction of the animation. Set to YES if the animation should go from opacity 0 to 1, or NO for the opposite.

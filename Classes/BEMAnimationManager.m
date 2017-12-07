@@ -10,10 +10,11 @@
 
 @implementation BEMAnimationManager
 
-- (instancetype)initWithAnimationDuration:(CGFloat)animationDuration {
+- (instancetype)initWithAnimationDuration:(CGFloat)animationDuration delegate:(id)delegate{
     self = [super init];
     if (self) {
         _animationDuration = animationDuration;
+        _delegate = delegate;
     }
     
     return self;
@@ -103,7 +104,11 @@
     return animation;
 }
 
-- (void)dealloc {
+#pragma mark - CAAnimationDelegate Delegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if ([self.delegate respondsToSelector:@selector(animationDidStop:finished:)]) {
+        [self.delegate animationDidStop:anim finished:flag];
+    }
 }
 
 @end

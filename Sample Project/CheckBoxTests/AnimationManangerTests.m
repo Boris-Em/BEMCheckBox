@@ -20,7 +20,7 @@
 - (void)setUp {
     [super setUp];
     
-    self.manager = [[BEMAnimationManager alloc] initWithAnimationDuration:10.0];
+    self.manager = [[BEMAnimationManager alloc] initWithAnimationDuration:10.0 delegate:nil];
 }
 
 - (void)testInit {
