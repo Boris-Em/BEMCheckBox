@@ -66,10 +66,10 @@
     // Default values
     _on = NO;
     _hideBox = NO;
-    _onTintColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
+    _onTintColor = [UIColor colorWithRed:0 green:(CGFloat)(122.0f/255.0f) blue:1 alpha:1];
     _onFillColor = [UIColor clearColor];
     _offFillColor = [UIColor clearColor];
-    _onCheckColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
+    _onCheckColor = [UIColor colorWithRed:0 green:(CGFloat)(122.0f/255.0f) blue:1 alpha:1];
     _tintColor = [UIColor lightGrayColor];
     _lineWidth = 2.0;
     _cornerRadius = 3.0;
@@ -276,7 +276,7 @@
     self.offBoxLayer.fillColor = self.offFillColor.CGColor;
     self.offBoxLayer.strokeColor = self.tintColor.CGColor;
     self.offBoxLayer.lineWidth = self.lineWidth;
-    self.offBoxLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
+    self.offBoxLayer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
     self.offBoxLayer.shouldRasterize = YES;
     
     [self.layer addSublayer:self.offBoxLayer];
@@ -292,7 +292,7 @@
     self.onBoxLayer.lineWidth = self.lineWidth;
     self.onBoxLayer.fillColor = self.onFillColor.CGColor;
     self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
-    self.onBoxLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
+    self.onBoxLayer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
     self.onBoxLayer.shouldRasterize = YES;
     [self.layer addSublayer:self.onBoxLayer];
 }
@@ -310,7 +310,7 @@
     self.checkMarkLayer.lineCap = kCALineCapRound;
     self.checkMarkLayer.lineJoin = kCALineJoinRound;
     
-    self.checkMarkLayer.rasterizationScale = 2.0 * [UIScreen mainScreen].scale;
+    self.checkMarkLayer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
     self.checkMarkLayer.shouldRasterize = YES;
     [self.layer addSublayer:self.checkMarkLayer];
 }
@@ -332,7 +332,7 @@
             return;
             
         case BEMAnimationTypeFill: {
-            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:0.18 reverse:NO];
+            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:(CGFloat)0.18f reverse:NO];
             CABasicAnimation *opacityAnimation = [self.animationManager opacityAnimationReverse:NO];
             opacityAnimation.delegate = self;
             
@@ -342,7 +342,7 @@
             return;
             
         case BEMAnimationTypeBounce: {
-            CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
+            CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? (CGFloat)0.20f : (CGFloat)0.35f;
             CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:amplitude reverse:NO];
             wiggle.delegate = self;
             
@@ -420,7 +420,7 @@
             return;
             
         case BEMAnimationTypeFill: {
-            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:0.18 reverse:YES];
+            CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:(CGFloat)0.18f reverse:YES];
             wiggle.duration = self.animationDuration;
             wiggle.delegate = self;
             
@@ -430,7 +430,7 @@
             return;
             
         case BEMAnimationTypeBounce: {
-            CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? 0.20 : 0.35;
+            CGFloat amplitude = (self.boxType == BEMBoxTypeSquare) ? (CGFloat)0.20f : (CGFloat)0.35f;
             CAKeyframeAnimation *wiggle = [self.animationManager fillAnimationWithBounces:1 amplitude:amplitude reverse:YES];
             wiggle.duration = self.animationDuration / 1.1;
             CABasicAnimation *opacity = [self.animationManager opacityAnimationReverse:YES];

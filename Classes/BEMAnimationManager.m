@@ -78,14 +78,14 @@
     
     for (NSUInteger i = 1; i <= bounces; i++) {
         CGFloat scale = (i % 2) ? (1 + amplitude/i) : (1 - amplitude/i);
-        CGFloat time = i * 1.0/(bounces + 1);
+        NSTimeInterval time = i * 1.0/(bounces + 1);
         
         [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(scale, scale, scale)]];
-        [keyTimes addObject:[NSNumber numberWithFloat:time]];
+        [keyTimes addObject:@(time)];
     }
     
     if (reverse) {
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0001, 0.0001, 0.0001)]];
+        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale((CGFloat)0.0001f, (CGFloat)0.0001f, (CGFloat)0.0001f)]];
     } else {
         [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)]];
     }
