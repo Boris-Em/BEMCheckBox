@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-<p align="center"><img src="http://s1.postimg.org/mcnwdl88v/BEMCheck_Box.jpg"/></p>	
+<p align="center"><img src="./.assets/BEMCheckBox logo.jpg"/></p>	
 
 **BEMCheckBox** is an open source library making it easy to create beautiful, highly customizable, animated checkboxes for iOS. 
 
@@ -31,7 +31,7 @@
 ## Project Details
 Learn more about the **BEMCheckBox** project, licensing, support etc.
 
-<p align="center"><img src="http://s12.postimg.org/vn2irahjx/BEMCheck_Box.gif"/></p>	
+<p align="center"><img src="./.assets/BEMCheckBox.gif"/></p>	
 
 ### Requirements
  - Requires iOS 7 or later. The sample project is optimized for iOS 9.
@@ -152,20 +152,19 @@ Sent to the delegate every time the check box finishes being animated.
 ### Customization
 **BEMCheckBox** is exclusively customizable though properties.  
 The following diagram provides a good overview:  
-<p align="center"><img src="http://s12.postimg.org/6bmtv86jx/BEMCheck_Box_Properties.jpg"/></p>
+<p align="center"><img src="./.assets/BEMCheckBox properties.jpg"/></p>
 
 
 ##### Apparence Properties
 `lineWidth` - CGFloat  
 The width of the lines of the check mark and box. Defaults to 2.0.  
 
-<img align="right" width="100" height="86" src="http://s30.postimg.org/w89156q0x/BEMCheck_Box_hide_box.jpg">
 `hideBox` - BOOL  
-BOOL to control if the box should be hidden or not. Setting this property to `YES` will basically turn the checkbox into a check mark. Defaults to `NO`.
+BOOL to control if the box should be hidden or not. Setting this property to `YES` will essentially turn the checkbox into a check mark. Defaults to `NO`.
 
 `boxType` - BEMBoxType   
 The type of box to use. See `BEMBoxType` for possible values. Defaults to `BEMBoxTypeCircle`. 
-<p align="center"><img src="http://s10.postimg.org/uui5vyry1/BEMCheck_Box_box_type.jpg"/></p>
+<p align="center"><img src="./.assets/BEMCheckBox box type.jpg"/></p>
 
 `tintColor` - UIColor  
 The color of the box when the checkbox is Off.
@@ -192,19 +191,19 @@ The type of animation to use when the checkbox gets unchecked. Defaults to `BEMA
 `BEMAnimationType`  
 The possible values for `onAnimationType` and `offAnimationType`.  
 - `BEMAnimationTypeStroke`
-<p align="left"><img src="http://s28.postimg.org/yjzlxyap5/BEMAnimation_Type_Stroke.gif"/></p>
+<p align="left"><img src="./.assets/BEMCheckBox-Stroke.gif"/></p>
 
 - `BEMAnimationTypeFill`
-<p align="left"><img src="http://s14.postimg.org/6ap9fka3x/BEMAnimation_Type_Fill.gif"/></p>
+<p align="left"><img src="./.assets/BEMCheckBox-Fill.gif"/></p>
 
 - `BEMAnimationTypeBounce`
-<p align="left"><img src="http://s4.postimg.org/9twu6pn61/BEMAnimation_Type_Bounce.gif"/></p>
+<p align="left"><img src="./.assets/BEMCheckBox-Bounce.gif"/></p>
 
 - `BEMAnimationTypeFlat`
-<p align="left"><img src="http://s11.postimg.org/7op754xe7/BEMAnimation_Type_Flat.gif"/></p>
+<p align="left"><img src="./.assets/BEMCheckBox-Flat.gif"/></p>
 
 - `BEMAnimationTypeOneStroke`
-<p align="left"><img src="http://s7.postimg.org/jaabag2p3/BEMAnimation_Type_One_Stroke.gif"/></p>
+<p align="left"><img src="./.assets/BEMCheckBox-One-Stroke.gif"/></p>
 
 - `BEMAnimationTypeFade`
-<p align="left"><img src="http://s24.postimg.org/3n1rre1cx/BEMAnimation_Type_Fade.gif"/></p>
+<p align="left"><img src="./.assets/BEMCheckBox-Fade.gif"/></p>
