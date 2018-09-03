@@ -17,6 +17,7 @@
   * [Support](#support)
   * [Sample App](#sample-app)
   * [React Native](#react-native)
+  * [NativeScript](#nativescript)
   * [Xamarin](#xamarin)
 * [**Getting Started**](#getting-started)
   * [Installation](#installation)
@@ -50,6 +51,9 @@ The iOS Sample App included with this project demonstrates one way to correctly 
 
 ### React Native  
 **BEMCheckBox** can be used with React Native: [React-Native-BEMCheckBox](https://github.com/torifat/react-native-bem-check-box)
+
+### NativeScript  
+**BEMCheckBox** can be used with NativeScript: [NativeScript-BEMCheckBox](https://github.com/nstudio/nativescript-checkbox)
 
 ### Xamarin
 **BEMCheckBox** can also be used with Xamarin: [XPlugins.iOS.BEMCheckBox](https://github.com/saturdaymp/XPlugins.iOS.BEMCheckBox)
