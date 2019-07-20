@@ -295,6 +295,8 @@
     self.onBoxLayer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
     self.onBoxLayer.shouldRasterize = YES;
     [self.layer addSublayer:self.onBoxLayer];
+	[self.onBoxLayer setNeedsDisplay];
+	[self.onBoxLayer displayIfNeeded];
 }
 
 /** Draws the check mark when the checkbox is set to On.
