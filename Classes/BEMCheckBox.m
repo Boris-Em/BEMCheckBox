@@ -145,6 +145,8 @@
 }
 
 - (void)setOn:(BOOL)on animated:(BOOL)animated {
+	// flush any pending display. Do not call in _setOn as infinite loop occurs between drawRect: and _setOn:
+	[self.layer displayIfNeeded];
     [self _setOn:on animated:animated notifyGroup:YES];
 }
 
@@ -247,7 +249,7 @@
 
 #pragma mark Drawings
 - (void)drawRect:(CGRect)rect {
-    [self setOn:self.on animated:NO];
+    [self _setOn:self.on animated:NO notifyGroup:NO];
 }
 
 /** Draws the entire checkbox, depending on the current state of the on property.
@@ -266,37 +268,32 @@
     }
 }
 
+- (CAShapeLayer *)getBoxLayer:(BOOL)isOn {
+	CAShapeLayer *layer = [CAShapeLayer layer];
+	layer.frame = self.bounds;
+	layer.path = [self.pathManager pathForBox].CGPath;
+	layer.lineWidth = self.lineWidth;
+	layer.fillColor = (isOn ? self.onFillColor : self.offFillColor).CGColor;
+	layer.strokeColor = (isOn ? self.onTintColor : self.tintColor).CGColor;
+	layer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
+	layer.shouldRasterize = YES;
+	[self.layer addSublayer:layer];
+	[layer setNeedsDisplay];
+	return layer;
+}
+
 /** Draws the box used when the checkbox is set to Off.
  */
 - (void)drawOffBox {
     [self.offBoxLayer removeFromSuperlayer];
-    self.offBoxLayer = [CAShapeLayer layer];
-    self.offBoxLayer.frame = self.bounds;
-    self.offBoxLayer.path = [self.pathManager pathForBox].CGPath;
-    self.offBoxLayer.fillColor = self.offFillColor.CGColor;
-    self.offBoxLayer.strokeColor = self.tintColor.CGColor;
-    self.offBoxLayer.lineWidth = self.lineWidth;
-    self.offBoxLayer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
-    self.offBoxLayer.shouldRasterize = YES;
-    
-    [self.layer addSublayer:self.offBoxLayer];
+	self.offBoxLayer = [self getBoxLayer:NO];
 }
 
 /** Draws the box when the checkbox is set to On.
  */
 - (void)drawOnBox {
     [self.onBoxLayer removeFromSuperlayer];
-    self.onBoxLayer = [CAShapeLayer layer];
-    self.onBoxLayer.frame = self.bounds;
-    self.onBoxLayer.path = [self.pathManager pathForBox].CGPath;
-    self.onBoxLayer.lineWidth = self.lineWidth;
-    self.onBoxLayer.fillColor = self.onFillColor.CGColor;
-    self.onBoxLayer.strokeColor = self.onTintColor.CGColor;
-    self.onBoxLayer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
-    self.onBoxLayer.shouldRasterize = YES;
-    [self.layer addSublayer:self.onBoxLayer];
-	[self.onBoxLayer setNeedsDisplay];
-	[self.onBoxLayer displayIfNeeded];
+	self.onBoxLayer = [self getBoxLayer:YES];
 }
 
 /** Draws the check mark when the checkbox is set to On.
@@ -315,6 +312,7 @@
     self.checkMarkLayer.rasterizationScale = (CGFloat)2.0f * [UIScreen mainScreen].scale;
     self.checkMarkLayer.shouldRasterize = YES;
     [self.layer addSublayer:self.checkMarkLayer];
+	[self.checkMarkLayer setNeedsDisplay];
 }
 
 #pragma mark Animations
