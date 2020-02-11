@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <BEMCheckBox/BEMCheckBox.h>
+@import BEMCheckBox;
 
 @interface CheckBoxUITests : XCTestCase
 

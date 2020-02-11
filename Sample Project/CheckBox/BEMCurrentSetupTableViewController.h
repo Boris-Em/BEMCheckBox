@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BEMCheckBox/BEMCheckBox.h>
+@import BEMCheckBox;
 
 @interface BEMCurrentSetupTableViewController : UITableViewController
 
