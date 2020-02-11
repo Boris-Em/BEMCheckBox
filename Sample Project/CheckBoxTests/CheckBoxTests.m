@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <BEMCheckBox/BEMCheckBox.h>
+#import <BEMCheckBox/BEMCheckBox-Swift.h>
 
 @interface CheckBoxTests : XCTestCase
 
@@ -78,11 +78,11 @@
 - (void)testReload {
     self.checkBox.on = NO;
     XCTAssert(self.checkBox.on == NO);
-    [self.checkBox reload];
+    [self.checkBox setNeedsDisplay];
     XCTAssert(self.checkBox.on == NO);
     self.checkBox.on = YES;
     XCTAssert(self.checkBox.on == YES);
-    [self.checkBox reload];
+    [self.checkBox setNeedsDisplay];
     XCTAssert(self.checkBox.on == YES);
 }
 
