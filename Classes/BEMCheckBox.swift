@@ -394,11 +394,10 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
         
         switch onAnimationType {
         case .stroke:
-            if let animation = animationManager.strokeAnimationReverse(false) {
-                onBoxLayer?.add(animation, forKey: "strokeEnd")
-                animation.delegate = self
-                checkMarkLayer?.add(animation, forKey: "strokeEnd")
-            }
+            let animation = animationManager.strokeAnimationReverse(false)
+            onBoxLayer?.add(animation, forKey: "strokeEnd")
+            animation.delegate = self
+            checkMarkLayer?.add(animation, forKey: "strokeEnd")
             
             return
             
@@ -406,10 +405,9 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             let wiggle = animationManager.fillAnimation(withBounces: 1, amplitude: 0.18, reverse: false)
             onBoxLayer?.add(wiggle, forKey: "transform")
             
-            if let opacityAnimation = animationManager.opacityAnimationReverse(false) {
-                opacityAnimation.delegate = self
-                checkMarkLayer?.add(opacityAnimation, forKey: "opacity")
-            }
+            let opacityAnimation = animationManager.opacityAnimationReverse(false)
+            opacityAnimation.delegate = self
+            checkMarkLayer?.add(opacityAnimation, forKey: "opacity")
             
             return
             
@@ -420,28 +418,26 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             wiggle.delegate = self
             checkMarkLayer?.add(wiggle, forKey: "transform")
             
-            if let opacity = animationManager.opacityAnimationReverse(false) {
-                opacity.duration = animationDuration / 1.4
-                onBoxLayer?.add(opacity, forKey: "opacity")
-            }
+            let opacity = animationManager.opacityAnimationReverse(false)
+            opacity.duration = animationDuration / 1.4
+            onBoxLayer?.add(opacity, forKey: "opacity")
             
             return
             
         case .flat:
             let pathManager = requiredPathManager
             
-            if let morphAnimation = animationManager.morphAnimation(
+            let morphAnimation = animationManager.morphAnimation(
                 from: pathManager.pathForFlatCheckMark(),
-                to: pathManager.pathForCheckMark()),
-                let opacity = animationManager.opacityAnimationReverse(false) {
-                
-                morphAnimation.delegate = self
-                opacity.duration = animationDuration / 5
-                
-                onBoxLayer?.add(opacity, forKey: "opacity")
-                checkMarkLayer?.add(morphAnimation, forKey: "path")
-                checkMarkLayer?.add(opacity, forKey: "opacity")
-            }
+                to: pathManager.pathForCheckMark())
+            let opacity = animationManager.opacityAnimationReverse(false)
+            
+            morphAnimation.delegate = self
+            opacity.duration = animationDuration / 5
+            
+            onBoxLayer?.add(opacity, forKey: "opacity")
+            checkMarkLayer?.add(morphAnimation, forKey: "path")
+            checkMarkLayer?.add(opacity, forKey: "opacity")
             
             return
             
@@ -451,37 +447,35 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             // Temporary set the path of the checkmark to the long checkmark
             self.checkMarkLayer?.path = pathManager.pathForLongCheckMark()?.reversing().cgPath
             
-            if let boxStrokeAnimation = animationManager.strokeAnimationReverse(false),
-                let checkStrokeAnimation = animationManager.strokeAnimationReverse(false),
-                let checkMorphAnimation = animationManager.morphAnimation(
-                    from: pathManager.pathForLongCheckMark(),
-                    to: pathManager.pathForCheckMark()) {
-                boxStrokeAnimation.duration = boxStrokeAnimation.duration / 2
-                onBoxLayer?.add(boxStrokeAnimation, forKey: "strokeEnd")
-                
-                checkStrokeAnimation.duration = checkStrokeAnimation.duration / 3
-                checkStrokeAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-                checkStrokeAnimation.fillMode = .backwards
-                checkStrokeAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration
-                checkMarkLayer?.add(checkStrokeAnimation, forKey: "strokeEnd")
-                
-                checkMorphAnimation.duration = checkMorphAnimation.duration / 6
-                checkMorphAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-                checkMorphAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration + checkStrokeAnimation.duration
-                checkMorphAnimation.isRemovedOnCompletion = false
-                checkMorphAnimation.fillMode = .forwards
-                checkMorphAnimation.delegate = self
-                checkMarkLayer?.add(checkMorphAnimation, forKey: "path")
-            }
+            let boxStrokeAnimation = animationManager.strokeAnimationReverse(false)
+            let checkStrokeAnimation = animationManager.strokeAnimationReverse(false)
+            let checkMorphAnimation = animationManager.morphAnimation(
+                from: pathManager.pathForLongCheckMark(),
+                to: pathManager.pathForCheckMark())
+            boxStrokeAnimation.duration = boxStrokeAnimation.duration / 2
+            onBoxLayer?.add(boxStrokeAnimation, forKey: "strokeEnd")
+            
+            checkStrokeAnimation.duration = checkStrokeAnimation.duration / 3
+            checkStrokeAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            checkStrokeAnimation.fillMode = .backwards
+            checkStrokeAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration
+            checkMarkLayer?.add(checkStrokeAnimation, forKey: "strokeEnd")
+            
+            checkMorphAnimation.duration = checkMorphAnimation.duration / 6
+            checkMorphAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            checkMorphAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration + checkStrokeAnimation.duration
+            checkMorphAnimation.isRemovedOnCompletion = false
+            checkMorphAnimation.fillMode = .forwards
+            checkMorphAnimation.delegate = self
+            checkMarkLayer?.add(checkMorphAnimation, forKey: "path")
             
             return
             
         default:
-            if let animation = animationManager.opacityAnimationReverse(false) {
-                onBoxLayer?.add(animation, forKey: "opacity")
-                animation.delegate = self
-                checkMarkLayer?.add(animation, forKey: "opacity")
-            }
+            let animation = animationManager.opacityAnimationReverse(false)
+            onBoxLayer?.add(animation, forKey: "opacity")
+            animation.delegate = self
+            checkMarkLayer?.add(animation, forKey: "opacity")
             
             return
         }
@@ -501,11 +495,11 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
         
         switch offAnimationType {
         case .stroke:
-            if let animation = animationManager.strokeAnimationReverse(true) {
-                onBoxLayer?.add(animation, forKey: "strokeEnd")
-                animation.delegate = self
-                checkMarkLayer?.add(animation, forKey: "strokeEnd")
-            }
+            let animation = animationManager.strokeAnimationReverse(true)
+            onBoxLayer?.add(animation, forKey: "strokeEnd")
+            animation.delegate = self
+            checkMarkLayer?.add(animation, forKey: "strokeEnd")
+            
             return
             
         case .fill:
@@ -514,9 +508,9 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             wiggle.delegate = self
             onBoxLayer?.add(wiggle, forKey: "transform")
             
-            if let opacity = animationManager.opacityAnimationReverse(true) {
-                checkMarkLayer?.add(opacity, forKey: "opacity")
-            }
+            let opacity = animationManager.opacityAnimationReverse(true)
+            checkMarkLayer?.add(opacity, forKey: "opacity")
+            
             return
             
         case .bounce:
@@ -525,28 +519,26 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             wiggle.duration = animationDuration / 1.1
             checkMarkLayer?.add(wiggle, forKey: "transform")
             
-            if let opacity = animationManager.opacityAnimationReverse(true) {
-                opacity.delegate = self
-                onBoxLayer?.add(opacity, forKey: "opacity")
-            }
+            let opacity = animationManager.opacityAnimationReverse(true)
+            opacity.delegate = self
+            onBoxLayer?.add(opacity, forKey: "opacity")
             
             return
             
         case .flat:
             let pathManager = requiredPathManager
             
-            if let morphAnimation = animationManager.morphAnimation(
+            let morphAnimation = animationManager.morphAnimation(
                 from: pathManager.pathForCheckMark(),
-                to: pathManager.pathForFlatCheckMark()),
-                let opacity = animationManager.opacityAnimationReverse(true) {
-                
-                morphAnimation.delegate = self
-                opacity.duration = animationDuration
-                
-                onBoxLayer?.add(opacity, forKey: "opacity")
-                checkMarkLayer?.add(morphAnimation, forKey: "path")
-                checkMarkLayer?.add(opacity, forKey: "opacity")
-            }
+                to: pathManager.pathForFlatCheckMark())
+            let opacity = animationManager.opacityAnimationReverse(true)
+            
+            morphAnimation.delegate = self
+            opacity.duration = animationDuration
+            
+            onBoxLayer?.add(opacity, forKey: "opacity")
+            checkMarkLayer?.add(morphAnimation, forKey: "path")
+            checkMarkLayer?.add(opacity, forKey: "opacity")
             
             return
             
@@ -554,42 +546,43 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             let pathManager = requiredPathManager
             checkMarkLayer?.path = pathManager.pathForLongCheckMark()?.reversing().cgPath
             
-            if let checkMorphAnimation = animationManager.morphAnimation(
+            let checkMorphAnimation = animationManager.morphAnimation(
                 from: pathManager.pathForCheckMark(),
-                to: pathManager.pathForLongCheckMark()),
-                let checkStrokeAnimation = animationManager.strokeAnimationReverse(true){
-                
-                checkMorphAnimation.delegate = nil
-                checkMorphAnimation.duration = CFTimeInterval(checkMorphAnimation.duration / 6)
-                checkMarkLayer?.add(checkMorphAnimation, forKey: "path")
-                
-                checkStrokeAnimation.delegate = nil
-                checkStrokeAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration
-                checkStrokeAnimation.duration = CFTimeInterval(checkStrokeAnimation.duration / 3)
-                checkMarkLayer?.add(checkStrokeAnimation, forKey: "strokeEnd")
-
-                weak var weakSelf = self
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(CACurrentMediaTime() + checkMorphAnimation.duration + checkStrokeAnimation.duration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
+                to: pathManager.pathForLongCheckMark())
+            let checkStrokeAnimation = animationManager.strokeAnimationReverse(true)
+            
+            checkMorphAnimation.delegate = nil
+            checkMorphAnimation.duration = CFTimeInterval(checkMorphAnimation.duration / 6)
+            checkMarkLayer?.add(checkMorphAnimation, forKey: "path")
+            
+            checkStrokeAnimation.delegate = nil
+            checkStrokeAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration
+            checkStrokeAnimation.duration = CFTimeInterval(checkStrokeAnimation.duration / 3)
+            checkMarkLayer?.add(checkStrokeAnimation, forKey: "strokeEnd")
+            
+            weak var weakSelf = self
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + Double(Int64(CACurrentMediaTime() +
+                    checkMorphAnimation.duration + checkStrokeAnimation.duration *
+                    Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC),
+                execute: {
                     weakSelf?.checkMarkLayer?.lineCap = .butt
-                })
-                
-                if let boxStrokeAnimation = animationManager.strokeAnimationReverse(true) {
-                    boxStrokeAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration + checkStrokeAnimation.duration
-                    boxStrokeAnimation.duration = CFTimeInterval(boxStrokeAnimation.duration / 2)
-                    boxStrokeAnimation.delegate = self
-                    onBoxLayer?.add(boxStrokeAnimation, forKey: "strokeEnd")
-                }
-            }
+            })
+            
+            let boxStrokeAnimation = animationManager.strokeAnimationReverse(true)
+            boxStrokeAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration + checkStrokeAnimation.duration
+            boxStrokeAnimation.duration = CFTimeInterval(boxStrokeAnimation.duration / 2)
+            boxStrokeAnimation.delegate = self
+            onBoxLayer?.add(boxStrokeAnimation, forKey: "strokeEnd")
             
             return
             
-            
         default:
-            if let animation = animationManager.opacityAnimationReverse(true) {
-                onBoxLayer?.add(animation, forKey: "opacity")
-                animation.delegate = self
-                checkMarkLayer?.add(animation, forKey: "opacity")
-            }
+            let animation = animationManager.opacityAnimationReverse(true)
+            onBoxLayer?.add(animation, forKey: "opacity")
+            animation.delegate = self
+            checkMarkLayer?.add(animation, forKey: "opacity")
+            
             return
         }
     }

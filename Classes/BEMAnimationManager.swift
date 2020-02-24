@@ -25,7 +25,7 @@ public final class BEMAnimationManager: NSObject {
      * @param reverse The direction of the animation. Set to YES if the animation should go from opacity 0 to 1, or NO for the opposite.
      * @return Returns the `CABasicAnimation` object.
      */
-    @objc public func strokeAnimationReverse(_ reverse: Bool) -> CABasicAnimation? {
+    @objc public func strokeAnimationReverse(_ reverse: Bool) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         if reverse {
             animation.fromValue = NSNumber(value: 1.0)
@@ -46,7 +46,7 @@ public final class BEMAnimationManager: NSObject {
      * @param reverse The direction of the animation. Set to YES if the animation should go from opacity 0 to 1, or false for the opposite.
      * @return Returns the `CABasicAnimation` object.
      */
-    @objc public func opacityAnimationReverse(_ reverse: Bool) -> CABasicAnimation? {
+    @objc public func opacityAnimationReverse(_ reverse: Bool) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "opacity")
         if reverse {
             animation.fromValue = NSNumber(value: 1.0)
@@ -68,7 +68,7 @@ public final class BEMAnimationManager: NSObject {
      * @param toPath The path to transform (morph) to.
      * @return Returns the `CABasicAnimation` object.
      */
-    @objc public func morphAnimation(from fromPath: UIBezierPath?, to toPath: UIBezierPath?) -> CABasicAnimation? {
+    @objc public func morphAnimation(from fromPath: UIBezierPath?, to toPath: UIBezierPath?) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "path")
         animation.duration = animationDuration
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
