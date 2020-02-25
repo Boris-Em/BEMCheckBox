@@ -84,7 +84,7 @@
 }
 
 - (void)testRemoveCheckBox {
-    BEMCheckBoxGroup *group = [[BEMCheckBoxGroup alloc] initWithCheckBoxes:self.checkBoxes];
+    BEMCheckBoxGroup *group = [[BEMCheckBoxGroup alloc] initWithCheckBoxes: self.checkBoxes];
     XCTAssertNotNil(group);
     XCTAssertEqual(group.checkBoxes.count, self.checkBoxes.count);
     
@@ -93,7 +93,7 @@
 }
 
 - (void)testEmptyGroup {
-    BEMCheckBoxGroup *emptyGroup = [[BEMCheckBoxGroup alloc] initWithCheckBoxes:nil];
+    BEMCheckBoxGroup *emptyGroup = [[BEMCheckBoxGroup alloc] initWithCheckBoxes: @[]];
     XCTAssertNotNil(emptyGroup);
     XCTAssertEqual(emptyGroup.checkBoxes.count, 0);
     
