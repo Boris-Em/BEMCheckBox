@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <BEMCheckBox/BEMCheckBox.h>
+#import <BEMCheckBox/BEMCheckBox-Swift.h>
 
 @interface CheckBoxTests : XCTestCase
 
@@ -51,10 +51,12 @@
 - (void)testSetOnAnimated {
     [self.checkBox setOn:YES animated:NO];
     XCTAssert(self.checkBox.on == YES);
+    [self.checkBox layoutIfNeeded];
     XCTAssert(self.checkBox.layer.sublayers.count == 3);
     
     [self.checkBox setOn:NO animated:NO];
     XCTAssert(self.checkBox.on == NO);
+    [self.checkBox layoutIfNeeded];
     XCTAssert(self.checkBox.layer.sublayers.count == 1);
     
     [self.checkBox setOn:YES animated:YES];
@@ -68,21 +70,23 @@
 - (void)testOn {
     self.checkBox.on = YES;
     XCTAssert(self.checkBox.on == YES);
+    [self.checkBox layoutIfNeeded];
     XCTAssert(self.checkBox.layer.sublayers.count == 3);
     
     self.checkBox.on = NO;
     XCTAssert(self.checkBox.on == NO);
+    [self.checkBox layoutIfNeeded];
     XCTAssert(self.checkBox.layer.sublayers.count == 1);
 }
 
 - (void)testReload {
     self.checkBox.on = NO;
     XCTAssert(self.checkBox.on == NO);
-    [self.checkBox reload];
+    [self.checkBox setNeedsDisplay];
     XCTAssert(self.checkBox.on == NO);
     self.checkBox.on = YES;
     XCTAssert(self.checkBox.on == YES);
-    [self.checkBox reload];
+    [self.checkBox setNeedsDisplay];
     XCTAssert(self.checkBox.on == YES);
 }
 
