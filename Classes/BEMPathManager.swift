@@ -29,8 +29,8 @@ class BEMPathManager: NSObject {
     /** Returns a UIBezierPath object for the box of the checkbox
      * @returns The path of the box.
      */
-    func pathForBox() -> UIBezierPath? {
-        var path: UIBezierPath?
+    func pathForBox() -> UIBezierPath {
+        var path: UIBezierPath
         
         switch boxType {
         case .square:
@@ -42,8 +42,8 @@ class BEMPathManager: NSObject {
                     x: 0.0, y: 0.0,
                     width: size, height: size),
                 cornerRadius: cornerRadius)
-            path?.apply(CGAffineTransform.identity.rotated(by: CGFloat.pi * 2.5))
-            path?.apply(CGAffineTransform(translationX: size + offset, y: offset))
+            path.apply(CGAffineTransform.identity.rotated(by: CGFloat.pi * 2.5))
+            path.apply(CGAffineTransform(translationX: size + offset, y: offset))
             
         default:
             let radius: CGFloat = (size - lineWidth) / 2
@@ -62,7 +62,7 @@ class BEMPathManager: NSObject {
     /** Returns a UIBezierPath object for the checkmark of the checkbox
      * @returns The path of the checkmark.
      */
-    func pathForCheckMark() -> UIBezierPath? {
+    func pathForCheckMark() -> UIBezierPath {
         let checkMarkPath = UIBezierPath()
         
         checkMarkPath.move(to: CGPoint(x: size / 3.1578, y: size / 2))
@@ -81,7 +81,7 @@ class BEMPathManager: NSObject {
     /** Returns a UIBezierPath object for an extra long checkmark which is in contact with the box.
      * @returns The path of the checkmark.
      */
-    func pathForLongCheckMark() -> UIBezierPath? {
+    func pathForLongCheckMark() -> UIBezierPath {
         let checkMarkPath = UIBezierPath()
         
         checkMarkPath.move(to: CGPoint(x: size / 3.1578, y: size / 2))
