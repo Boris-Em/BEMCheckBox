@@ -82,7 +82,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
      */
     @objc public var boxType: BoxType = .circle {
         didSet {
-            pathManager?.boxType = boxType
+            pathManager.boxType = boxType
             setNeedsLayout()
         }
     }
@@ -90,7 +90,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     /** The width of the lines of the check mark and the box. Default to 2. */
     @objc @IBInspectable public var lineWidth: CGFloat = 2.0 {
         didSet {
-            pathManager?.lineWidth = lineWidth
+            pathManager.lineWidth = lineWidth
             setNeedsLayout()
         }
     }
@@ -98,7 +98,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     /** The corner radius which is applied to the box when the boxType is square. Default to 3.0. */
     @objc @IBInspectable public var cornerRadius: CGFloat = 3.0 {
         didSet {
-            pathManager?.cornerRadius = cornerRadius
+            pathManager.cornerRadius = cornerRadius
             setNeedsLayout()
         }
     }
@@ -106,7 +106,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     /** The duration in seconds of the animation when the check box switches from on and off. Default to 0. */
     @objc @IBInspectable public var animationDuration: CFTimeInterval = 0.5 {
         didSet {
-            animationManager?.animationDuration = animationDuration
+            animationManager.animationDuration = animationDuration
         }
     }
     
@@ -147,22 +147,24 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     private var checkMarkLayer: CAShapeLayer?
     
     /** The BEMAnimationManager object used to generate animations. */
-    private var animationManager: BEMAnimationManager?
+    private lazy var animationManager: BEMAnimationManager = {
+        let animationManager = BEMAnimationManager(animationDuration: animationDuration)
+        return animationManager
+    }()
     
     /** The BEMPathManager object used to generate paths. */
-    private var pathManager: BEMPathManager?
+    private lazy var pathManager: BEMPathManager = {
+        let pathManager = BEMPathManager()
+        pathManager.lineWidth = lineWidth
+        pathManager.cornerRadius = cornerRadius
+        pathManager.boxType = boxType
+        pathManager.size = frame.height
+        return pathManager
+    }()
+
     
     /** The group this box is associated with. */
-    @objc public var group: BEMCheckBoxGroup? {
-        didSet {
-            if group != oldValue &&
-                oldValue?.contains(self) == true {
-                oldValue?.removeCheckBoxFromGroup(self)
-            }
-            
-            group?.addCheckBoxToGroup(self)
-        }
-    }
+    @objc public var group: BEMCheckBoxGroup?
     
     /** The animation type when the check mark gets set to On.
      * @warning Some animations might not look as intended if the different colors of the control are not appropriatly configured.
@@ -201,7 +203,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     
     public override var frame: CGRect {
         didSet {
-            pathManager?.size = frame.height
+            pathManager.size = frame.height
         }
     }
 
@@ -222,8 +224,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
 
         if animated {
             setupLayers()
-        }
-        else {
+        } else {
             setNeedsLayout()
         }
 
@@ -312,15 +313,14 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
 
     /** Draws the box used when the checkbox is set to Off. */
     private func setupBoxOffLayer() {
-        if offBoxLayer == nil
-        {
+        if offBoxLayer == nil {
             offBoxLayer = CAShapeLayer()
             offBoxLayer?.rasterizationScale = 2.0 * UIScreen.main.scale
             offBoxLayer?.shouldRasterize = true
         }
         
         offBoxLayer?.frame = bounds
-        offBoxLayer?.path = requiredPathManager.pathForBox()?.cgPath
+        offBoxLayer?.path = pathManager.pathForBox().cgPath
         offBoxLayer?.fillColor = offFillColor?.cgColor
         offBoxLayer?.strokeColor = tintColor?.cgColor
         offBoxLayer?.lineWidth = lineWidth
@@ -331,15 +331,14 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     /** Draws the box when the checkbox is set to On.
      */
     private func setupBoxOnLayer() {
-        if onBoxLayer == nil
-        {
+        if onBoxLayer == nil {
             onBoxLayer = CAShapeLayer()
             onBoxLayer?.rasterizationScale = 2.0 * UIScreen.main.scale
             onBoxLayer?.shouldRasterize = true
         }
         
         onBoxLayer?.frame = bounds
-        onBoxLayer?.path = requiredPathManager.pathForBox()?.cgPath
+        onBoxLayer?.path = pathManager.pathForBox().cgPath
         onBoxLayer?.lineWidth = lineWidth
         onBoxLayer?.fillColor = onFillColor?.cgColor
         onBoxLayer?.strokeColor = onTintColor?.cgColor
@@ -350,8 +349,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     /** Draws the check mark when the checkbox is set to On.
      */
     private func setupCheckmarkLayer() {
-        if checkMarkLayer == nil
-        {
+        if checkMarkLayer == nil {
             checkMarkLayer = CAShapeLayer()
             checkMarkLayer?.rasterizationScale = 2.0 * UIScreen.main.scale
             checkMarkLayer?.shouldRasterize = true
@@ -360,7 +358,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
         }
         
         checkMarkLayer?.frame = bounds
-        checkMarkLayer?.path = requiredPathManager.pathForCheckMark()?.cgPath
+        checkMarkLayer?.path = pathManager.pathForCheckMark().cgPath
         checkMarkLayer?.strokeColor = onCheckColor?.cgColor
         checkMarkLayer?.lineWidth = lineWidth
         checkMarkLayer?.fillColor = UIColor.clear.cgColor
@@ -370,31 +368,11 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
 
     // MARK: Animations
     
-    private var requiredAnimationManager: BEMAnimationManager {
-        if animationManager == nil {
-            animationManager = BEMAnimationManager(animationDuration: animationDuration)
-        }
-        return animationManager!
-    }
-    
-    private var requiredPathManager: BEMPathManager {
-        if pathManager == nil {
-            pathManager = BEMPathManager()
-            pathManager?.lineWidth = lineWidth
-            pathManager?.cornerRadius = cornerRadius
-            pathManager?.boxType = boxType
-            pathManager?.size = frame.height
-        }
-        return pathManager!
-    }
-    
     private func addOnAnimation() {
         if animationDuration == 0.0 {
             return
         }
-        
-        let animationManager = requiredAnimationManager
-        
+                
         switch onAnimationType {
         case .stroke:
             if let animation = animationManager.strokeAnimationReverse(false) {
@@ -433,8 +411,6 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             return
             
         case .flat:
-            let pathManager = requiredPathManager
-            
             if let morphAnimation = animationManager.morphAnimation(
                 from: pathManager.pathForFlatCheckMark(),
                 to: pathManager.pathForCheckMark()),
@@ -451,10 +427,8 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             return
             
         case .oneStroke:
-            let pathManager = requiredPathManager
-            
             // Temporary set the path of the checkmark to the long checkmark
-            self.checkMarkLayer?.path = pathManager.pathForLongCheckMark()?.reversing().cgPath
+            self.checkMarkLayer?.path = pathManager.pathForLongCheckMark().reversing().cgPath
             
             if let boxStrokeAnimation = animationManager.strokeAnimationReverse(false),
                 let checkStrokeAnimation = animationManager.strokeAnimationReverse(false),
@@ -501,9 +475,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             checkMarkLayer = nil
             return
         }
-        
-        let animationManager = requiredAnimationManager
-        
+                
         switch offAnimationType {
         case .stroke:
             if let animation = animationManager.strokeAnimationReverse(true) {
@@ -540,8 +512,6 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             return
             
         case .flat:
-            let pathManager = requiredPathManager
-            
             if let morphAnimation = animationManager.morphAnimation(
                 from: pathManager.pathForCheckMark(),
                 to: pathManager.pathForFlatCheckMark()),
@@ -558,8 +528,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
             return
             
         case .oneStroke:
-            let pathManager = requiredPathManager
-            checkMarkLayer?.path = pathManager.pathForLongCheckMark()?.reversing().cgPath
+            checkMarkLayer?.path = pathManager.pathForLongCheckMark().reversing().cgPath
             
             if let checkMorphAnimation = animationManager.morphAnimation(
                 from: pathManager.pathForCheckMark(),
