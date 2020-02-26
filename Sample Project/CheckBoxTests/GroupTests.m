@@ -93,7 +93,7 @@
 }
 
 - (void)testEmptyGroup {
-    BEMCheckBoxGroup *emptyGroup = [[BEMCheckBoxGroup alloc] initWithCheckBoxes:nil];
+    BEMCheckBoxGroup *emptyGroup = [[BEMCheckBoxGroup alloc] initWithCheckBoxes: @[]];
     XCTAssertNotNil(emptyGroup);
     XCTAssertEqual(emptyGroup.checkBoxes.count, 0);
     

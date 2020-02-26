@@ -71,10 +71,10 @@ public class BEMCheckBoxGroup: NSObject {
     
     /** Creates a new group with the list of check boxes.
      */
-    @objc convenience public init(checkBoxes: [BEMCheckBox]?) {
+    @objc convenience public init(checkBoxes: [BEMCheckBox]) {
         self.init()
         
-        for checkbox in checkBoxes ?? [] {
+        for checkbox in checkBoxes {
             addCheckBoxToGroup(checkbox)
         }
     }
