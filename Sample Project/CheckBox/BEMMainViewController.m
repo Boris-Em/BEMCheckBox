@@ -7,7 +7,6 @@
 //
 
 #import "BEMMainViewController.h"
-#import <BEMCheckBox/BEMCheckBox.h>
 #import "BEMCurrentSetupTableViewController.h"
 
 @interface BEMMainViewController ()

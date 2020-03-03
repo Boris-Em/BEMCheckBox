@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <BEMCheckBox/BEMAnimationManager.h>
+#import <BEMCheckBox/BEMCheckBox-Swift.h>
 
 @interface AnimationManangerTests : XCTestCase
 

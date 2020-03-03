@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <BEMCheckBox/BEMCheckBox.h>
-#import <BEMCheckBox/BEMCheckBoxGroup.h>
+#import <BEMCheckBox/BEMCheckBox-Swift.h>
 
 @interface GroupTests : XCTestCase
 
@@ -31,7 +30,7 @@
 }
 
 - (void)testSelectedCheckBox {
-    BEMCheckBoxGroup *group = [BEMCheckBoxGroup groupWithCheckBoxes:self.checkBoxes];
+    BEMCheckBoxGroup *group = [[BEMCheckBoxGroup alloc] initWithCheckBoxes:self.checkBoxes];
     XCTAssertNotNil(group);
     XCTAssertNil(group.selectedCheckBox);
     
@@ -62,7 +61,7 @@
 }
 
 - (void)testAutoSelectFirstCheckBox {
-    BEMCheckBoxGroup *group = [BEMCheckBoxGroup groupWithCheckBoxes:self.checkBoxes];
+    BEMCheckBoxGroup *group = [[BEMCheckBoxGroup alloc] initWithCheckBoxes:self.checkBoxes];
     XCTAssertNotNil(group);
     XCTAssertNil(group.selectedCheckBox);
     
@@ -74,7 +73,7 @@
 }
 
 - (void)testAddCheckBox {
-    BEMCheckBoxGroup *group = [BEMCheckBoxGroup groupWithCheckBoxes:self.checkBoxes];
+    BEMCheckBoxGroup *group = [[BEMCheckBoxGroup alloc] initWithCheckBoxes:self.checkBoxes];
     XCTAssertNotNil(group);
     XCTAssertEqual(group.checkBoxes.count, self.checkBoxes.count);
     
@@ -85,7 +84,7 @@
 }
 
 - (void)testRemoveCheckBox {
-    BEMCheckBoxGroup *group = [BEMCheckBoxGroup groupWithCheckBoxes:self.checkBoxes];
+    BEMCheckBoxGroup *group = [[BEMCheckBoxGroup alloc] initWithCheckBoxes:self.checkBoxes];
     XCTAssertNotNil(group);
     XCTAssertEqual(group.checkBoxes.count, self.checkBoxes.count);
     
@@ -94,7 +93,7 @@
 }
 
 - (void)testEmptyGroup {
-    BEMCheckBoxGroup *emptyGroup = [BEMCheckBoxGroup groupWithCheckBoxes:nil];
+    BEMCheckBoxGroup *emptyGroup = [[BEMCheckBoxGroup alloc] initWithCheckBoxes: @[]];
     XCTAssertNotNil(emptyGroup);
     XCTAssertEqual(emptyGroup.checkBoxes.count, 0);
     
