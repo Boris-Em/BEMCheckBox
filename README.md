@@ -73,6 +73,17 @@ The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.o
 
 Run `carthage update` after adding **BEMCheckBox** to your Cartfile to build the framework. Drag the built `BEMCheckBox.framework` into your Xcode project.
 
+#### Swift Package Manager
+
+Add the following lines to your Package.swift file:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/Boris-Em/BEMCheckBox", from: "1.4")
+]
+```
+
+
 #### Manually	
 Finally, you can install **BEMCheckBox** manually. Simply drag and drop the *Classes* folder into your Xcode project. When you do so, make sure to check the "*Copy items into destination group's folder*" box.
 
