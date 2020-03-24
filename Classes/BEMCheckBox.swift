@@ -183,12 +183,12 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     
     // MARK: Initialization
     
-    @objc override init(frame: CGRect) {
+    @objc public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
-    @objc required init?(coder: NSCoder) {
+    @objc public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
