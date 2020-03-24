@@ -63,6 +63,9 @@ It only takes a few simple steps to install and setup **BEMCheckBox** to your pr
 
 ### Installation
 
+#### Swift Package Manager
+Add `https://github.com/Boris-Em/BEMCheckBox` as a dependency to your Package.swift file or select `File -> Swift Packages -> Add Package Dependency...` in Xcode.
+
 #### CocoaPods
 The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To do so, simply add the following line to your `Podfile`:
 	<pre><code>pod 'BEMCheckBox'</code></pre>
