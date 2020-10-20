@@ -28,7 +28,7 @@ import UIKit
 /** Tasteful Checkbox for iOS. */
 @IBDesignable
 @objc
-public class BEMCheckBox: UIControl, CAAnimationDelegate {
+open class BEMCheckBox: UIControl, CAAnimationDelegate {
     
     @objc(BEMBoxType)
     public enum BoxType : Int {
