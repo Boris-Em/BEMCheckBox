@@ -18,6 +18,8 @@ jobs:
           ls -la
           cd build
           ls -la
+          cd Build
+          ls -la
           cd Products
           ls -la
           cd BEMCheckBox.freamwork
