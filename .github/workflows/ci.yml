@@ -13,4 +13,4 @@ jobs:
         run: xcodebuild -showsdks
 
       - name: Build Simulator
-        run: xcodebuild -sdk iphonesimulator
+        run: xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -configuration release
