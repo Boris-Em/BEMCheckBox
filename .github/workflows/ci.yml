@@ -22,5 +22,7 @@ jobs:
           ls -la
           cd Products
           ls -la
+          cd Release-iphonesimulator
+          ls -la
           cd BEMCheckBox.freamwork
           ls -la
