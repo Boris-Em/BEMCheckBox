@@ -13,4 +13,12 @@ jobs:
         run: xcodebuild -showsdks
 
       - name: Build Simulator
-        run: xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -configuration release
+        run: |
+          xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -scheme BEMCheckBox -configuration Release -derivedDataPath build
+          ls -la
+          cd build
+          ls -la
+          cd Products
+          ls -la
+          cd BEMCheckBox.freamwork
+          ls -la
