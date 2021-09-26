@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-11
+
+    steps:
+      - uses: action/checkout@v2
+      
+      - name: Show SDKS
+        run: xcodebuild -showsdks
+
+      - name: Build Simulator
+        run: xcodebuild -sdk iphonesimulator
