@@ -47,5 +47,10 @@ jobs:
           cp -R build/Build/Products/Release-iphoneos/ Release-fat
           ls -la
           ls -la Release-fat
+          ls -la Release-fat/BEMCheckBox.framework
           cp -R build/Build/Products/Release-iphonesimulator/BEMCheckbox.framework Release-fat/
-          ls -la Release-fat
+          ls -la Release-fat/BEMCheckBox.framework
+
+      # - name: Build FAT Binary
+      #   run: |
+      #     lipo -create -output BEMCheckBox.framework/BEMCheckBox Release-fat/BEMCheckBox.framework/BEMCheckBox Release-iphonesimulator/BEMCheckBox.framework/BEMCheckbox
