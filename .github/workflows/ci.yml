@@ -12,9 +12,12 @@ jobs:
       - name: Show SDKS
         run: xcodebuild -showsdks
 
+      # In XCode 12 it will build the simulator with a arm64 CPU.  We don't want this as when
+      # we try to combine the simulator with the device build using Lipo we will get an error
+      # because both builds have the same CPU archecture.
       - name: Build iOS Simulator
         run: |
-          xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release
+          xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release EXCLUDED_ARCHS="arm64"
           ls -la build/Build/Products/Release-iphonesimulator
           ls -la build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework
           lipo -info build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework/BEMCheckBox
