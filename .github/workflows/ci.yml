@@ -15,42 +15,25 @@ jobs:
       - name: Build iOS Simulator
         run: |
           xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release
-          ls -la
-          cd build
-          ls -la
-          cd Build
-          ls -la
-          cd Products
-          ls -la
-          cd Release-iphonesimulator
-          ls -la
-          cd BEMCheckBox.framework
-          ls -la
+          ls -la build/Build/Products/Release-iphonesimulator
+          ls -la build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework
 
       - name: Build iOS Device
         run: |
           xcodebuild -sdk iphoneos -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release
-          ls -la
-          cd build
-          ls -la
-          cd Build
-          ls -la
-          cd Products
-          ls -la
-          cd Release-iphoneos
-          ls -la
-          cd BEMCheckBox.framework
-          ls -la
+          ls -la build/Build/Products/Release-iphoneos
+          ls -la build/Build/Products/Release-iphoneos/BEMCheckBox.framework
 
       - name: Combine Builds
         run: |
           cp -R build/Build/Products/Release-iphoneos/ Release-fat
-          ls -la
+          ls -la Release-fat
+          ls -la Release-fat/BEMCheckBox.framework/BEMCheckBox
+
+      - name: Build FAT Binary
+        run: |
+          lipo -create -output  Release-fat/BEMCheckBox.framework/BEMCheckBox build/Build/Products/Release-iphoneos/BEMCheckBox.framework/BEMCheckBox build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework/BEMCheckbox
+          lipo -info Release-fat/BEMCheckBox.framework
+          file Release-fat/BEMCheckBox.framework
           ls -la Release-fat
           ls -la Release-fat/BEMCheckBox.framework
-          cp -R build/Build/Products/Release-iphonesimulator/BEMCheckbox.framework Release-fat/
-          ls -la Release-fat/BEMCheckBox.framework
-
-      # - name: Build FAT Binary
-      #   run: |
-      #     lipo -create -output BEMCheckBox.framework/BEMCheckBox Release-fat/BEMCheckBox.framework/BEMCheckBox Release-iphonesimulator/BEMCheckBox.framework/BEMCheckbox
