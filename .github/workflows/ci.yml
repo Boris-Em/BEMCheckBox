@@ -17,12 +17,14 @@ jobs:
           xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release
           ls -la build/Build/Products/Release-iphonesimulator
           ls -la build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework
+          lipo -info build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework/BEMCheckBox
 
       - name: Build iOS Device
         run: |
           xcodebuild -sdk iphoneos -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release
           ls -la build/Build/Products/Release-iphoneos
           ls -la build/Build/Products/Release-iphoneos/BEMCheckBox.framework
+          lipo -info build/Build/Products/Release-iphoneos/BEMCheckBox.framework/BEMCheckBox
 
       - name: Combine Builds
         run: |
