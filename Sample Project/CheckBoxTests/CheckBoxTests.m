@@ -31,21 +31,22 @@
 }
 
 - (void)testInit {
-    
     XCTAssertNotNil(self.checkBox);
     
     // Default values
-    XCTAssert(self.checkBox.on == NO, @"The default value for 'on' should be 'NO'");
-    XCTAssert(self.checkBox.hideBox == NO, @"The box shouldn't be hidden by default");
-    XCTAssert([self.checkBox.onTintColor isEqual:[UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1]], @"Default on tint color");
-    XCTAssert([self.checkBox.onFillColor isEqual:[UIColor clearColor]], @"Default on fill color");
-    XCTAssert([self.checkBox.onCheckColor isEqual:[UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1]], @"Default on check color");
-    XCTAssert([self.checkBox.tintColor isEqual:[UIColor lightGrayColor]], @"Default tint color");
-    XCTAssert(self.checkBox.lineWidth == 2.0, @"Default line width should be 2.0");
-    XCTAssert(self.checkBox.animationDuration == 0.5, @"Default animation duration should be 0.5");
-    XCTAssert(self.checkBox.onAnimationType == BEMAnimationTypeStroke, @"Default on animation should be of type stroke");
-    XCTAssert(self.checkBox.offAnimationType == BEMAnimationTypeStroke, @"Default off animation should be of type stroke");
-    XCTAssert([self.checkBox.backgroundColor isEqual:[UIColor clearColor]], @"Background color should be transparent");
+    XCTAssertFalse(self.checkBox.on, @"The default value for 'on' should be 'NO'");
+    XCTAssertFalse(self.checkBox.hideBox, @"The box shouldn't be hidden by default");
+    XCTAssertEqualObjects(self.checkBox.onTintColor, [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1], @"Default on tint color");
+    XCTAssertEqualObjects(self.checkBox.onFillColor, [UIColor clearColor], @"Default on fill color");
+    XCTAssertEqualObjects(self.checkBox.onCheckColor, [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1], @"Default on check color");
+    XCTAssertEqual(self.checkBox.tintColor, [UIColor lightGrayColor], @"Default tint color");
+    XCTAssertEqual(self.checkBox.lineWidth, 2.0, @"Default line width should be 2.0");
+    XCTAssertEqual(self.checkBox.animationDuration, 0.5, @"Default animation duration should be 0.5");
+    XCTAssertEqual(self.checkBox.onAnimationType, BEMAnimationTypeStroke, @"Default on animation should be of type stroke");
+    XCTAssertEqual(self.checkBox.offAnimationType, BEMAnimationTypeStroke, @"Default off animation should be of type stroke");
+    XCTAssertEqual(self.checkBox.backgroundColor, [UIColor clearColor], @"Background color should be transparent");
+    XCTAssertEqualObjects(self.checkBox.accessibilityValue, @"off", @"The default value for `accessibilityValue` should be `off`");
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitNone, @"The default value for `accessibilityTraits` should be `none`");
 }
 
 - (void)testSetOnAnimated {
@@ -70,13 +71,43 @@
 - (void)testOn {
     self.checkBox.on = YES;
     XCTAssertTrue(self.checkBox.on);
+    XCTAssertEqualObjects(self.checkBox.accessibilityValue, @"on");
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitSelected);
+
     [self.checkBox layoutIfNeeded];
     XCTAssertEqual(self.checkBox.layer.sublayers.count, 3);
     
     self.checkBox.on = NO;
     XCTAssertFalse(self.checkBox.on);
+    XCTAssertEqualObjects(self.checkBox.accessibilityValue, @"off");
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitNone);
+
     [self.checkBox layoutIfNeeded];
     XCTAssertEqual(self.checkBox.layer.sublayers.count, 1);
+}
+
+- (void)testNotEnabled {
+    [self.checkBox setEnabled:NO];
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitNotEnabled);
+
+    self.checkBox.on = YES;
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitNotEnabled);
+}
+
+- (void)testUserInteractionNotEnabled {
+    [self.checkBox setUserInteractionEnabled:NO];
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitNotEnabled);
+
+    self.checkBox.on = YES;
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitNotEnabled);
+}
+
+- (void)testAccessibilitySetters {
+    self.checkBox.accessibilityValue = @"foo";
+    self.checkBox.accessibilityTraits = UIAccessibilityTraitPlaysSound;
+
+    XCTAssertEqualObjects(self.checkBox.accessibilityValue, @"foo");
+    XCTAssertEqual(self.checkBox.accessibilityTraits, UIAccessibilityTraitPlaysSound);
 }
 
 - (void)testReload {
