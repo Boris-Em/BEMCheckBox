@@ -214,7 +214,14 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     override public var intrinsicContentSize: CGSize {
         return frame.size
     }
-    
+
+    private var _accessibilityValue: String?
+
+    public override var accessibilityValue: String? {
+        get { (_accessibilityValue != nil) ? _accessibilityValue : (on ? "on" : "off") }
+        set { _accessibilityValue = newValue }
+    }
+
     // MARK: Setters
     
     private var _on: Bool = false
