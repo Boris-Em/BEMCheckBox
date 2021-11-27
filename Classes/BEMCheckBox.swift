@@ -218,8 +218,25 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     private var _accessibilityValue: String?
 
     public override var accessibilityValue: String? {
-        get { (_accessibilityValue != nil) ? _accessibilityValue : (on ? "on" : "off") }
+        get { (_accessibilityValue != nil) ? _accessibilityValue : (on ? "1" : "0") }
         set { _accessibilityValue = newValue }
+    }
+
+    private var _accessibilityTraits: UIAccessibilityTraits?
+
+    public override var accessibilityTraits: UIAccessibilityTraits {
+        get {
+          if _accessibilityTraits != nil {
+            return _accessibilityTraits!
+          }
+
+          if !isEnabled || !isUserInteractionEnabled {
+            return .notEnabled
+          }
+
+          return on ? .selected : .none
+        }
+        set { _accessibilityTraits = newValue }
     }
 
     // MARK: Setters
