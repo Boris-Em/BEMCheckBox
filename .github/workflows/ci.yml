@@ -44,7 +44,7 @@ jobs:
           ls -la Release-fat/BEMCheckBox.framework
 
       - name: Upload Build Artificates to GitHub Workflow
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: BEMCheckBox.framework
           path: Release-fat/BEMCheckBox.framework
