@@ -1,9 +1,6 @@
 # BEMCheckBox
-[![Build Status](https://travis-ci.org/Boris-Em/BEMCheckBox.svg)](https://travis-ci.org/Boris-Em/BEMCheckBox)
-[![Version](https://img.shields.io/cocoapods/v/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
-[![License](https://img.shields.io/cocoapods/l/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
-[![Platform](https://img.shields.io/cocoapods/p/BEMCheckBox.svg?style=flat)](http://cocoadocs.org/docsets/BEMCheckBox)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CI](https://github.com/saturdaymp/BEMCheckBox/actions/workflows/ci.yml/badge.svg)](https://github.com/saturdaymp/BEMCheckBox/actions/workflows/ci.yml)
+[![Release Notes](https://github.com/saturdaymp/BEMCheckBox/actions/workflows/release-notes.yml/badge.svg)](https://github.com/saturdaymp/BEMCheckBox/actions/workflows/release-notes.yml)
 
 <p align="center"><img src="./.assets/BEMCheckBox logo.jpg"/></p>	
 
@@ -35,7 +32,7 @@ Learn more about the **BEMCheckBox** project, licensing, support etc.
 <p align="center"><img src="./.assets/BEMCheckBox.gif"/></p>	
 
 ### Requirements
- - Requires iOS 7 or later. The sample project is optimized for iOS 9.
+ - Requires iOS 12 or later.
  - Requires Automatic Reference Counting (ARC).
  - Optimized for ARM64 Architecture.
 

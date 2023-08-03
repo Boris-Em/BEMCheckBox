@@ -1,0 +1,41 @@
+export:
+  include-created-date-in-title: true
+  created-date-string-format: MMM, d, yyyy
+
+issue-labels-include:
+  - breaking
+  - bug
+  - devops
+  - dependency
+  - documentation
+  - enhancement
+  - security
+
+issue-labels-alias:
+  - name: breaking
+    header: Breaking
+    plural: Breaking
+
+  - name: bug
+    header: Bug
+    plural: Bugs
+
+  - name: dependency
+    header: Dependency
+    plural: Dependencies
+
+  - name: devops
+    header: DevOps
+    plural: DevOps
+
+  - name: documentation
+    header: Documentation
+    plural: Documentation
+
+  - name: feature
+    header: Feature
+    plural: Feature
+
+  - name: security
+    header: Security
+    plural: Security
