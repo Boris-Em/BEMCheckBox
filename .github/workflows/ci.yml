@@ -79,8 +79,9 @@ jobs:
           file Release-fat/BEMCheckBox.framework/BEMCheckBox
           echo "Listing: Release-fat" && ls -la Release-fat
           echo "Listing: Release-fat/BEMCheckBox.framework" && ls -la Release-fat/BEMCheckBox.framework
-          zip -r Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip Release-fat/BEMCheckBox.framework
-          echo "Listing: Release-fat" && ls -la Release-fat
+          cd Release-fat
+          zip BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip BEMCheckBox.framework
+          echo "Listing: Release-fat" && ls -la
           
 
       - name: Upload Build Artificates to GitHub Workflow
