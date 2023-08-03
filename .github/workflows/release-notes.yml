@@ -17,6 +17,12 @@ jobs:
         with:
           fetch-depth: 0 # Required for Calculate Version step (e.g. GitVersion)
 
+      # Required by GitVersion
+      - name: Install .NET 6.0
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0
+
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.10.2
         with:
