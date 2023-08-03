@@ -27,3 +27,4 @@ Added new delegate and BEMCheckBoxDelegate protocol used to receive check box ev
 
 
 First stable release of **BEMCheckBox**
+CheckBox**
