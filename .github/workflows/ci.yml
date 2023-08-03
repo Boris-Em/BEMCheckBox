@@ -79,17 +79,18 @@ jobs:
           file Release-fat/BEMCheckBox.framework/BEMCheckBox
           echo "Listing: Release-fat" && ls -la Release-fat
           echo "Listing: Release-fat/BEMCheckBox.framework" && ls -la Release-fat/BEMCheckBox.framework
-          cp -R Release-fat/BEMCheckBox.framework Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+          zip -r Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip Release-fat/BEMCheckBox.framework
           echo "Listing: Release-fat" && ls -la Release-fat
+          
 
       - name: Upload Build Artificates to GitHub Workflow
         uses: actions/upload-artifact@v3
         with:
           name: BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
-          path: Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+          path: Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip
 
       # Only update to the release on a tag push.  Assume the release exists by the
       # time we create the tag.
       - name: Upload fat Binary to GitHub Release
         # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        run: dotnet gitreleasemanager addasset --token ${{ secrets.GITHUB_TOKEN }} --owner ${{ github.repository_owner }} --repository ${{ github.event.repository.name }} --tagName v${{ steps.gitversion.outputs.majorMinorPatch }} --assets Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+        run: dotnet gitreleasemanager addasset --token ${{ secrets.GITHUB_TOKEN }} --owner ${{ github.repository_owner }} --repository ${{ github.event.repository.name }} --tagName v${{ steps.gitversion.outputs.majorMinorPatch }} --assets Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip
