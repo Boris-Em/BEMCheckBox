@@ -95,6 +95,6 @@ jobs:
         # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         run: |
           cd Release-fat
-          zip -r BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip BEMCheckBox.framework/*
+          zip -r BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip BEMCheckBox.framework/.
           echo "Listing: Release-fat" && ls -la          
           dotnet gitreleasemanager addasset --token ${{ secrets.GITHUB_TOKEN }} --owner ${{ github.repository_owner }} --repository ${{ github.event.repository.name }} --tagName v${{ steps.gitversion.outputs.majorMinorPatch }} --assets BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip
