@@ -1,7 +1,7 @@
 ## v2.0.0 (Aug, 3, 2023)
 
 
-As part of this release we had [4 issues](https://github.com/saturdaymp/BEMCheckBox/milestone/1?closed=1) closed.
+As part of this release we had [5 issues](https://github.com/saturdaymp/BEMCheckBox/milestone/1?closed=1) closed.
 
 
 
@@ -13,6 +13,7 @@ __DevOps__
 
 - [__#3__](https://github.com/saturdaymp/BEMCheckBox/pull/3) Create GitHub Action to build package for XPlugins.iOS.BEMCheckBox
 - [__#6__](https://github.com/saturdaymp/BEMCheckBox/pull/6) Update build to upload fat binary to GitHub Release
+- [__#7__](https://github.com/saturdaymp/BEMCheckBox/pull/7) Upload release to GitHub
 
 __Documentation__
 
