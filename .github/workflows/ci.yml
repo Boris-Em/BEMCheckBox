@@ -86,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
-          path: Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip
+          path: Release-fat/BEMCheckBox.framework
 
       # Only update to the release on a tag push.  Assume the release exists by the
       # time we create the tag.  Also we need to create the zip as uploading to the release
