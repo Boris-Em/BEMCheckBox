@@ -1,7 +1,7 @@
 ## v2.0.0 (Aug, 3, 2023)
 
 
-As part of this release we had [3 issues](https://github.com/saturdaymp/BEMCheckBox/milestone/1?closed=1) closed.
+As part of this release we had [4 issues](https://github.com/saturdaymp/BEMCheckBox/milestone/1?closed=1) closed.
 
 
 
@@ -12,6 +12,7 @@ __Breaking__
 __DevOps__
 
 - [__#3__](https://github.com/saturdaymp/BEMCheckBox/pull/3) Create GitHub Action to build package for XPlugins.iOS.BEMCheckBox
+- [__#6__](https://github.com/saturdaymp/BEMCheckBox/pull/6) Update build to upload fat binary to GitHub Release
 
 __Documentation__
 
@@ -27,4 +28,3 @@ Added new delegate and BEMCheckBoxDelegate protocol used to receive check box ev
 
 
 First stable release of **BEMCheckBox**
-CheckBox**
