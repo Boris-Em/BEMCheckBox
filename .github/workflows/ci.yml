@@ -80,7 +80,7 @@ jobs:
           echo "Listing: Release-fat" && ls -la Release-fat
           echo "Listing: Release-fat/BEMCheckBox.framework" && ls -la Release-fat/BEMCheckBox.framework
           cd Release-fat
-          zip BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip BEMCheckBox.framework
+          zip -r BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip BEMCheckBox.framework
           echo "Listing: Release-fat" && ls -la
           
 
