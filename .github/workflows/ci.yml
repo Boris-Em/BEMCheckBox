@@ -91,13 +91,5 @@ jobs:
       # Only update to the release on a tag push.  Assume the release exists by the
       # time we create the tag.
       - name: Upload fat Binary to GitHub Release
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        uses: gittools/actions/gitreleasemanager/addasset@v0.10.2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repository: ${{ github.event.repository.name }}
-          milestone: v${{ steps.gitversion.outputs.majorMinorPatch }}
-          assets: |
-            Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
-
+        # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        run: dotnet gitreleasemanager addasset --token ${{ secrets.GITHUB_TOKEN }} --owner ${{ github.repository_owner }} --repository ${{ github.event.repository.name }} --tagname v${{ steps.gitversion.outputs.majorMinorPatch }} --assets Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
