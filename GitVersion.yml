@@ -1,0 +1,83 @@
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatch
+assembly-informational-format: '{InformationalVersion}'
+mode: ContinuousDelivery
+increment: Inherit
+continuous-delivery-fallback-tag: ci
+tag-prefix: '[vV]'
+major-version-bump-message: '\+semver:\s?(breaking|major)'
+minor-version-bump-message: '\+semver:\s?(feature|minor)'
+patch-version-bump-message: '\+semver:\s?(fix|patch)'
+no-bump-message: '\+semver:\s?(none|skip)'
+legacy-semver-padding: 4
+build-metadata-padding: 4
+commits-since-version-source-padding: 4
+tag-pre-release-weight: 60000
+commit-message-incrementing: Enabled
+ignore:
+  sha: [ ]
+merge-message-formats: {}
+update-build-number: true
+
+branches:
+  main:
+    regex: ^master$|^main$
+    mode: ContinuousDeployment
+    tag: alpha
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    source-branches: [ ]
+    tracks-release-branches: true
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 0
+  release:
+    regex: ^releases?[/-]
+    mode: ContinuousDeployment
+    tag: beta
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: [ 'main' ]
+    tracks-release-branches: false
+    is-release-branch: true
+    is-mainline: false
+    pre-release-weight: 30000
+  feature:
+    regex: ^features?[/-]
+    mode: ContinuousDelivery
+    tag: useBranchName
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+    source-branches: [ 'main', 'release' ]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 30000
+  pull-request:
+    regex: ^(pull|pull\-requests|pr)[/-]
+    mode: ContinuousDelivery
+    tag: PullRequest
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    track-merge-target: false
+    source-branches: [ 'main', 'release', 'hotfix' ]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 30000
+  hotfix:
+    regex: ^hotfix(es)?[/-]
+    mode: ContinuousDelivery
+    tag: useBranchName
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+    source-branches: [ 'release' ]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 30000
