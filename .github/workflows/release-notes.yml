@@ -2,9 +2,9 @@ name: Release Notes
 
 on:
   push:
-    branches: [ main, release* ]
+    branches: [ main, release/* ]
   pull_request:
-    branches: [ main, release* ]
+    branches: [ main, release/* ]
 
 jobs:
   generate-release-notes:
@@ -50,12 +50,12 @@ jobs:
       # Work around this by checking for success or no closed issue errors.
       - name: Create Release ${{ steps.gitversion.outputs.majorMinorPatch }}
         run: |
-          dotnet gitreleasemanager create --owner saturdaymp --repository BEMCheckBox --token ${{ secrets.GITHUB_TOKEN }} --milestone v${{ steps.gitversion.outputs.majorMinorPatch }} --logFilePath output.txt || true
+          dotnet gitreleasemanager create --owner ${{ github.repository_owner }} --repository ${{ github.event.repository.name }} --token ${{ secrets.GITHUB_TOKEN }} --milestone v${{ steps.gitversion.outputs.majorMinorPatch }} --logFilePath output.txt || true
           cat output.txt | grep 'No closed issues have been found for milestone\|Drafted release is available at'
 
       - name: 'Generate Change Log'
         run: |
-          dotnet-gitreleasemanager export --token ${{ secrets.GITHUB_TOKEN }} -o 'saturdaymp' -r 'BEMCheckBox' -f 'CHANGELOG.md'
+          dotnet-gitreleasemanager export --token ${{ secrets.GITHUB_TOKEN }} -o '${{ github.repository_owner }}' -r '${{ github.event.repository.name }}' -f 'CHANGELOG.md'
           git add --renormalize CHANGELOG.md
           cat CHANGELOG.md
 
