@@ -92,7 +92,7 @@ jobs:
       # time we create the tag.  Also we need to create the zip as uploading to the release
       # does not automatically zip the file.
       - name: Upload fat Binary to GitHub Release
-        # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         run: |
           cd Release-fat/BEMCheckBox.framework
           zip -r BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework.zip .
