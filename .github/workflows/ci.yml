@@ -92,4 +92,4 @@ jobs:
       # time we create the tag.
       - name: Upload fat Binary to GitHub Release
         # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        run: dotnet gitreleasemanager addasset --token ${{ secrets.GITHUB_TOKEN }} --owner ${{ github.repository_owner }} --repository ${{ github.event.repository.name }} --tagname v${{ steps.gitversion.outputs.majorMinorPatch }} --assets Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+        run: dotnet gitreleasemanager addasset --token ${{ secrets.GITHUB_TOKEN }} --owner ${{ github.repository_owner }} --repository ${{ github.event.repository.name }} --tagName v${{ steps.gitversion.outputs.majorMinorPatch }} --assets Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
