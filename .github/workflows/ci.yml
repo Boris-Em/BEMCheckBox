@@ -1,13 +1,50 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches: [ main, release/* ]
+    tags: [ v* ]
+  pull_request:
+    branches: [ main, release/* ]
 
 jobs:
   build:
     runs-on: macos-13
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required for Calculate Version step (e.g. GitVersion)
+
+      # Required by GitVersion
+      - name: Install .NET 6.0
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.10.2
+        with:
+          versionSpec: '5.12.0'
+
+      - name: GitVersion Config
+        uses: gittools/actions/gitversion/execute@v0.10.2
+        with:
+          useConfigFile: true
+          additionalArguments: '/showConfig'
+
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.10.2
+        with:
+          useConfigFile: true
+          additionalArguments: '/updateprojectfiles'
+
+      - name: Install GitReleaseManager
+        uses: gittools/actions/gitreleasemanager/setup@v0.10.2
+        with:
+          versionSpec: '0.13.0'
       
       - name: Show SDKS
         run: xcodebuild -showsdks
@@ -18,33 +55,49 @@ jobs:
       - name: Build iOS Simulator
         run: |
           xcodebuild -sdk iphonesimulator -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release EXCLUDED_ARCHS="arm64"
-          ls -la build/Build/Products/Release-iphonesimulator
-          ls -la build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework
+          echo "Listing: build/Build/Products/Release-iphonesimulator" && ls -la build/Build/Products/Release-iphonesimulator
+          echo "Listing: build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework" && ls -la build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework
           lipo -info build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework/BEMCheckBox
 
       - name: Build iOS Device
         run: |
           xcodebuild -sdk iphoneos -project "Sample Project/CheckBox.xcodeproj" -derivedDataPath build -scheme BEMCheckBox -configuration Release
-          ls -la build/Build/Products/Release-iphoneos
-          ls -la build/Build/Products/Release-iphoneos/BEMCheckBox.framework
+          echo "Listing: build/Build/Products/Release-iphoneos" && ls -la build/Build/Products/Release-iphoneos
+          echo "Listing: build/Build/Products/Release-iphoneos/BEMCheckBox.framework" && ls -la build/Build/Products/Release-iphoneos/BEMCheckBox.framework
           lipo -info build/Build/Products/Release-iphoneos/BEMCheckBox.framework/BEMCheckBox
 
       - name: Combine Builds
         run: |
           cp -R build/Build/Products/Release-iphoneos/ Release-fat
-          ls -la Release-fat
-          ls -la Release-fat/BEMCheckBox.framework/BEMCheckBox
+          echo "Listing: Release-fat" && ls -la Release-fat
+          echo "Listing: Release-fat/BEMCheckBox.framework/BEMCheckBox" && ls -la Release-fat/BEMCheckBox.framework/BEMCheckBox
 
-      - name: Build FAT Binary
+      - name: Build fat Binary
         run: |
           lipo -create -output  Release-fat/BEMCheckBox.framework/BEMCheckBox build/Build/Products/Release-iphoneos/BEMCheckBox.framework/BEMCheckBox build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework/BEMCheckbox
           lipo -info Release-fat/BEMCheckBox.framework/BEMCheckBox
           file Release-fat/BEMCheckBox.framework/BEMCheckBox
-          ls -la Release-fat
-          ls -la Release-fat/BEMCheckBox.framework
+          echo "Listing: Release-fat" && ls -la Release-fat
+          echo "Listing: Release-fat/BEMCheckBox.framework" && ls -la Release-fat/BEMCheckBox.framework
+          cp -R Release-fat/BEMCheckBox.framework Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+          echo "Listing: Release-fat" && ls -la Release-fat
 
       - name: Upload Build Artificates to GitHub Workflow
         uses: actions/upload-artifact@v3
         with:
-          name: BEMCheckBox.framework
-          path: Release-fat/BEMCheckBox.framework
+          name: BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+          path: Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+
+      # Only update to the release on a tag push.  Assume the release exists by the
+      # time we create the tag.
+      - name: Upload fat Binary to GitHub Release
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        uses: gittools/actions/gitreleasemanager/addasset@v0.10.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repository: ${{ github.event.repository.name }}
+          milestone: v${{ steps.gitversion.outputs.majorMinorPatch }}
+          assets: |
+            Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+
