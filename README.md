@@ -32,7 +32,7 @@ Learn more about the **BEMCheckBox** project, licensing, support etc.
 <p align="center"><img src="./.assets/BEMCheckBox.gif"/></p>	
 
 ### Requirements
- - Requires iOS 7 or later. The sample project is optimized for iOS 9.
+ - Requires iOS 12 or later.
  - Requires Automatic Reference Counting (ARC).
  - Optimized for ARM64 Architecture.
 
