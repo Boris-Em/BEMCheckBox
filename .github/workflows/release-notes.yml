@@ -1,0 +1,60 @@
+name: Release Notes
+
+on:
+  push:
+    branches: [ main, release* ]
+  pull_request:
+    branches: [ main, release* ]
+
+jobs:
+  generate-release-notes:
+    name: Generate Release Notes
+    runs-on: macos-13
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required for Calculate Version step (e.g. GitVersion)
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.10.2
+        with:
+          versionSpec: '5.12.0'
+
+      - name: GitVersion Config
+        uses: gittools/actions/gitversion/execute@v0.10.2
+        with:
+          useConfigFile: true
+          additionalArguments: '/showConfig'
+
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.10.2
+        with:
+          useConfigFile: true
+          additionalArguments: '/updateprojectfiles'
+
+      - name: Install GitReleaseManager
+        uses: gittools/actions/gitreleasemanager/setup@v0.10.2
+        with:
+          versionSpec: '0.13.0'
+
+      # If there are no closed issues generating the Github Release will fail because it raises an exception.
+      # Work around this by checking for success or no closed issue errors.
+      - name: Create Release ${{ steps.gitversion.outputs.majorMinorPatch }}
+        run: |
+          dotnet gitreleasemanager create --owner saturdaymp --repository BEMCheckBox --token ${{ secrets.GITHUB_TOKEN }} --milestone v${{ steps.gitversion.outputs.majorMinorPatch }} --logFilePath output.txt || true
+          cat output.txt | grep 'No closed issues have been found for milestone\|Drafted release is available at'
+
+      - name: 'Generate Change Log'
+        run: |
+          dotnet-gitreleasemanager export --token ${{ secrets.GITHUB_TOKEN }} -o 'saturdaymp' -r 'BEMCheckBox' -f 'CHANGELOG.md'
+          git add --renormalize CHANGELOG.md
+          cat CHANGELOG.md
+
+      - name: 'Commit Change Log if it Changed'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Committing auto generated change log.
+          file_pattern: CHANGELOG.md
