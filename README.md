@@ -4,7 +4,9 @@
 
 <p align="center"><img src="./.assets/BEMCheckBox logo.jpg"/></p>	
 
-**BEMCheckBox** is an open source library making it easy to create beautiful, highly customizable, animated checkboxes for iOS. 
+**BEMCheckBox** is an open source library making it easy to create beautiful, highly customizable, animated checkboxes for iOS.  
+
+Forked from [Boris-EM/BEMCheckBox](https://github.com/Boris-Em/BEMCheckBox) because the not been updated in a while and I wanted to use an updated version in the [XPlugins.iOS.BEMCheckBox](https://github.com/saturdaymp/XPlugins.iOS.BEMCheckBox).  I'm not very knowledge about Xcode and Swift so please feel free to help by creating an [issue](https://github.com/saturdaymp/BEMCheckBox/issues) and/or a [pull request](https://github.com/saturdaymp/BEMCheckBox/pulls).
 
 ## Table of Contents
 
@@ -27,7 +29,7 @@
   * [Customization](#customization)
 
 ## Project Details
-Learn more about the **BEMCheckBox** project, licensing, support etc.
+A quick example of the checkbox in action.
 
 <p align="center"><img src="./.assets/BEMCheckBox.gif"/></p>	
 
@@ -37,11 +39,10 @@ Learn more about the **BEMCheckBox** project, licensing, support etc.
  - Optimized for ARM64 Architecture.
 
 ### License
-See the [License](https://github.com/Boris-Em/BEMCheckBox/blob/master/LICENSE). You are free to make changes and use this in either personal or commercial projects. Attribution is not required, but highly appreciated. A little "Thanks!" (or something to that affect) is always welcome. If you use **BEMCheckBox** in your app, please let us know!
+See the [License](LICENSE). You are free to make changes and use this in either personal or commercial projects. Attribution is not required, but highly appreciated. A little "Thanks!" (or something to that affect) is always welcome for either [Saturday MP](https://github.com/saturdaymp) and/or [Boris-EM](https://github.com/Boris-Em) If you use **BEMCheckBox** in your app, please let us know!
 
 ### Support
-[![Gitter chat](https://badges.gitter.im/Boris-Em/BEMCheckBox.png)](https://gitter.im/Boris-Em/BEMCheckBox)  
-Join us on [Gitter](https://gitter.im/Boris-Em/BEMCheckBox) if you need any help or want to talk about the project.
+Open an [issue](https://github.com/saturdaymp/BEMCheckBox/issues) if you have a question, spot a bug, or have a feature request.  [Pull requests](https://github.com/saturdaymp/BEMCheckBox/pulls) are welcome and much appreciated.  Finally you can send an email to [support@saturdaymp.com](support@saturdaymp.com).
 
 ### Sample App
 The iOS Sample App included with this project demonstrates one way to correctly setup and use **BEMCheckBox**. It also offers the possibility to customize the checkbox within the app.
@@ -61,9 +62,11 @@ It only takes a few simple steps to install and setup **BEMCheckBox** to your pr
 ### Installation
 
 #### Swift Package Manager
-Add `https://github.com/Boris-Em/BEMCheckBox` as a dependency to your Package.swift file or select `File -> Swift Packages -> Add Package Dependency...` in Xcode.
+Add `https://github.com/saturdaymp/BEMCheckBox` as a dependency to your Package.swift file or select `File -> Swift Packages -> Add Package Dependency...` in Xcode.
 
 #### CocoaPods
+Note: The latest version on CocoaPods is [v1.4.1](https://cocoapods.org/pods/BEMCheckBox) by [Boris-Em](https://github.com/Boris-Em).  If you would like me to push a new version please open an [issue](https://github.com/saturdaymp/BEMCheckBox/issues) or [pull request](https://github.com/saturdaymp/BEMCheckBox/pulls).
+
 The easiest way to install **BEMCheckBox** is to use <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To do so, simply add the following line to your `Podfile`:
 	<pre><code>pod 'BEMCheckBox'</code></pre>
 
@@ -147,10 +150,10 @@ self.group.selectedCheckBox = self.checkBox1;
 ### Delegate
 **BEMCheckBox** uses a delegate to receive check box events. The delegate object must conform to the `BEMCheckBoxDelegate` protocol, which is composed of two optional methods:
 
-- `didTapCheckBox:`  
+- `didTap:`  
 Sent to the delegate every time the check box gets tapped, after its properties are updated (`on`), but before the animations are completed.
 
-- `animationDidStopForCheckBox:`  
+- `animationDidStop:`  
 Sent to the delegate every time the check box finishes being animated.
 
 ### Customization
