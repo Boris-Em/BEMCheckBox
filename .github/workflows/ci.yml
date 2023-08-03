@@ -72,14 +72,14 @@ jobs:
           echo "Listing: Release-fat" && ls -la Release-fat
           echo "Listing: Release-fat/BEMCheckBox.framework/BEMCheckBox" && ls -la Release-fat/BEMCheckBox.framework/BEMCheckBox
 
-      - name: Build FAT Binary
+      - name: Build fat Binary
         run: |
           lipo -create -output  Release-fat/BEMCheckBox.framework/BEMCheckBox build/Build/Products/Release-iphoneos/BEMCheckBox.framework/BEMCheckBox build/Build/Products/Release-iphonesimulator/BEMCheckBox.framework/BEMCheckbox
           lipo -info Release-fat/BEMCheckBox.framework/BEMCheckBox
           file Release-fat/BEMCheckBox.framework/BEMCheckBox
           echo "Listing: Release-fat" && ls -la Release-fat
           echo "Listing: Release-fat/BEMCheckBox.framework" && ls -la Release-fat/BEMCheckBox.framework
-          cp Release-fat/BEMCheckBox.framework Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
+          cp -R Release-fat/BEMCheckBox.framework Release-fat/BEMCheckBox-v${{ steps.gitversion.outputs.majorMinorPatch }}.framework
           echo "Listing: Release-fat" && ls -la Release-fat
 
       - name: Upload Build Artificates to GitHub Workflow
